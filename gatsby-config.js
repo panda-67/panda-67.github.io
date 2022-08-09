@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `myfol`,
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `https://samsulmuarrif.me`,
   },
-  plugins: [],
+  plugins: ['gatsby-plugin-postcss',],
 }
