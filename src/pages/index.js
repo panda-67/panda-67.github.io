@@ -1,14 +1,13 @@
 import * as React from "react";
-import { Link } from "gatsby"
+import { Link } from "gatsby";
 import Frame from "../components/layout";
 
-export const Head = () => <title>Profile | Samsul Muarrif</title>;
 export default function IndexPage() {
   return (
-    <Frame>
+    <Frame title={"Profile"}>
       <main>
         {/* <!-- Welcome --> */}
-        <div className="h-2/6 md:h-screen p-6 md:p-10">
+        <div className="md:py-8 h-3/6 md:h-screen mx-6 md:mb-6">
           <div style={imgbgStyles}>
             <div
               className="
@@ -81,7 +80,7 @@ export default function IndexPage() {
             </Link>
           </div>
           <div className="rounded-lg hover:border border-indigo-600">
-            <Link to="/" 
+            <Link to="/"
               className="
             relative
             w-full
@@ -125,7 +124,7 @@ export default function IndexPage() {
             </Link>
           </div>
           <div className="rounded-lg hover:border border-indigo-600">
-            <Link to="/" 
+            <Link to="/"
               className="
             relative
             w-full
