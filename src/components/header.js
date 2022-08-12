@@ -21,13 +21,15 @@ const Header = ({ siteTitle, menuLinks }) => (
           <button id="menu" tabIndex={"0"} style={{ display: "flex", flex: 1 }} className="dropdown-content flex-col w-28 list-none items-start py-1 px-3 shadow bg-base-100 rounded-md">
             {menuLinks.map(link => (
               <li key={link.name}>
-                <Link className="flex capitalize text-gray-600 link-accent text-sm font-sans" activeClassName="flex pb-1 ml-2 border-b border-accent" to={link.link}>
-                  <svg className="w-2 mr-1" x="0px" y="0px" viewBox="0 0 49.656 49.656">
-                    <g>
-                      <polygon points="14.535,48.242 11.707,45.414 32.292,24.828 11.707,4.242 14.535,1.414 37.949,24.828" />
-                      <path d="M14.535,49.656l-4.242-4.242l20.585-20.586L10.293,4.242L14.535,0l24.829,24.828L14.535,49.656z    M13.121,45.414l1.414,1.414l22-22l-22-22l-1.414,1.414l20.585,20.586L13.121,45.414z" />
-                    </g>
-                  </svg>
+                <Link className="flex py-1 capitalize text-gray-600 link-accent text-sm font-sans" activeClassName="flex pb-1 ml-2 border-b border-accent" to={link.link}>
+                  <div className="flex items-center w-2 mr-1">
+                    <svg x="0px" y="0px" viewBox="0 0 49.656 49.656">
+                      <g>
+                        <polygon points="14.535,48.242 11.707,45.414 32.292,24.828 11.707,4.242 14.535,1.414 37.949,24.828" />
+                        <path d="M14.535,49.656l-4.242-4.242l20.585-20.586L10.293,4.242L14.535,0l24.829,24.828L14.535,49.656z    M13.121,45.414l1.414,1.414l22-22l-22-22l-1.414,1.414l20.585,20.586L13.121,45.414z" />
+                      </g>
+                    </svg>
+                  </div>
                   {link.name}
                 </Link>
               </li>
