@@ -10,8 +10,8 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+        serif: ["Taviraj, serif", ...defaultTheme.fontFamily.serif],
         edu: "Edu VIC WA NT Beginner, cursive",
-        taviraj: "Taviraj, serif",
         teko: "Teko, sans-serif"
 
       },

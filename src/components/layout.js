@@ -1,7 +1,8 @@
 import React from "react"
-import { Link, StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import Header from "./header"
+import SideLink from "./sidelink"
 
 export default function Layout({ title, children }) {
 	return (
@@ -23,7 +24,7 @@ export default function Layout({ title, children }) {
 				render={data => (
 					<React.Fragment>
 						<Helmet
-							title={title + (" | Samsul Muarrif")}
+							title={title + (" | ") + data.site.siteMetadata.title}
 							meta={[
 								{ name: 'description', content: 'Sample' },
 								{ name: 'keywords', content: 'sample, something' },
@@ -32,49 +33,49 @@ export default function Layout({ title, children }) {
 						</Helmet>
 						<Header menuLinks={data.site.siteMetadata.menuLinks} siteTitle={data.site.siteMetadata.title} />
 						{/* <!-- Layout --> */}
-						<div className="md:grid grid-flow-col grid-cols-8 font-edu max-w-7xl mx-auto">
+						<div className="lg:grid grid-flow-col grid-cols-8 font-edu max-w-7xl mx-auto">
 							{/* <!-- Content --> */}
 							<div className="col-span-6">
 								{children}
 							</div>
 
 							{/* <!-- Side Item --> */}
-							<div className="hidden col-span-2 h-screen pl-4 sm:flex flex-col items-center">
+							<div className="hidden col-span-2 h-screen pl-4 lg:flex flex-col items-center">
 								<div className="fixed text-center">
-									<div className="my-6 h-60 flex items-center">
-										<h3 className="text-5xl font-extrabold font-taviraj">Profile</h3>
+									<div className="my-6 h-36 flex items-center">
+										<h3 className="text-5xl text-center font-extrabold font-serif">Profile</h3>
 									</div>
 									<div className="flex flex-col gap-2 text-lg font-medium font-teko">
 										<div className="w-full">
-											<Link to="/" className="btn btn-sm btn-primary">
+											<SideLink href="/">
 												Welcome
-											</Link>
+											</SideLink>
 										</div>
 										<div className="w-full">
-											<Link to="/expertise">
+											<SideLink href="/expertise">
 												Expertise
-											</Link>
+											</SideLink>
 										</div>
 										<div className="w-full">
-											<Link to="/experience">
+											<SideLink href="/experience">
 												Experience
-											</Link>
+											</SideLink>
 										</div>
 										<div className="w-full">
-											<Link to="/education">
+											<SideLink href="/education">
 												Education
-											</Link>
+											</SideLink>
 										</div>
 										<div className="w-full">
-											<Link to="/about" >
+											<SideLink href="/about" >
 												About
-											</Link>
+											</SideLink>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div className="md:grid grid-flow-col grid-cols-8">
+						<div className="lg:grid grid-flow-col grid-cols-8">
 							{/* !-- Footer --> */}
 							<div className="col-span-6 flex justify-center w-full mb-4">© 2022 Samsul Muarrif</div>
 						</div>

@@ -5,9 +5,9 @@ import PropTypes from "prop-types"
 const Header = ({ siteTitle, menuLinks }) => (
   <header className="mx-auto">
     <div className="mb-1">
-      <div className="flex max-w-7xl justify-between items-center mx-6 md:mx-auto md:hidden">
+      <div className="flex max-w-5xl lg:max-w-7xl justify-between items-center mx-8 lg:hidden">
         <h1 style={{ margin: 0, flex: 1 }}>
-          <Link to="/" className="uppercase font-bold text-xl font-teko text-purple-600 link-primary">
+          <Link to="/" className="capitalize font-semibold text-md font-edu text-accent link-neutral">
             {siteTitle}
           </Link>
         </h1>
@@ -15,14 +15,8 @@ const Header = ({ siteTitle, menuLinks }) => (
           <nav>
             <ul style={{ display: "flex", flex: 1 }}>
               {menuLinks.map(link => (
-                <li
-                  key={link.name}
-                  style={{
-                    listStyleType: `none`,
-                    padding: `1rem`,
-                  }}
-                >
-                  <Link className="capitalize text-purple-600 font-teko" to={link.link}>
+                <li key={link.name} className="py-4 px-2">
+                  <Link className="capitalize text-gray-500 link-hover text-sm font-serif" to={link.link}>
                     {link.name}
                   </Link>
                 </li>

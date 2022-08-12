@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `myfol`,
+    title: `Samsul Muarrif`,
     siteUrl: `https://samsulmuarrif.me`,
     menuLinks: [
       {

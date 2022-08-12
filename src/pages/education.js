@@ -1,7 +1,7 @@
 import * as React from "react";
 import Frame from "../components/layout";
 
-export default function EducationPage () {
+export default function EducationPage() {
 	return (
 		<Frame title={"Education"}>
 			<div className="h-max">
@@ -76,9 +76,11 @@ export default function EducationPage () {
 						</svg>
 					</div>
 					<div className="text-center text-zinc-700 font-semibold">
-						<h2 className="text-3xl tracking-wide font-teko">
-							Universitas Syiah Kuala
-						</h2>
+						<a target="_blank" rel="noopener noreferrer" href="https://unsyiah.ac.id">
+							<h2 className="text-3xl tracking-wide font-teko">
+								Universitas Syiah Kuala
+							</h2>
+						</a>
 						<h4 className="text-lg tracking-tighter">
 							Fakultas Matematika dan Ilmu Pengetahuan Alam
 						</h4>
