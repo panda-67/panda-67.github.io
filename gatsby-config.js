@@ -18,6 +18,10 @@ module.exports = {
       {
         name: 'education',
         link: '/education'
+      },
+      {
+        name: 'about',
+        link: '/about'
       }
     ]
   },
@@ -25,7 +29,13 @@ module.exports = {
     'gatsby-plugin-postcss',
     {
       resolve: `gatsby-plugin-manifest`,
-      options: {        
+      options: {
+        name: "GatsbyJS",
+        short_name: "GatsbyJS",
+        start_url: "/",
+        background_color: "#6b37bf",
+        theme_color: "#6b37bf",
+        display: "standalone",
         icon: "src/images/icon.png",
         crossOrigin: `use-credentials`,
       },

@@ -24,14 +24,14 @@
     "gatsby-source-filesystem": "^4.0.0-next",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "webpack": "^5.74.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/eslint-parser": "^7.18.9",
     "@tailwindcss/forms": "^0.5.2",
     "autoprefixer": "^10.4.8",
-    "babel-eslint": "^10.0.0",
     "eslint": "^7.5.0",
     "gatsby-plugin-postcss": "^5.20.0",
     "gh-pages": "^4.0.0",
