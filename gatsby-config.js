@@ -29,13 +29,7 @@ module.exports = {
     'gatsby-plugin-postcss',
     {
       resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: "GatsbyJS",
-        short_name: "GatsbyJS",
-        start_url: "/",
-        background_color: "#6b37bf",
-        theme_color: "#6b37bf",
-        display: "standalone",
+      options: {        
         icon: "src/images/icon.png",
         crossOrigin: `use-credentials`,
       },
