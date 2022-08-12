@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkmyfol=self.webpackChunkmyfol||[]).push([[779],{1442:function(e,t,n){n.r(t),n.d(t,{default:function(){return u}});var l=n(7294),r=n(279);function u(){return l.createElement(r.Z,{title:"Expertise"},l.createElement("h3",null,"Halaman Expertise"))}}}]);
+//# sourceMappingURL=component---src-pages-expertise-js-b4f26fa5cf7db854c571.js.map

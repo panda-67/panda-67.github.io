@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkmyfol=self.webpackChunkmyfol||[]).push([[682],{5465:function(e,t,n){n.r(t),n.d(t,{default:function(){return a}});var u=n(7294),l=n(279);function a(){return u.createElement(l.Z,{title:"About"},u.createElement("h3",null,"Halaman About"))}}}]);
+//# sourceMappingURL=component---src-pages-about-js-c69650f46a5b47bb898a.js.map
