@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet"
 import Header from "./header"
 import SideLink from "./sidelink"
 
-export default function Layout({ title, children }) {
+export default function Layout({ title, children, menuLinks }) {
 	return (
 		<div style={{ margin: `0 auto`, padding: `0` }}>
 			<StaticQuery

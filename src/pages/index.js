@@ -7,10 +7,10 @@ export default function IndexPage() {
     <Frame title={"Profile"}>
       <main>
         {/* <!-- Welcome --> */}
-        <div className="lg:py-8 lg:h-screen mx-6 lg:mb-6">
-          <div style={imgbgStyles}>
-            <div className="flex font- flex-col justify-center items-center w-full h-full rounded-xl bg-gradient-to-tr from-slate-900 to-transparent">
-              <div className="text-gray-100 lg:text-left font-semibold font-sans mx-6 my-20 lg:my-10">
+        <div className="lg:py-8 lg:h-screen lg:mx-6 lg:mb-6">
+          <div style={imgbgStyles} className="lg:rounded-xl">
+            <div className="flex font- flex-col justify-center items-center w-full h-full lg:rounded-xl bg-gradient-to-tr from-slate-900 to-transparent">
+              <div className="text-gray-100 lg:text-left font-semibold font-sans mx-6 my-32 lg:my-10">
                 <p className="text-2xl lg:text-6xl break-words lg:mb-2">
                   Hello, I am Samsul Muarrif
                 </p>
@@ -22,7 +22,7 @@ export default function IndexPage() {
 
         {/* <!-- Recent Activity --> */}
         <div className="text-gray-800 text-center md:text-left font-semibold mx-10 my-2">
-          <p className="text-xl md:text-3xl break-words font-serif mb-4 md:mb-2">Recent Work</p>
+          <p className="text-lg md:text-xl break-words font-serif mb-4 md:mb-2">Recent Work</p>
         </div>
         <div className="mx-6 md:mx-10 mb-8 grid gap-4 md:gap-6 grid-cols-2">
           <div className="rounded-lg hover:border border-indigo-600">
@@ -77,6 +77,5 @@ const imgbgStyles = {
   backgroundSize: "cover",
   justifyContent: "center",
   alignItems: "flex-start",
-  borderRadius: "0.75rem",
   height: "100%",
 };

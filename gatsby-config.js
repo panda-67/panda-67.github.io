@@ -4,17 +4,28 @@ module.exports = {
     siteUrl: `https://samsulmuarrif.me`,
     menuLinks: [
       {
-        name: 'home',
+        name: 'welcome',
         link: '/'
+      },
+      {
+        name: 'expertise',
+        link: '/expertise'
+      },
+      {
+        name: 'experience',
+        link: '/experience'
       },
       {
         name: 'education',
         link: '/education'
+      },
+      {
+        name: 'about',
+        link: '/about'
       }
     ]
   },
   plugins: [
     'gatsby-plugin-postcss',
-    `gatsby-plugin-react-helmet`
   ],
 }
