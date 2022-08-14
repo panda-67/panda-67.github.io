@@ -14,7 +14,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "deploy": "gh-pages -d public",
-    "prod" : "build && deploy"
+    "prod" : "gatsby build && gh-pages -d public"
   },
   "dependencies": {
     "daisyui": "^2.22.0",
