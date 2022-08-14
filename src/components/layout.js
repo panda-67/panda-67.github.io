@@ -67,6 +67,11 @@ export default function Layout({ title, children, menuLinks }) {
 											</SideLink>
 										</div>
 										<div className="w-full">
+											<SideLink href="/blogs">
+												Blogs
+											</SideLink>
+										</div>
+										<div className="w-full">
 											<SideLink href="/about" >
 												About
 											</SideLink>
