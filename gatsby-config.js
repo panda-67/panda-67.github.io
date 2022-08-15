@@ -20,10 +20,6 @@ module.exports = {
         link: '/'
       },
       {
-        name: `blog`,
-        link: `/blogs`
-      },
-      {
         name: 'expertise',
         link: '/expertise'
       },
@@ -38,13 +34,31 @@ module.exports = {
       {
         name: 'about',
         link: '/about'
+      },
+      {
+        name: `blog`,
+        link: `/blogs`
       }
     ]
   },
-
   plugins: [
     `gatsby-plugin-postcss`,
-    `gatsby-transformer-remark`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
+            },
+          },
+        ],
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -55,10 +69,10 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
+        name: `pictures`,
         path: `${__dirname}/content/assets/`,
       },
-    }, 
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

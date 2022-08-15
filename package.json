@@ -14,16 +14,19 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "deploy": "gh-pages -d public",
-    "prod" : "gatsby build && gh-pages -d public"
+    "prod": "gatsby build && gh-pages -d public"
   },
   "dependencies": {
+    "babel-eslint": "^10.1.0",
     "daisyui": "^2.22.0",
     "gatsby": "^4.20.0",
     "gatsby-plugin-image": "^2.20.0",
     "gatsby-plugin-manifest": "^4.20.0",
-    "gatsby-plugin-sharp": "^4.0.0-next",
+    "gatsby-plugin-sharp": "^4.20.0",
+    "gatsby-remark-images": "^6.20.0",
     "gatsby-source-filesystem": "^4.20.0",
     "gatsby-transformer-remark": "^5.20.0",
+    "gatsby-transformer-sharp": "^4.20.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-helmet": "^6.1.0"

@@ -1,25 +1,32 @@
 import React from "react"
 import { Link } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
 
 export default function Navbar() {
   return (
-    <div className="navbar bg-base-100">
-      <div className="flex-1 gap-2 justify-between">
-        <Link to="/">
-          <h3 className="lg:text-2xl font-extrabold">Home</h3>
-        </Link>
-        <div className="hidden lg:block form-control">
-          <input type="text" placeholder="Search" className="input input-sm input-bordered" />
+    <div className="flex justify-between bg-base-100">
+      <div className="navbar bg-base-100">
+        <div className="">
+          <Link to="/" className="px-2">
+            <StaticImage
+              src="../images/icon.svg"
+              title="Welcome"
+              alt="profile"
+              height={40} />
+          </Link>
+        </div>
+        <div className="hidden lg:flex gap-2 justify-between w-full pt-2">
+          <ul className="menu menu-compact menu-horizontal gap-1 p-0">
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/blogs">Blogs</Link></li>
+          </ul>
+          <div className="form-control">
+            <input type="text" placeholder="Search" className="input input-sm input-bordered" />
+          </div>
         </div>
       </div>
-      <div className="hidden lg:block flex-none">
-        <ul className="menu menu-compact menu-horizontal p-0">
-          <li><Link to="/blogs">Blogs</Link></li>
-          <li><Link to="/about">About</Link></li>
-        </ul>
-      </div>
       <div className="dropdown dropdown-left lg:hidden">
-        <button tabindex="0" className="">
+        <button tabindex="0" className="mt-4">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
         </button>
         <button tabindex="0" className="menu menu-compact dropdown-content mt-6 p-2 shadow bg-base-100 rounded-box w-44">

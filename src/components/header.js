@@ -1,14 +1,24 @@
 import React from "react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
+import { StaticImage } from "gatsby-plugin-image"
 
 const Header = ({ siteTitle, menuLinks }) => (
   <header className="mx-auto">
     <div className="mb-1">
       <div className="flex max-w-5xl lg:max-w-7xl justify-between items-center mx-8 my-3 lg:hidden">
         <h1 style={{ margin: 0, flex: 1 }}>
-          <Link to="/" className="capitalize font-semibold text-lg font-edu text-accent link-neutral">
-            {siteTitle}
+          <Link to="/" className="flex" >
+            <div className="px-2">
+              <StaticImage
+                src="../images/icon.svg"
+                title="Welcome"
+                alt="profile"
+                height={25} />
+            </div>
+            <div className="capitalize link-neutral font-semibold text-xl font-edu text-accent pt-1">
+              {siteTitle}
+            </div>
           </Link>
         </h1>
         <nav className="dropdown dropdown-left">
