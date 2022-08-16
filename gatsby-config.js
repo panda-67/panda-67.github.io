@@ -3,7 +3,7 @@ module.exports = {
     title: `Samsul Muarrif`,
     author: `panda_67`,
     siteUrl: `https://samsulmuarrif.me`,
-    description: `My personal blogs`,
+    desc: `My personal blogs`,
     social: [
       {
         name: `Twitter`,

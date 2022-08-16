@@ -4,22 +4,23 @@ import PostLink from "../components/post-link"
 import Navbar from "../components/blog-nav"
 import { Helmet } from "react-helmet"
 
-const IndexPage = ({
-  data: {
-    allMarkdownRemark: { edges },
-    site: { siteMetadata }
-  },
-}) => {
+const IndexBlog = (
+  {
+    data: {
+      allMarkdownRemark: { edges },
+      site: { siteMetadata: { title, author, desc } }
+    },
+  }) => {
   const Posts = edges
     .filter(edge => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
-    .map(edge => <PostLink key={edge.node.id} post={edge.node} />)
+    .map(edge => <PostLink key={edge.node.id} post={edge.node} author={author}/>)
 
   return (
     <div>
       <Helmet
-        title={`Blogs | ${siteMetadata.title}`}
+        title={`Blogs | ${title}`}
         meta={[
-          { name: 'description', content: `Blog oleh Samsul Muarrif` },
+          { name: 'description', content: `${desc} by ${author}` },
           { name: 'keywords', content: 'blog, travel, hobby, daliy, activity, coding, photography' },
         ]}
       >
@@ -27,14 +28,14 @@ const IndexPage = ({
       <div className="mx-8 lg:mx-16">
         <Navbar />
       </div>
-      <div className="mx-8 lg:mx-16 mt-12">
+      <div className="mx-8 lg:mx-14 lg:px-6 mt-12">
         {Posts}
       </div>
     </div>
   )
 }
 
-export default IndexPage
+export default IndexBlog
 
 export const pageQuery = graphql`
   query {
@@ -57,6 +58,7 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         author
+        desc
       }
     }
   }
