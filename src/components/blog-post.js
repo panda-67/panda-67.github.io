@@ -31,11 +31,11 @@ const BlogPost = (
       <div className="mx-8 lg:mx-16">
         <Navbar />
       </div>
-      <div className="mx-10 lg:mx-16 mt-8 grid grid-cols-10 gap-6">
+      <div className="mx-10 lg:mx-16 mt-4 lg:grid grid-cols-10 gap-6">
 
         {/* Left Sidebar */}
-        <div className="col-span-2 text-right">
-          <h3>left side</h3>
+        <div className="hidden lg:block col-span-2">
+          <h3>Share Post</h3>
         </div>
 
         {/* Content */}
@@ -51,19 +51,20 @@ const BlogPost = (
               <div>
                 {previous && (
                   <Link to={`/blog${previous.fields.slug}`}>
-                    <div className="flex gap-2 items-center link-primary text-neutral">
-                      <span>&larr;</span>
+                    <div className="flex flex-col items-start link-primary text-neutral">
+                      <span>&lArr;</span>
                       <h5>{previous.frontmatter.title}</h5>
                     </div>
                   </Link>
                 )}
               </div>
+              <div className="divider divider-horizontal"></div>
               <div>
                 {next && (
                   <Link to={`/blog${next.fields.slug}`}>
-                    <div className="flex gap-2 items-center link-primary text-neutral">
-                      <h5>{next.frontmatter.title}</h5>
-                      <span>&rarr;</span>
+                    <div className="flex flex-col items-end link-primary text-neutral">
+                      <span>&rArr;</span>
+                      <h5 className="text-right">{next.frontmatter.title}</h5>
                     </div>
                   </Link>
                 )}
@@ -73,7 +74,7 @@ const BlogPost = (
         </div>
 
         {/* Right Sidebar */}
-        <div className="col-span-2">
+        <div className="col-span-2 mt-8 lg:mt-0">
           <h3>Recent Post</h3>
           <div>
             {Posts}
