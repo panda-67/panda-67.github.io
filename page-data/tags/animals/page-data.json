@@ -1,0 +1,1 @@
+{"componentChunkName":"component---src-templates-blog-tags-js","path":"/tags/animals","result":{"data":{"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"fields":{"slug":"/second-post/"},"frontmatter":{"title":"Second Post Creating Tags Pages for Blog Posts"}}}]}},"pageContext":{"tag":"animals"}},"staticQueryHashes":[]}
