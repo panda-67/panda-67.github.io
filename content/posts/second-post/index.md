@@ -1,7 +1,7 @@
 ---
-title: Second Post
+title: Second Post Creating Tags Pages for Blog Posts
 date: 2019-04-16 1420
-author: slebew
+tags: ["animals", "Chicago", "zoos"]
 ---
 ### Introduction to my blog post
 
