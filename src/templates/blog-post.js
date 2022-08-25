@@ -31,10 +31,10 @@ const BlogPost = (
         ]}
       >
       </Helmet>
-      <div className="mx-8 lg:mx-16">
+      <div className="mx-4 lg:mx-16">
         <Navbar />
       </div>
-      <div className="mx-10 lg:mx-16 mt-4 lg:grid grid-cols-10 gap-8">
+      <div className="mx-4 lg:mx-16 mt-4 lg:grid grid-cols-10 gap-8">
 
         {/* Left Sidebar */}
         <div className="hidden lg:block col-span-2">
@@ -61,25 +61,25 @@ const BlogPost = (
             {/* Post */}
             <div>
               {/* Head */}
-              <div className="mb-4 px-6 pb-6 pt-16 shadow-md rounded-lg border flex gap-4 flex-col lg:flex-row-reverse lg:justify-end">
+              <div className="mb-4 px-6 pb-8 pt-6 lg:pt-12 shadow-md rounded-lg border flex gap-4 flex-col lg:flex-row-reverse lg:justify-end">
                 <div>
-                  <h1>{frontmatter.title}</h1>
-                  <div className="flex justify-end px-6">
-                    <small>{_.startCase(frontmatter.tags)}</small>
+                  <h3 className="lg:text-3xl">{frontmatter.title}</h3>
+                  <div className="flex lg:justify-end lg:px-6">
+                    <small className="italic bg-yellow-300 px-2 pb-1">{_.startCase(frontmatter.tags)}</small>
                   </div>
                 </div>
-                <div className="divider divider-horizontal mx-1"></div>
-                <div className="flex flex-col justify-center items-end text-right w-max">
+                <div className="divider lg:divider-horizontal my-0 lg:mx-1"></div>
+                <div className="flex flex-col justify-center items-end lg:text-right">
                   <div className="font-edu capitalize">{author}</div>
                   <h5>{frontmatter.date}</h5>
                 </div>
               </div>
               {/* Content */}
-              <div dangerouslySetInnerHTML={{ __html: html }} />
+              <div className="mx-2" dangerouslySetInnerHTML={{ __html: html }} />
             </div>
 
             {/* Navigation */}
-            <div className="mt-12 w-full flex justify-between">
+            <div className="mt-12 mx-2 flex justify-between">
               <div>
                 {previous && (
                   <Link to={`/blog${previous.fields.slug}`}>
@@ -106,7 +106,7 @@ const BlogPost = (
         </div>
 
         {/* Right Sidebar */}
-        <div className="col-span-2 mt-8 lg:mt-0">
+        <div className="col-span-2 mx-2 mt-8 lg:mt-0">
           <h3>Recent Post</h3>
           <div>
             {Posts}
@@ -115,7 +115,7 @@ const BlogPost = (
       </div>
 
       {/* Mobile */}
-      <div className="lg:hidden mx-10 mt-8">
+      <div className="lg:hidden mx-6 mt-8">
         <div>
           <Link to="/tags">
             <h3 className="mb-2 link-primary text-neutral">Tags</h3>
