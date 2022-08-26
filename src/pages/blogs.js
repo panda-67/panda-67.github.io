@@ -27,7 +27,7 @@ const IndexBlog = (
         ]}
       >
       </Helmet>
-      <div className="mx-8 lg:mx-16">
+      <div className="mx-6 lg:mx-16">
         <Navbar />
       </div>
       <div className="lg:grid grid-cols-8 mx-8 lg:mx-14 lg:px-6 mt-4">
@@ -36,9 +36,7 @@ const IndexBlog = (
         </div>
         <div className="col-span-2 mt-16 lg:mt-0">
           <div>
-            <Link to="/tags">
-              <h3 className="mb-4 link-primary text-neutral">Tags</h3>
-            </Link>
+            <h3 className="mb-2">Tags</h3>
             <ul>
               {group.map(tag => (
                 <li key={tag.fieldValue} className="link-primary text-neutral">

@@ -7,7 +7,7 @@ export default function Navbar() {
     <div className="flex justify-between bg-base-100">
       <div className="navbar bg-base-100">
         <div className="">
-          <Link to="/" className="px-2">
+          <Link to="/" className="">
             <StaticImage
               src="../images/icon.svg"
               title="Welcome"
