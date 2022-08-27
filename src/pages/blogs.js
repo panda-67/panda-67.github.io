@@ -1,9 +1,9 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
-import _ from "lodash"
-import PostLink from "../components/post-link"
 import Navbar from "../components/blog-nav"
+import PostLink from "../components/post-link"
+import TagsLink from "../components/tags-link"
 
 const IndexBlog = (
   {
@@ -16,6 +16,8 @@ const IndexBlog = (
   const Posts = edges
     .filter(edge => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
     .map(edge => <PostLink key={edge.node.id} post={edge.node} author={author} />)
+  const Tags = group
+    .map(tag => <TagsLink key={tag.fieldValue} tag={tag} />)
 
   return (
     <div>
@@ -27,28 +29,23 @@ const IndexBlog = (
         ]}
       >
       </Helmet>
-      <div className="mx-6 lg:mx-16">
+      <div className="mx-4 lg:mx-16">
         <Navbar />
       </div>
-      <div className="lg:grid grid-cols-8 mx-8 lg:mx-14 lg:px-6 mt-4">
-        <div className="col-span-6">
-          {Posts}
-        </div>
-        <div className="col-span-2 mt-16 lg:mt-0">
+      <div className="flex flex-col-reverse lg:grid grid-cols-10 mx-6 lg:mx-14 lg:px-6 mt-2">
+        <div className="col-span-1">
           <div>
-            <h3 className="mb-2">Tags</h3>
-            <ul>
-              {group.map(tag => (
-                <li key={tag.fieldValue} className="link-primary text-neutral">
-                  <Link to={`/tags/${_.kebabCase(tag.fieldValue)}/`}>
-                    {_.startCase(tag.fieldValue)}
-                    <span className="px-2 rounded-lg ml-1 text-sm bg-slate-400 text-white">{tag.totalCount}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <h3>Tags</h3>
+            {Tags}
           </div>
         </div>
+        <div className="divider divider-vertical lg:divider-horizontal"></div>
+        <div className="col-span-8 lg:-ml-8">
+          {Posts}
+        </div>
+      </div>
+      <div className="mt-8 py-2">
+        <div className="col-span-6 flex justify-center w-full mb-4">© 2022 Samsul Muarrif</div>
       </div>
     </div>
   )
@@ -65,11 +62,12 @@ export const pageQuery = graphql`
           fields {
             slug
           }
-          excerpt(pruneLength: 250)
+          excerpt(pruneLength: 200)
           frontmatter {
             date(formatString: "dddd, Do MMMM YYYY", locale: "id-ID")            
             title
             tags
+            author
           }
         }
       }

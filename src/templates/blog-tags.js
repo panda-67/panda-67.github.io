@@ -11,7 +11,7 @@ const Tags = ({ pageContext, data }) => {
 
   return (
     <div>
-      <div className="mx-4 lg:mx-10">
+      <div className="mx-4 lg:mx-16">
         <Navbar />
         <h4 className="flex justify-center gap-2 text-lg lg:text-2xl mb-6">
           <div className="italic font-semibold">{`${totalCount} Post${totalCount === 1 ? "" : "s"}`}</div>

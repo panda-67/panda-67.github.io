@@ -19,17 +19,17 @@ export default class Search extends Component {
           {/* <!-- The button to open modal --> */}
           <label for="search-box" className="hover:bg-gray-200 rounded-lg cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 mx-4 my-2 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-            <input className="hidden" />
+            <input type={"hidden"} />
           </label>
 
           {/* <!-- Put this part before </body> tag --> */}
           <input type="checkbox" id="search-box" class="modal-toggle" />
-          <label for="search-box" class="modal cursor-pointer">
-            <label class="modal-box relative" for="">
-              <input type="text" placeholder="Search" className="input focus:border-yellow-400 input-bordered w-full" value={this.state.query} onChange={this.search} />
+          <label for="search-box" class="modal cursor-pointer w-full">
+            <label class="px-2 w-full max-w-2xl relative" for="">
+              <input type="text" placeholder="Search" className="w-full rounded-lg ring-1 ring-gray-500 focus:outline-none focus:border-amber-300 focus:ring-1 focus:ring-amber-300" value={this.state.query} onChange={this.search} />
               <ul className="mt-2">
                 {this.state.results.map(page => (
-                  <li key={page.id}>
+                  <li key={page.id} className="my-1 rounded-lg ring-1 ring-gray-500 bg-slate-800 text-gray-200 hover:text-amber-300">
                     <Link to={`/blog${page.path}`}>{page.title}</Link>
                   </li>
                 ))}

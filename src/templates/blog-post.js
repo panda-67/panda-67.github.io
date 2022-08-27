@@ -5,13 +5,14 @@ import PropTypes from "prop-types"
 import _ from "lodash"
 import Navbar from "../components/blog-nav"
 import SidePost from "../components/side-post"
+import TagsLink from "../components/tags-link"
 
 const BlogPost = (
   {
     data: {
       recentPosts: { edges },
       tagsPosts: { group },
-      site: { siteMetadata: { title, author } }, 
+      site: { meta },
       markdownRemark: { frontmatter, html, excerpt }
     },
     pageContext: { previous, next }
@@ -19,11 +20,13 @@ const BlogPost = (
   const Posts = edges
     .filter(edge => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
     .map(edge => <SidePost key={edge.node.id} post={edge.node} />)
+  const Tags = group
+    .map(tag => <TagsLink key={tag.fieldValue} tag={tag} />)
 
   return (
     <div>
       <Helmet
-        title={(`Blogs | `) + frontmatter.title + (` | `) + title}
+        title={(`Blogs | `) + frontmatter.title + (` | `) + meta.title}
         meta={[
           { name: 'description', content: excerpt },
           { name: 'keywords', content: frontmatter.tags },
@@ -52,13 +55,21 @@ const BlogPost = (
                 <div className="mb-4 px-2 mx-2 pb-6 pt-2 lg:pt-6 border-b border-slate-300 flex gap-4 flex-col lg:flex-row-reverse lg:justify-end">
                   <div className="flex flex-col lg:items-end w-full">
                     <h3 className="lg:text-3xl">{frontmatter.title}</h3>
-                    <div>
-                      <small className="badge bg-yellow-300 border-yellow-300 italic text-gray-700">{_.startCase(frontmatter.tags)}</small>
+                    <div className="flex gap-1">
+                      {frontmatter.tags.map(tag => (
+                        <div key={tag}>
+                          <Link to={`/tags/${tag}`}>
+                            <small className="my-1 italic bg-yellow-300 border-amber-300 text-gray-800 badge">{_.startCase(tag)}</small>
+                          </Link>
+                        </div>
+                      ))}
                     </div>
                   </div>
                   <div className="divider lg:divider-horizontal my-0 lg:mx-1"></div>
                   <div className="flex flex-col justify-center items-end lg:text-right">
-                    <div className="font-edu capitalize">{author}</div>
+                    <div className="font-edu capitalize">
+                      {frontmatter.author ? frontmatter.author : meta.author}
+                    </div>
                     <h5>{frontmatter.date}</h5>
                   </div>
                 </div>
@@ -98,17 +109,10 @@ const BlogPost = (
         {/* Right Sidebar */}
         <div className="col-span-2 mx-2 mt-4 lg:mt-0">
           <div>
-            <h3 className="mb-2">Tags</h3>
-            <ul>
-              {group.map(tag => (
-                <li key={tag.fieldValue} className="link-primary text-neutral">
-                  <Link to={`/tags/${_.kebabCase(tag.fieldValue)}/`}>
-                    {_.startCase(tag.fieldValue)}
-                    <span className="badge badge-neutral badge-outline ml-1">{tag.totalCount}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <h3>Tags</h3>
+            <div className="grid sm:grid-cols-2">
+              {Tags}
+            </div>
           </div>
         </div>
 
@@ -146,8 +150,9 @@ export const query = graphql`
       html
       excerpt(pruneLength: 250)
       frontmatter {
-        title
         date(formatString: "dddd, Do MMMM YYYY", locale: "id-ID")
+        title
+        author
         tags
       }
     }
@@ -173,7 +178,7 @@ export const query = graphql`
       }
     }
     site {
-      siteMetadata {
+      meta: siteMetadata {
         title
         author
       }

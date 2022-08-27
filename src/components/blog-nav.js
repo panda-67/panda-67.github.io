@@ -17,7 +17,7 @@ const Navbar = () => (
         <div className="flex justify-between bg-base-100">
           <div className="navbar bg-base-100">
             <div className="">
-              <Link to="/" className="">
+              <Link to="/" className="mr-2">
                 <StaticImage
                   src="../images/icon.svg"
                   title="Welcome"
