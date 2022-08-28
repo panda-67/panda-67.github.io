@@ -22,7 +22,7 @@ const Navbar = () => (
                   src="../images/icon.svg"
                   title="Welcome"
                   alt="profile"
-                  height={40} />
+                  height={25} />
               </Link>
             </div>
             <div className="flex gap-2 justify-between w-full pt-2">

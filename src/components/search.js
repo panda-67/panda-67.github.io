@@ -17,15 +17,15 @@ export default class Search extends Component {
       <div>
         <div className="flex items-baseline">
           {/* <!-- The button to open modal --> */}
-          <label for="search-box" className="hover:bg-gray-200 rounded-lg cursor-pointer">
+          <label htmlFor="search-box" className="hover:bg-gray-200 rounded-lg cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 mx-4 my-2 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
             <input type={"hidden"} />
           </label>
 
           {/* <!-- Put this part before </body> tag --> */}
-          <input type="checkbox" id="search-box" class="modal-toggle" />
-          <label for="search-box" class="modal cursor-pointer w-full">
-            <label class="px-2 w-full max-w-2xl relative" for="">
+          <input type="checkbox" id="search-box" className="modal-toggle" />
+          <label htmlFor="search-box" className="modal cursor-pointer w-full">
+            <label className="px-2 w-full max-w-2xl relative" >
               <input type="text" placeholder="Search" className="w-full rounded-lg ring-1 ring-gray-500 focus:outline-none focus:border-amber-300 focus:ring-1 focus:ring-amber-300" value={this.state.query} onChange={this.search} />
               <ul className="mt-2">
                 {this.state.results.map(page => (

@@ -3,8 +3,8 @@ const _ = require(`lodash`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
 
+  const { createPage } = actions
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
   const blogTags = path.resolve(`./src/templates/blog-tags.js`)
 
@@ -67,6 +67,7 @@ exports.createPages = ({ graphql, actions }) => {
         },
       })
     })
+    
   })
 }
 
