@@ -4,7 +4,7 @@ import Frame from "../components/layout";
 
 export default function IndexPage() {
   return (
-    <Frame title={"Profile"}>
+    <Frame title={"Welcome"}>
       <main>
         {/* <!-- Welcome --> */}
         <div className="lg:py-8 lg:h-screen lg:mx-6 lg:mb-6">

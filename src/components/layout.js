@@ -3,8 +3,9 @@ import { StaticQuery, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import Header from "./header"
 import SideLink from "./sidelink"
+import { StaticImage } from "gatsby-plugin-image"
 
-export default function Layout({ title, children, menuLinks }) {
+export default function Layout({ title, children }) {
 	return (
 		<div style={{ margin: `0 auto`, padding: `0` }}>
 			<StaticQuery
@@ -26,8 +27,8 @@ export default function Layout({ title, children, menuLinks }) {
 						<Helmet
 							title={title + (" | ") + data.site.siteMetadata.title}
 							meta={[
-								{ name: 'description', content: 'Sample' },
-								{ name: 'keywords', content: 'sample, something' },
+								{ name: 'description', content: 'Personal portfolio by Samsul Muarrif' },
+								{ name: 'keywords', content: 'resume, portfolio, profile' },
 							]}
 						>
 						</Helmet>
@@ -38,39 +39,24 @@ export default function Layout({ title, children, menuLinks }) {
 							<div className="col-span-6">
 								{children}
 							</div>
-
 							{/* <!-- Side Item --> */}
 							<div className="hidden col-span-2 h-screen pl-4 lg:flex flex-col items-center">
-								<div className="fixed text-center">
-									<div className="my-6 h-36 flex items-center">
-										<h3 className="text-5xl text-center font-extrabold font-serif">Profile</h3>
+								<div className="fixed flex flex-col items-center mt-4 pt-10">
+									<div className="my-2 h-48">
+										<StaticImage
+											src="../images/profile.png"
+											title="Samsul Muarrif"
+											alt="profile"
+											width={180} />
 									</div>
-									<div className="flex flex-col gap-2 text-lg font-medium font-teko">
-										<div className="w-full">
-											<SideLink href="/">
-												Welcome
-											</SideLink>
-										</div>
-										<div className="w-full">
-											<SideLink href="/expertise">
-												Expertise
-											</SideLink>
-										</div>
-										<div className="w-full">
-											<SideLink href="/experience">
-												Experience
-											</SideLink>
-										</div>
-										<div className="w-full">
-											<SideLink href="/education">
-												Education
-											</SideLink>
-										</div>
-										<div className="w-full">
-											<SideLink href="/about" >
-												About
-											</SideLink>
-										</div>
+									<div className="flex flex-col gap-2 text-lg text-center font-medium font-teko">
+										{data.site.siteMetadata.menuLinks.map(link => (
+											<div key={link.name} className="capitalize w-full">
+												<SideLink href={link.link}>
+													{link.name}
+												</SideLink>
+											</div>
+										))}
 									</div>
 								</div>
 							</div>
