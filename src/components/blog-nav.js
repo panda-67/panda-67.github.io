@@ -14,8 +14,8 @@ const Navbar = () => (
     `}
     render={data => (
       <header>
-        <div className="flex justify-between bg-base-100">
-          <div className="navbar bg-base-100">
+        <div className="flex justify-between">
+          <div className="navbar">
             <div className="">
               <Link to="/" className="mr-2">
                 <StaticImage

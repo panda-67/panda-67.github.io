@@ -163,7 +163,7 @@ export const query = graphql`
           fields {
             slug
           }
-          excerpt(pruneLength: 250)
+          excerpt(pruneLength: 50)
           frontmatter {
             date(formatString: "dddd, Do MMMM YYYY", locale: "id-ID")            
             title

@@ -3,12 +3,18 @@ import { Link } from "gatsby";
 import Frame from "../components/layout";
 
 export default function IndexPage() {
+
+  const bgImage = {
+    backgroundImage:
+      "url('https://cdn.pixabay.com/photo/2016/12/15/20/21/texture-1909992_960_720.jpg')",
+  }
+
   return (
     <Frame title={"Welcome"}>
       <main>
         {/* <!-- Welcome --> */}
         <div className="lg:py-8 lg:h-screen lg:mx-6 lg:mb-6">
-          <div style={imgbgStyles} className="lg:rounded-xl">
+          <div style={bgImage} className="bg-cover bg-blend-multiply bg-center h-full flex justify-start lg:rounded-xl">
             <div className="flex font- flex-col justify-center items-center w-full h-full lg:rounded-xl bg-gradient-to-tr from-slate-900 to-transparent">
               <div className="text-gray-100 lg:text-left font-semibold font-sans mx-6 my-32 lg:my-10">
                 <p className="text-2xl lg:text-6xl break-words lg:mb-2">
@@ -67,15 +73,5 @@ export default function IndexPage() {
         </div>
       </main>
     </Frame>
-  );
-};
-
-const imgbgStyles = {
-  backgroundImage:
-    "url('https://cdn.pixabay.com/photo/2016/12/15/20/21/texture-1909992_960_720.jpg')",
-  backgroundBlendMode: "multiply",
-  backgroundSize: "cover",
-  justifyContent: "center",
-  alignItems: "flex-start",
-  height: "100%",
-};
+  )
+}

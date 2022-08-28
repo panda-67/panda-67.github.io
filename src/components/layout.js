@@ -10,7 +10,7 @@ export default function Layout({ title, children }) {
 		<div style={{ margin: `0 auto`, padding: `0` }}>
 			<StaticQuery
 				query={graphql`
-						query SiteTitleQuery {
+						query SiteQuery {
 							site {
 								siteMetadata {
 									title
