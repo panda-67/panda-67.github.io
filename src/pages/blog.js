@@ -63,7 +63,7 @@ const IndexBlog = (
 
 export default IndexBlog
 
-export const pageQuery = graphql`
+export const blogQuery = graphql`
   query {
     allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
       edges {

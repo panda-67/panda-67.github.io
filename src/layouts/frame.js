@@ -12,10 +12,6 @@ export default function Layout({ title, children }) {
 							site {
 								siteMetadata {
 									title
-									polioPath {
-			              name
-			              link
-			            }
 								}
 							}
 						}

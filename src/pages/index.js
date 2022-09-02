@@ -128,7 +128,7 @@ const IndexPage = ({ data: {
 
 export default IndexPage
 
-export const pageQuery = graphql`
+export const indexQuery = graphql`
   query {
     allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, limit: 1) {
       edges {
