@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Link, graphql } from "gatsby"
 import _ from "lodash"
-import Navbar from "../components/blog-nav"
+import Navbar from "../components/navbar"
 
 const Tags = ({ pageContext, data }) => {
   const { tag } = pageContext

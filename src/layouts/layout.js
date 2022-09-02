@@ -1,9 +1,9 @@
 import React from "react"
-import { StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql, Link } from "gatsby"
 import { Helmet } from "react-helmet"
-import Header from "./header"
-import SideLink from "./sidelink"
+import SideLink from "../components/sidelink"
 import { StaticImage } from "gatsby-plugin-image"
+import Navbar from "../components/navbar"
 
 export default function Layout({ title, children }) {
 	return (
@@ -14,7 +14,7 @@ export default function Layout({ title, children }) {
 							site {
 								siteMetadata {
 									title
-			            menuLinks {
+									polioPath {
 			              name
 			              link
 			            }
@@ -25,14 +25,28 @@ export default function Layout({ title, children }) {
 				render={data => (
 					<React.Fragment>
 						<Helmet
-							title={title + (" | ") + data.site.siteMetadata.title}
+							title={title + (" | Portfolio | ") + data.site.siteMetadata.title}
 							meta={[
 								{ name: 'description', content: 'Personal portfolio by Samsul Muarrif' },
 								{ name: 'keywords', content: 'resume, portfolio, profile' },
 							]}
 						>
 						</Helmet>
-						<Header menuLinks={data.site.siteMetadata.menuLinks} siteTitle={data.site.siteMetadata.title} />
+						<div className="px-4 lg:px-16 z-10 bg-gray-100 bg-opacity-50 w-full">
+							<Navbar />
+						</div>
+						<div className="w-full flex justify-center gap-4 lg:hidden my-4">
+							{data.site.siteMetadata.polioPath.map(link => (
+								<div key={link.name} >
+									<Link
+										className="btn btn-xs btn-outline border-zinc-400 font-light capitalize"
+										activeClassName="bg-zinc-400 text-white font-medium"
+										to={`/portfolio${link.link}`}>
+										{link.name}
+									</Link>
+								</div>
+							))}
+						</div>
 						{/* <!-- Layout --> */}
 						<div className="lg:grid grid-flow-col grid-cols-8 font-edu max-w-7xl mx-auto">
 							{/* <!-- Content --> */}
@@ -50,9 +64,9 @@ export default function Layout({ title, children }) {
 											width={180} />
 									</div>
 									<div className="flex flex-col gap-2 text-lg text-center font-medium font-teko">
-										{data.site.siteMetadata.menuLinks.map(link => (
+										{data.site.siteMetadata.polioPath.map(link => (
 											<div key={link.name} className="capitalize w-full">
-												<SideLink href={link.link}>
+												<SideLink href={`/portfolio${link.link}`}>
 													{link.name}
 												</SideLink>
 											</div>
@@ -63,7 +77,7 @@ export default function Layout({ title, children }) {
 						</div>
 						<div className="lg:grid grid-flow-col grid-cols-8">
 							{/* !-- Footer --> */}
-							<div className="col-span-6 flex justify-center w-full mb-4">© 2022 Samsul Muarrif</div>
+							<div className="col-span-6 flex justify-center w-full mb-4">© 2022 {data.site.siteMetadata.title}</div>
 						</div>
 					</React.Fragment>
 				)}

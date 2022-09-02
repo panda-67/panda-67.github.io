@@ -1,5 +1,5 @@
 import * as React from "react";
-import Frame from "../components/layout";
+import Frame from "../../layouts/layout";
 
 export default function ExpertisePage() {
   return (

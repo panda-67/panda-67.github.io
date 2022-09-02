@@ -14,31 +14,35 @@ module.exports = {
         url: `https://github.com/panda-67`,
       },
     ],
-    menuLinks: [
-      {
-        name: 'welcome',
-        link: '/'
-      },
-      {
-        name: 'expertise',
-        link: '/expertise'
-      },
-      {
-        name: 'experience',
-        link: '/experience'
-      },
-      {
-        name: 'education',
-        link: '/education'
-      },
-      {
-        name: 'about',
-        link: '/about'
-      },
+    menuLinks: [      
       {
         name: `blog`,
-        link: `/blogs`
-      }
+        link: `/blog`
+      },
+      {
+        name: `portfolio`,
+        link: `/portfolio`
+      },
+      {
+        name: `about`,
+        link: `/about`
+      },
+      
+
+    ],
+    polioPath: [
+      {
+        name: `experience`,
+        link: ``
+      },
+      {
+        name: `expertise`,
+        link: `/expertise`
+      },
+      {
+        name: `education`,
+        link: `/education`
+      },
     ]
   },
   plugins: [

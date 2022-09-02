@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby"
 import { Helmet } from "react-helmet"
 import PropTypes from "prop-types"
 import _ from "lodash"
-import Navbar from "../components/blog-nav"
+import Navbar from "../components/navbar"
 import SidePost from "../components/side-post"
 import TagsLink from "../components/tags-link"
 

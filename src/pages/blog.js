@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
-import Navbar from "../components/blog-nav"
+import Navbar from "../components/navbar"
 import PostLink from "../components/post-link"
 import TagsLink from "../components/tags-link"
 
@@ -35,10 +35,10 @@ const IndexBlog = (
       <div className="px-4 lg:px-16 absolute z-10 bg-gray-100 bg-opacity-70 w-full">
         <Navbar />
       </div>
-      <div className="lg:h-screen h-[18rem] pb-10">
+      <div className="lg:h-screen h-[18rem] sm:h-[24rem] pb-2">
         <div style={bgImage} className="bg-cover w-full h-full bg-left relative">
-          <div className="w-full h-full bg-gray-800 bg-opacity-40 flex justify-end items-center px-8 lg:px-28">
-            <h1 className="lg:text-7xl text-white font-edu transform translate-y-16">Welcome to Blog Post</h1>
+          <div className="w-full h-full bg-gray-800 bg-opacity-40 flex justify-end items-center px-12 lg:px-28">
+            <h1 className="lg:text-7xl sm:text-5xl text-white font-edu transform translate-y-16">Welcome to Blog Post</h1>
           </div>
         </div>
       </div>
