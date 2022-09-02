@@ -3,24 +3,24 @@ import { Link, StaticQuery, graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import Search from "./search"
 
-const Navbar = () => ( 
-    <StaticQuery
+const Navbar = () => (
+  <StaticQuery
     query={graphql`
-        query NavQuery {
-          site {
-            siteMetadata {
-              title
-              polioPath {
-                name
-                link
-              }
-            }
-          }
-          siteSearchIndex {
+      query navbarQuery {
+        siteSearchIndex {
           index
         }
+        site {
+          siteMetadata {
+            title
+            menuLinks {
+              name
+              link
+            }
+          }
         }
-      `}
+      }
+    `}
     render={data => (
       <header>
         <div className="flex justify-between">
