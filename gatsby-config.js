@@ -4,7 +4,7 @@ module.exports = {
     author: `panda_67`,
     siteUrl: `https://samsulmuarrif.me`,
     desc: `My personal blogs`,
-    social: [
+    socials: [
       {
         name: `Twitter`,
         url: `https://twitter.com/sams_panda`,
@@ -13,15 +13,23 @@ module.exports = {
         name: `GitHub`,
         url: `https://github.com/panda-67`,
       },
+      {
+        name: `LinkedIn`,
+        url: `https://id.linkedin.com/in/samsul-muarrif`
+      },
+      {
+        name: `Instagram`,
+        url: `https://www.instagram.com/Sams_67/`
+      }
     ],
     menuLinks: [      
       {
-        name: `blog`,
-        link: `/blog`
-      },
-      {
         name: `portfolio`,
         link: `/portfolio`
+      },
+      {
+        name: `blog`,
+        link: `/blog`
       },
       {
         name: `about`,

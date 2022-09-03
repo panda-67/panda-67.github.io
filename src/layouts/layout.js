@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet"
 import SideLink from "../components/sidelink"
 import { StaticImage } from "gatsby-plugin-image"
 import Navbar from "../components/navbar"
+import Footer from "../components/footer"
 
 export default function Layout({ title, children }) {
 	return (
@@ -22,6 +23,10 @@ export default function Layout({ title, children }) {
 			              name
 			              link
 			            }
+									socials {
+										name
+										url
+									}
 								}
 							}
 							siteSearchIndex {
@@ -62,7 +67,7 @@ export default function Layout({ title, children }) {
 							</div>
 							{/* <!-- Side Item --> */}
 							<div className="hidden col-span-2 h-screen pl-4 lg:flex flex-col items-center">
-								<div className="fixed flex flex-col items-center mt-4 pt-10">
+								<div className="absolute flex flex-col items-center mt-4 pt-10">
 									<div className="my-2 h-48">
 										<StaticImage
 											src="../images/profile.png"
@@ -82,9 +87,9 @@ export default function Layout({ title, children }) {
 								</div>
 							</div>
 						</div>
-						<div className="lg:grid grid-flow-col grid-cols-8">
+						<div className="">
 							{/* !-- Footer --> */}
-							<div className="col-span-6 flex justify-center w-full mb-4">© 2022 {data.site.siteMetadata.title}</div>
+							<Footer socials={data.site.siteMetadata.socials} siteTitle={data.site.siteMetadata.title} />
 						</div>
 					</React.Fragment>
 				)}

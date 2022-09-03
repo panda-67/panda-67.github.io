@@ -6,6 +6,7 @@ import _ from "lodash"
 import Navbar from "../components/navbar"
 import SidePost from "../components/side-post"
 import TagsLink from "../components/tags-link"
+import Footer from "../components/footer"
 
 const BlogPost = (
   {
@@ -35,7 +36,7 @@ const BlogPost = (
       >
       </Helmet>
       <div className="mx-4 lg:mx-16">
-        <Navbar menuLinks={meta.menuLinks} searchData={siteSearchIndex.index}/>
+        <Navbar menuLinks={meta.menuLinks} searchData={siteSearchIndex.index} />
       </div>
       <div className="mx-4 lg:mx-16 mt-4 lg:grid grid-cols-10 gap-6">
 
@@ -118,8 +119,8 @@ const BlogPost = (
         </div>
 
       </div>
-      <div className="mt-8 py-2">
-        <div className="col-span-6 flex justify-center w-full mb-4">© 2022 Samsul Muarrif</div>
+      <div>
+        <Footer socials={meta.socials} siteTitle={meta.title} />
       </div>
     </div>
   )
@@ -185,6 +186,10 @@ export const query = graphql`
         menuLinks {
           name
           link
+        }
+        socials {
+          name
+          url
         }
       }
     }

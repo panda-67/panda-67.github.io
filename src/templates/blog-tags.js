@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { Link, graphql } from "gatsby"
 import _ from "lodash"
 import Navbar from "../components/navbar"
+import Footer from "../components/footer"
 
 const Tags = ({ pageContext, data }) => {
   const { tag } = pageContext
@@ -37,8 +38,8 @@ const Tags = ({ pageContext, data }) => {
           <Link to="/blog">All Posts</Link>
         </div>
       </div>
-      <div className="mt-8 py-2">
-        <div className="col-span-6 flex justify-center w-full mb-4">© 2022 Samsul Muarrif</div>
+      <div>
+        <Footer socials={data.site.meta.socials} siteTitle={data.site.meta.title} />
       </div>
     </div>
   )
@@ -96,6 +97,10 @@ export const tagQuery = graphql`
         menuLinks {
           name
           link
+        }
+        socials {
+          name
+          url
         }
       }
     }

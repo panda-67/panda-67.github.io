@@ -2,6 +2,7 @@ import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import Navbar from "../components/navbar"
+import Footer from "../components/footer"
 
 export default function Layout({ title, children }) {
 	return (
@@ -15,6 +16,10 @@ export default function Layout({ title, children }) {
 								menuLinks {
 									name
 									link
+								}
+								socials {
+									name
+									url
 								}
 							}		
             }
@@ -45,7 +50,7 @@ export default function Layout({ title, children }) {
 						</div>
 						<div className="">
 							{/* !-- Footer --> */}
-							<div className="flex justify-center w-full mb-4">© 2022 {data.site.siteMetadata.title}</div>
+							<Footer socials={data.site.siteMetadata.socials} siteTitle={data.site.siteMetadata.title}/>
 						</div>
 					</React.Fragment>
 				)}

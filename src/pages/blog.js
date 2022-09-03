@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet"
 import Navbar from "../components/navbar"
 import PostLink from "../components/post-link"
 import TagsLink from "../components/tags-link"
+import Footer from "../components/footer"
 
 const IndexBlog = (
   { data: {
@@ -55,9 +56,7 @@ const IndexBlog = (
           {Posts}
         </div>
       </div>
-      <div className="mt-8 py-2">
-        <div className="col-span-6 flex justify-center w-full mb-4">© 2022 Samsul Muarrif</div>
-      </div>
+      <Footer socials={meta.socials} siteTitle={meta.title}/>
     </div>
   )
 }
@@ -97,6 +96,10 @@ export const blogQuery = graphql`
         menuLinks {
           name
           link
+        }
+        socials {
+          name
+          url
         }
       }
     }
