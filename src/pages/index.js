@@ -83,7 +83,7 @@ const IndexPage = ({ data: {
                 alt="Blog"
                 title="Blog"
                 width={800}
-                className="rounded-lg lg:h-64 h-96"
+                className="rounded-lg md:h-64 h-96"
               />
               <div className="absolute h-full w-full transition-all ease-in-out duration-600 delay-100 rounded-lg bg-gradient-to-t from-zinc-600 to-transparent text-gray-50">
                 {edges
@@ -109,7 +109,7 @@ const IndexPage = ({ data: {
                         <p className="divider divider-horizontal py-1 mx-0"></p>
                         <small>{edge.node.frontmatter.date}</small>
                       </div>
-                      <div className="text-sm lg:text-lg">
+                      <div className="text-sm leading-6 md:text-lg">
                         {edge.node.excerpt + ` `}
                         <Link to={`/blog${edge.node.fields.slug}`} className="hover:text-primary">
                           &rArr;{` more`}

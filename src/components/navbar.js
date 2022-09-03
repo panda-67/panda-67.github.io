@@ -11,7 +11,7 @@ const Navbar = ({ menuLinks, searchData }) => (
         <div className="mr-2 w-8 flex justify-center">
           <Link to="/" activeClassName="rounded-md border border-zinc-500 p-1">
             <StaticImage
-              src="../images/profile.png"
+              src="../images/icon.svg"
               title="Welcome"
               alt="profile"
               height={28} />
@@ -36,15 +36,16 @@ const Navbar = ({ menuLinks, searchData }) => (
         <button tabIndex={"0"} className="mt-4">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
         </button>
-        <button tabIndex={"0"} className="menu menu-compact gap-1 dropdown-content mt-6 p-2 shadow bg-base-100 rounded-box w-44">
+        <button tabIndex={"0"} className="menu menu-compact gap-1 dropdown-content mt-6 p-2 shadow bg-base-100 rounded-box w-36">
           <Link
-            className="btn btn-sm btn-ghost flex justify-start font-normal capitalize"
+            className="btn btn-sm btn-ghost flex justify-start font-normal capitalize w-full"
             activeClassName="bg-zinc-400 text-white"
             to="/">Welcome
           </Link>
           {menuLinks.map(link =>
-            <li key={link.name} className="capitalize">
+            <li key={link.name}>
               <Link
+                className="capitalize w-full"
                 activeClassName="bg-zinc-400 text-white"
                 partiallyActive={true}
                 to={link.link}>{link.name}
