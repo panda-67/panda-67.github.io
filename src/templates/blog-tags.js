@@ -34,7 +34,7 @@ const Tags = ({ pageContext, data }) => {
           })}
         </div>
         <div className="font-semibold rounded-lg bg-gray-200 hover:bg-gray-600 hover:text-gray-100 shadow-lg p-4 w-max mt-4">
-          <Link to="/blogs">All Posts</Link>
+          <Link to="/blog">All Posts</Link>
         </div>
       </div>
       <div className="mt-8 py-2">

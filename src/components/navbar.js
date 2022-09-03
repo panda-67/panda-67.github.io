@@ -43,14 +43,13 @@ const Navbar = ({ menuLinks, searchData }) => (
             to="/">Welcome
           </Link>
           {menuLinks.map(link =>
-            <li key={link.name}>
-              <Link
-                className="capitalize w-full"
-                activeClassName="bg-zinc-400 text-white"
-                partiallyActive={true}
-                to={link.link}>{link.name}
-              </Link>
-            </li>
+            <Link
+              className="capitalize w-full"
+              activeClassName="bg-zinc-400 text-white"
+              partiallyActive={true}
+              key={link.name}
+              to={link.link}>{link.name}
+            </Link>
           )}
         </button>
       </div>
