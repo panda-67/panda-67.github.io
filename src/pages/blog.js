@@ -7,6 +7,7 @@ import TagsLink from "../components/tags-link"
 
 const IndexBlog = (
   { data: {
+    siteSearchIndex,
     allMarkdownRemark: { edges },
     tagsPosts: { group },
     site: { meta }
@@ -33,7 +34,7 @@ const IndexBlog = (
       >
       </Helmet>
       <div className="px-4 lg:px-16 absolute z-10 bg-gray-100 bg-opacity-70 w-full">
-        <Navbar />
+        <Navbar menuLinks={meta.menuLinks} searchData={siteSearchIndex.index}/>
       </div>
       <div className="lg:h-screen h-[18rem] sm:h-[24rem] pb-2">
         <div style={bgImage} className="bg-cover w-full h-full bg-left relative">
@@ -93,7 +94,14 @@ export const blogQuery = graphql`
         title
         author
         desc
+        menuLinks {
+          name
+          link
+        }
       }
+    }
+    siteSearchIndex {
+      index
     }
   }
 `

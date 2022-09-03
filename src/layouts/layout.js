@@ -18,7 +18,14 @@ export default function Layout({ title, children }) {
 			              name
 			              link
 			            }
+									menuLinks {
+			              name
+			              link
+			            }
 								}
+							}
+							siteSearchIndex {
+								index
 							}
 						}
 					`}
@@ -33,7 +40,7 @@ export default function Layout({ title, children }) {
 						>
 						</Helmet>
 						<div className="px-4 lg:px-16 z-10 bg-gray-100 bg-opacity-50 w-full">
-							<Navbar />
+							<Navbar menuLinks={data.site.siteMetadata.menuLinks} searchData={data.siteSearchIndex.index} />
 						</div>
 						<div className="w-full flex justify-center gap-4 lg:hidden my-4">
 							{data.site.siteMetadata.polioPath.map(link => (

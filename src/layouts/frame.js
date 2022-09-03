@@ -8,14 +8,21 @@ export default function Layout({ title, children }) {
 		<div style={{ margin: `0 auto`, padding: `0` }}>
 			<StaticQuery
 				query={graphql`
-						query MetaQuery {
-							site {
-								siteMetadata {
-									title
+					query MetaQuery {
+						site {
+							siteMetadata {
+								title
+								menuLinks {
+									name
+									link
 								}
-							}
+							}		
+            }
+						siteSearchIndex {
+							index
 						}
-					`}
+          }        
+				`}
 				render={data => (
 					<React.Fragment>
 						<Helmet
@@ -27,7 +34,7 @@ export default function Layout({ title, children }) {
 						>
 						</Helmet>
 						<div className="px-4 lg:px-16 absolute z-10 bg-gray-100 bg-opacity-80 w-full">
-							<Navbar />
+							<Navbar menuLinks={data.site.siteMetadata.menuLinks} searchData={data.siteSearchIndex.index} />
 						</div>
 						{/* <!-- Layout --> */}
 						<div className="font-edu">

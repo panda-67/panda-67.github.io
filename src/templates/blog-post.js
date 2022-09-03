@@ -10,6 +10,7 @@ import TagsLink from "../components/tags-link"
 const BlogPost = (
   {
     data: {
+      siteSearchIndex,
       recentPosts: { edges },
       tagsPosts: { group },
       site: { meta },
@@ -34,7 +35,7 @@ const BlogPost = (
       >
       </Helmet>
       <div className="mx-4 lg:mx-16">
-        <Navbar />
+        <Navbar menuLinks={meta.menuLinks} searchData={siteSearchIndex.index}/>
       </div>
       <div className="mx-4 lg:mx-16 mt-4 lg:grid grid-cols-10 gap-6">
 
@@ -181,7 +182,14 @@ export const query = graphql`
       meta: siteMetadata {
         title
         author
+        menuLinks {
+          name
+          link
+        }
       }
+    }
+    siteSearchIndex {
+      index
     }
   }
 `

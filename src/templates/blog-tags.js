@@ -12,7 +12,7 @@ const Tags = ({ pageContext, data }) => {
   return (
     <div>
       <div className="mx-4 lg:mx-16">
-        <Navbar />
+        <Navbar menuLinks={data.site.meta.menuLinks} searchData={data.siteSearchIndex.index} />
         <h4 className="flex justify-center gap-2 text-lg lg:text-2xl mb-6">
           <div className="italic font-semibold">{`${totalCount} Post${totalCount === 1 ? "" : "s"}`}</div>
           <div>{`tagged with "${_.capitalize(tag)}"`}</div>
@@ -90,6 +90,17 @@ export const tagQuery = graphql`
           }
         }
       }
+    }
+    site {
+      meta: siteMetadata {       
+        menuLinks {
+          name
+          link
+        }
+      }
+    }
+    siteSearchIndex {
+      index
     }
   }
 `
