@@ -2,6 +2,7 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import { Helmet } from "react-helmet"
 import PropTypes from "prop-types"
+import { Breadcrumb } from 'gatsby-plugin-breadcrumb'
 import _ from "lodash"
 import Navbar from "../components/navbar"
 import SidePost from "../components/side-post"
@@ -17,7 +18,8 @@ const BlogPost = (
       site: { meta },
       markdownRemark: { frontmatter, html, excerpt }
     },
-    pageContext: { previous, next }
+    pageContext: { breadcrumb: { crumbs }, previous, next },
+    location
   }) => {
   const Posts = edges
     .filter(edge => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
@@ -50,8 +52,33 @@ const BlogPost = (
           </div>
 
           {/* Post */}
-          <div className="col-span-6 shadow-lg border p-4 rounded-lg">
-            <div className="flex flex-col">
+          <div className="col-span-6 ">
+            <di className="flex border rounded-lg bg-zinc-500 text-gray-100 py-1 px-1 md:px-2 leading-4">
+              <div className="md:hidden">
+              <Breadcrumb
+                className="text-xs"
+                crumbs={crumbs}
+                crumbSeparator="."
+                crumbLabel={_.truncate(frontmatter.title, {
+                  'length': 50,
+                  'omission': ' ...'
+                })}
+              />
+              </div>
+              <div className="hidden md:block">
+              <Breadcrumb
+                className="text-base"
+                crumbs={crumbs}
+                crumbSeparator="."
+                crumbLabel={_.truncate(frontmatter.title, {
+                  'length': 70,
+                  'omission': ' ...'
+                })}
+              />
+              </div>
+            </di>
+
+            <div className="flex flex-col shadow-lg border p-4 mt-2 rounded-lg">
               <div>
                 {/* Head */}
                 <div className="mb-4 px-2 mx-2 pb-6 pt-2 lg:pt-6 border-b border-slate-300 flex gap-4 flex-col lg:flex-row-reverse lg:justify-end">
@@ -75,6 +102,7 @@ const BlogPost = (
                     <h5>{frontmatter.date}</h5>
                   </div>
                 </div>
+
                 {/* Content */}
                 <div className="mx-2" dangerouslySetInnerHTML={{ __html: html }} />
               </div>
@@ -150,7 +178,7 @@ export const query = graphql`
   query BlogQuery($slug: String!) {
     markdownRemark (fields: { slug: { eq: $slug }}) {
       html
-      excerpt(pruneLength: 250)
+      excerpt(pruneLength: 170)
       frontmatter {
         date(formatString: "dddd, Do MMMM YYYY", locale: "id-ID")
         title

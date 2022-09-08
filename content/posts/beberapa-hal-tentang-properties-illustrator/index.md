@@ -59,7 +59,7 @@ Berbeda dengan tampilan default, Properties pada Tampilan Image & Path hanya men
 
 Tampilan Panel Properties yang lain, seperti Tampilan Type memberikan akses yang lebih banyak. Pada tampilan ini terdapat pengaturan yang menyangkut dengan typing. Pada tampilan ini terdapat kontrol *Transform, Appearence, Character,* dan *Paragraph.*
 
-Kontrol *Transform *dan *Appearence* sama seperti penjelasan di atas. 
+Kontrol *Transform* dan *Appearence* sama seperti penjelasan di atas. 
 
 **Character**
 Kontrol ini menampilkan menu untuk mengatur text, seperti jenis font, ukuran font, jarak antar huruf, jarak antar baris, dan lain-lain yang sangat berkaitan dengan text.

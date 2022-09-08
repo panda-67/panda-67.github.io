@@ -71,13 +71,13 @@ const Footer = ({ socials, siteTitle }) => {
             </div>
           </div>
         </div>
-        <div className='grid grid-flow-col mt-4 lg:mt-0'>
+        <div className='flex mt-6 md:mt-0'>
           <div>
             <h2 className='font-edu'>Services</h2>
             <div className='m-2 px-2 space-y-2'>
-              <ul>
+              <ul className='space-y-2'>
                 <li>Mapping</li>
-                <li>Web Promming</li>
+                <li>Web Programming</li>
                 <li>Statistics</li>
               </ul>
             </div>
