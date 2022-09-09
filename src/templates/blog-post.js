@@ -53,32 +53,32 @@ const BlogPost = (
 
           {/* Post */}
           <div className="col-span-6 ">
-            <di className="flex border rounded-lg bg-zinc-500 text-gray-100 py-1 px-1 md:px-2 leading-4">
+            <di className="flex rounded-lg py-1 leading-4 tranform -translate-x-1">
               <div className="md:hidden">
               <Breadcrumb
-                className="text-xs"
+                className="text-xs font-light pl-[9px] border-l border-zinc-400"
                 crumbs={crumbs}
-                crumbSeparator="."
+                crumbSeparator=""
                 crumbLabel={_.truncate(frontmatter.title, {
-                  'length': 50,
+                  'length': 30,
                   'omission': ' ...'
                 })}
               />
               </div>
               <div className="hidden md:block">
               <Breadcrumb
-                className="text-base"
+                className="text-base font-light pl-[10px] border-l border-zinc-400"
                 crumbs={crumbs}
-                crumbSeparator="."
+                crumbSeparator=""
                 crumbLabel={_.truncate(frontmatter.title, {
                   'length': 70,
                   'omission': ' ...'
-                })}
+                })} border-t-0 border-l-0
               />
               </div>
             </di>
 
-            <div className="flex flex-col shadow-lg border p-4 mt-2 rounded-lg">
+            <div className="flex flex-col shadow-lg border border-zinc-300 border-t-0 border-l-0 p-4 mt-2 ">
               <div>
                 {/* Head */}
                 <div className="mb-4 px-2 mx-2 pb-6 pt-2 lg:pt-6 border-b border-slate-300 flex gap-4 flex-col lg:flex-row-reverse lg:justify-end">
