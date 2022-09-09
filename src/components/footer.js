@@ -71,29 +71,31 @@ const Footer = ({ socials, siteTitle }) => {
             </div>
           </div>
         </div>
-        <div className='flex mt-6 md:mt-0'>
+        <div className='grid grid-flow-col gap-10 md:gap-0 mt-4 md:mt-0'>
           <div>
             <h2 className='font-edu'>Services</h2>
-            <div className='m-2 px-2 space-y-2'>
+            <div className='m-2 px-2'>
               <ul className='space-y-2'>
                 <li>Mapping</li>
-                <li>Web Programming</li>
+                <li>Web Dev</li>
                 <li>Statistics</li>
               </ul>
             </div>
           </div>
+          <div className=''>
+            <h2 className='font-edu'>Sponsored</h2>
+            <div className='m-2 px-2'>
+              <ul className='space-y-2 '>
+                {/* <li><Link className='flex items-center' to='https://nodejs.org/en/' target={"_blank"}><StaticImage src='../images/nodejs.svg' className='w-[24px] mr-1' />Nodejs</Link></li> */}
+                <li><Link className='flex items-center' to='https://reactjs.org/' target={"_blank"}><StaticImage src='../images/react.svg' className='w-5 mr-2' />Reactjs</Link></li>
+                <li><Link className='flex items-center' to='https://www.gatsbyjs.com/' target={"_blank"}><StaticImage src='../images/gatsbyjs.png' className='w-[18px] ml-[2px] mr-2' />Gatsbyjs</Link></li>
+                <li><Link className='flex items-center' to='https://graphql.org/' target={"_blank"}><StaticImage src='../images/graphql.svg' className='w-5 mr-2' />GraphQL</Link></li>
+                <li><Link className='flex items-center' to='https://tailwindcss.com/' target={"_blank"}><StaticImage src='../images/tailwindcss-icon.svg' className='w-5 mr-2' />Tailwindcss</Link></li>
+                {/* <li><Link className='flex items-center' to='https://code.visualstudio.com' target={"_blank"}><StaticImage src='../images/vscode.svg' className='w-5 mr-2' />VS Code</Link></li> */}
+              </ul>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className='flex flex-col sm:flex-row items-start justify-end gap-2 bg-gradient-to-b from-zinc-400 to-zinc-300 py-2 px-8 w-full'>
-        <h5 className='mr-2 -ml-2'>Sponsored:</h5>
-        <ul className='sm:flex gap-4 items-center'>
-          <li><Link className='flex items-center' to='https://nodejs.org/en/' target={"_blank"}><StaticImage src='../images/nodejs.svg' className='w-[24px] mr-1' />Nodejs</Link></li>
-          <li><Link className='flex items-center' to='https://reactjs.org/' target={"_blank"}><StaticImage src='../images/react.svg' className='w-5 mr-2' />Reactjs</Link></li>
-          <li><Link className='flex items-center' to='https://www.gatsbyjs.com/' target={"_blank"}><StaticImage src='../images/gatsbyjs.png' className='w-[18px] ml-[2px] mr-2' />Gatsbyjs</Link></li>
-          <li><Link className='flex items-center' to='https://graphql.org/' target={"_blank"}><StaticImage src='../images/graphql.svg' className='w-5 mr-2' />GraphQL</Link></li>
-          <li><Link className='flex items-center' to='https://tailwindcss.com/' target={"_blank"}><StaticImage src='../images/tailwindcss-icon.svg' className='w-5 mr-2' />Tailwindcss</Link></li>
-          <li><Link className='flex items-center' to='https://code.visualstudio.com' target={"_blank"}><StaticImage src='../images/vscode.svg' className='w-5 mr-2' />VS Code</Link></li>
-        </ul>
       </div>
       <div className="col-span-6 flex justify-center w-full py-2 bg-zinc-300">© 2022 {siteTitle}</div>
     </div>

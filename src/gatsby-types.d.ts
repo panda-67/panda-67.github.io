@@ -2638,6 +2638,7 @@ type SiteFieldsEnum =
   | 'children.parent.internal.type'
   | 'children.parent.parent.children'
   | 'children.parent.parent.id'
+  | 'graphqlTypegen.generateOnBuild'
   | 'graphqlTypegen.typesOutputPath'
   | 'host'
   | 'id'
@@ -2949,10 +2950,12 @@ type SiteFunctionSortInput = {
 };
 
 type SiteGraphqlTypegen = {
+  readonly generateOnBuild: Maybe<Scalars['Boolean']>;
   readonly typesOutputPath: Maybe<Scalars['String']>;
 };
 
 type SiteGraphqlTypegenFilterInput = {
+  readonly generateOnBuild: InputMaybe<BooleanQueryOperatorInput>;
   readonly typesOutputPath: InputMaybe<StringQueryOperatorInput>;
 };
 
@@ -3839,6 +3842,11 @@ type MetaQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type MetaQueryQuery = { readonly site: { readonly siteMetadata: { readonly title: string | null, readonly menuLinks: ReadonlyArray<{ readonly name: string | null, readonly link: string | null } | null> | null, readonly socials: ReadonlyArray<{ readonly name: string | null, readonly url: string | null } | null> | null } | null } | null, readonly siteSearchIndex: { readonly index: any | null } | null };
+
+type NotFoundQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type NotFoundQueryQuery = { readonly site: { readonly siteMetadata: { readonly title: string | null, readonly menuLinks: ReadonlyArray<{ readonly name: string | null, readonly link: string | null } | null> | null, readonly socials: ReadonlyArray<{ readonly name: string | null, readonly url: string | null } | null> | null } | null } | null, readonly siteSearchIndex: { readonly index: any | null } | null };
 
 type SiteQueryQueryVariables = Exact<{ [key: string]: never; }>;
 

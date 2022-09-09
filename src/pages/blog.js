@@ -37,7 +37,7 @@ const IndexBlog = (
       <div className="px-4 lg:px-16 absolute z-10 bg-gray-100 bg-opacity-70 w-full">
         <Navbar menuLinks={meta.menuLinks} searchData={siteSearchIndex.index}/>
       </div>
-      <div className="lg:h-screen h-[18rem] sm:h-[24rem] pb-2">
+      <div className="lg:h-screen h-[18rem] sm:h-[24rem] mb-8">
         <div style={bgImage} className="bg-cover w-full h-full bg-left relative">
           <div className="w-full h-full bg-gray-800 bg-opacity-40 flex justify-end items-center px-12 lg:px-28">
             <h1 className="lg:text-7xl sm:text-5xl text-white font-edu transform translate-y-16">Welcome to Blog Post</h1>
@@ -51,7 +51,7 @@ const IndexBlog = (
             {Tags}
           </div>
         </div>
-        <div className="divider divider-vertical lg:divider-horizontal"></div>
+        <div className="divider divider-vertical lg:divider-horizontal px-2 lg:px-0 lg:py-4"></div>
         <div className="col-span-8 lg:-ml-8">
           {Posts}
         </div>
