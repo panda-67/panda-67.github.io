@@ -22,7 +22,7 @@ module.exports = {
         url: `https://www.instagram.com/Sams_67/`
       }
     ],
-    menuLinks: [      
+    menuLinks: [
       {
         name: `portfolio`,
         link: `/portfolio`
@@ -35,7 +35,7 @@ module.exports = {
         name: `about`,
         link: `/about`
       },
-      
+
 
     ],
     polioPath: [
@@ -59,6 +59,17 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        excludes: [
+          `**/dev-404-page/**`,
+          `**/404/**`,
+          `**/404.html`,
+          `**/offline-plugin-app-shell-fallback/**`
+        ],
+      }
+    },
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
@@ -117,7 +128,7 @@ module.exports = {
         // trailingSlashes: optional, will add trailing slashes to the end
         // of crumb pathnames. default is false
         trailingSlashes: false,
-     },
+      },
     },
     {
       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
