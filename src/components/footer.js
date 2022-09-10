@@ -10,7 +10,7 @@ const Footer = ({ socials, siteTitle }) => {
         <div className='grid grid-flow-col'>
           <div>
             <h2 className='font-edu'>Social Links</h2>
-            <div className='flex gap-2 m-2 px-2 items-center'>
+            <div className='flex gap-2 items-center'>
               <ul className='space-y-2'>
                 <li>
                   <svg viewBox="0 0 310 310" className='w-5'>
@@ -49,7 +49,7 @@ const Footer = ({ socials, siteTitle }) => {
           </div>
           <div>
             <h2 className='font-edu'>Contact Us</h2>
-            <div className='m-2 px-2 space-y-2'>
+            <div className='space-y-2'>
               <Link to='mailto:samuarrif@gmail.com' target="_blank" className='flex gap-2'>
                 <svg className='w-5' xmlns="http://www.w3.org/2000/svg" viewBox="52 42 88 66">
                   <path fill="#4285f4" d="M58 108h14V74L52 59v43c0 3.32 2.69 6 6 6" />
@@ -74,7 +74,7 @@ const Footer = ({ socials, siteTitle }) => {
         <div className='grid grid-flow-col gap-10 md:gap-0 mt-4 md:mt-0'>
           <div>
             <h2 className='font-edu'>Services</h2>
-            <div className='m-2 px-2'>
+            <div className=''>
               <ul className='space-y-2'>
                 <li>Mapping</li>
                 <li>Web Dev</li>
@@ -84,7 +84,7 @@ const Footer = ({ socials, siteTitle }) => {
           </div>
           <div className=''>
             <h2 className='font-edu'>Sponsored</h2>
-            <div className='m-2 px-2'>
+            <div className=''>
               <ul className='space-y-2 '>
                 {/* <li><Link className='flex items-center' to='https://nodejs.org/en/' target={"_blank"}><StaticImage src='../images/nodejs.svg' className='w-[24px] mr-1' />Nodejs</Link></li> */}
                 <li><Link className='flex items-center' to='https://reactjs.org/' target={"_blank"}><StaticImage src='../images/react.svg' className='w-5 mr-2' />Reactjs</Link></li>

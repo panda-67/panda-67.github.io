@@ -95,7 +95,7 @@ const BlogPost = (
                     </div>
                   </div>
                   <div className="divider lg:divider-horizontal my-0 lg:mx-1"></div>
-                  <div className="flex flex-col justify-center items-end lg:text-right">
+                  <div className="flex lg:flex-col flex-col-reverse justify-center items-center lg:items-end lg:text-right">
                     <div className="font-edu capitalize">
                       {frontmatter.author ? frontmatter.author : meta.author}
                     </div>
