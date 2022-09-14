@@ -113,7 +113,7 @@ const BlogPost = (
                   {previous && (
                     <Link to={`/blog${previous.fields.slug}`}>
                       <div className="flex flex-col items-start link-primary text-neutral">
-                        <span>&lArr;</span>
+                        <span>&larr; Previous</span>
                         <h4>{previous.frontmatter.title}</h4>
                       </div>
                     </Link>
@@ -124,7 +124,7 @@ const BlogPost = (
                   {next && (
                     <Link to={`/blog${next.fields.slug}`}>
                       <div className="flex flex-col items-end link-primary text-neutral">
-                        <span>&rArr;</span>
+                        <span>Next &rarr;</span>
                         <h4 className="text-right">{next.frontmatter.title}</h4>
                       </div>
                     </Link>

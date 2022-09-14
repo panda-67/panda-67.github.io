@@ -95,3 +95,13 @@ Atur sebuah judul bab atau subbab yang diinginkan. Kemudian letakkan kursor pada
 Selain dari itu juga masih terdapat menu-menu lain yang dapat digunakan dalam mengatur style heading sesuai dengan yang diinginkan.
 
 Demikianlah cara membuat heading pada Microsoft word.
+
+<br>
+
+Untuk lebih jelas mengenai Cara Membuat Heading pada MS Word silahkan lihat video berikut:
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/arbDZVNsop4" title="Ms Word | Part 1 Heading" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<br>
+
+Terima kasih telah membaca artikel ini.
