@@ -1,5 +1,5 @@
 ---
-title: 5 hal yang perlu diperhatikan sebelum membuat shapefile (.shp) di ArcMap
+title: Lima hal yang perlu diperhatikan sebelum membuat shapefile (.shp) di ArcMap
 date: 2022-09-05 2100
 tags: ["mapping", "design"]
 ---
