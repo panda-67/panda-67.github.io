@@ -1,7 +1,7 @@
 ---
 title: Cara membuat daftar pustaka otomatis pada MS Word dengan Mendeley Desktop
 date: 2022-09-12 2100
-tags: ["writing", "word"]
+tags: ["writting", "word"]
 ---
 
 <br>

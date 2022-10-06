@@ -1,7 +1,7 @@
 ---
 title: Cara membuat Heading pada Microsoft Word
 date: 2022-08-29 2100
-tags: ["writing", "word"]
+tags: ["writting", "word"]
 ---
 
 <br>
