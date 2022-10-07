@@ -55,26 +55,26 @@ const BlogPost = (
           <div className="col-span-6 ">
             <di className="flex rounded-lg py-1 leading-4 tranform -translate-x-1">
               <div className="md:hidden">
-              <Breadcrumb
-                className="text-xs font-light pl-[9px] border-l border-zinc-400"
-                crumbs={crumbs}
-                crumbSeparator=""
-                crumbLabel={_.truncate(frontmatter.title, {
-                  'length': 30,
-                  'omission': ' ...'
-                })}
-              />
+                <Breadcrumb
+                  className="text-xs font-light pl-[9px] border-l border-zinc-400"
+                  crumbs={crumbs}
+                  crumbSeparator=""
+                  crumbLabel={_.truncate(frontmatter.title, {
+                    'length': 30,
+                    'omission': ' ...'
+                  })}
+                />
               </div>
               <div className="hidden md:block">
-              <Breadcrumb
-                className="text-base font-light pl-[10px] border-l border-zinc-400"
-                crumbs={crumbs}
-                crumbSeparator=""
-                crumbLabel={_.truncate(frontmatter.title, {
-                  'length': 70,
-                  'omission': ' ...'
-                })} border-t-0 border-l-0
-              />
+                <Breadcrumb
+                  className="text-base font-light pl-[10px] border-l border-zinc-400"
+                  crumbs={crumbs}
+                  crumbSeparator=""
+                  crumbLabel={_.truncate(frontmatter.title, {
+                    'length': 70,
+                    'omission': ' ...'
+                  })} border-t-0 border-l-0
+                />
               </div>
             </di>
 
@@ -107,9 +107,37 @@ const BlogPost = (
                 <div className="mx-2" dangerouslySetInnerHTML={{ __html: html }} />
               </div>
 
+              {/* Contact */}
+
+              <div className="p-4 rounded-lg border mt-4 space-y-2">
+                <p>Jika Anda punya pertanyaan lebih lanjut tentang artikel ini atau ingin <em>request</em> artikel lain.</p>
+                <p>Silakan hubungi:</p>
+                <div className='flex w-full justify-around py-6'>
+                  <Link to='mailto:samuarrif@gmail.com' target="_blank" className='flex gap-2'>
+                    <svg className='w-5' xmlns="http://www.w3.org/2000/svg" viewBox="52 42 88 66">
+                      <path fill="#4285f4" d="M58 108h14V74L52 59v43c0 3.32 2.69 6 6 6" />
+                      <path fill="#34a853" d="M120 108h14c3.32 0 6-2.69 6-6V59l-20 15" />
+                      <path fill="#fbbc04" d="M120 48v26l20-15v-8c0-7.42-8.47-11.65-14.4-7.2" />
+                      <path fill="#ea4335" d="M72 74V48l24 18 24-18v26L96 92" />
+                      <path fill="#c5221f" d="M52 51v8l20 15V48l-5.6-4.2c-5.94-4.45-14.4-.22-14.4 7.2" />
+                    </svg>
+                    Gmail
+                  </Link>
+                  <div className="divider divider-horizontal lg:mx-1"></div>
+                  <Link to='https://wa.me/6285159606776?text=Hello+Samsul+Muarrif' target="_blank" className='flex gap-2'>
+                    <svg className='w-5' viewBox="0 0 512 512">
+                      <rect width="512" height="512" rx="15%" fill="#25d366" />
+                      <path fill="#25d366" stroke="#fff" stroke-width="26" d="M123 393l14-65a138 138 0 1150 47z" />
+                      <path fill="#fff" d="M308 273c-3-2-6-3-9 1l-12 16c-3 2-5 3-9 1-15-8-36-17-54-47-1-4 1-6 3-8l9-14c2-2 1-4 0-6l-12-29c-3-8-6-7-9-7h-8c-2 0-6 1-10 5-22 22-13 53 3 73 3 4 23 40 66 59 32 14 39 12 48 10 11-1 22-10 27-19 1-3 6-16 2-18" />
+                    </svg>
+                    Whatsapp
+                  </Link>
+                </div>
+              </div>
+
               {/* Navigation */}
-              <div className="mt-12 mx-2 flex justify-between">
-                <div>
+              <div className="mt-8 mx-1 space-x-2 grid grid-flow-col grid-cols-2">
+                <div className="pr-4">
                   {previous && (
                     <Link to={`/blog${previous.fields.slug}`}>
                       <div className="flex flex-col items-start link-primary text-neutral">
@@ -119,7 +147,7 @@ const BlogPost = (
                     </Link>
                   )}
                 </div>
-                <div className="divider divider-horizontal"></div>
+                
                 <div>
                   {next && (
                     <Link to={`/blog${next.fields.slug}`}>
