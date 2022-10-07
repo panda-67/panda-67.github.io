@@ -32,12 +32,29 @@ b. Pada panel *Table of Contents* klik kanan pada **Layers** dan pilih *Properti
 
 c. Pada jendela properties pilih *Coordinate System, Geographic Coordinate Systems, World, WGS 1984.* Dapat juga dipilih sesuai dengan yang diinginkan.
 
-![](./3.png)
-![](./4.png)<br>
+![](./koordinat.png)<br>
 
 ### 3. Menambahkan data-data
 
+Untuk menambahkan data-data yang diperlukan pada halaman kerja, kita perlu menggunakan menu tambah seperti ini.
 
+![](./6.png)<br>
+
+![](./7.png)<br>
+
+Kemudian akan terbuka jendela baru yang menampilkan folder, maka kita hanya perlu mencari folder dimana file-file yang diperlukan berada. Salah satunya seperti folder Demnas_ seperti ini.
+
+![](./8.png)<br>
+
+Select file yang diinginkan lalu klik ok dan jangan mengklik dua kali pada file karena itu tidak akan menambahkan file ke halaman kerja. Contoh lainnya adalah folder DATA SHP seperti ini.
+
+![](./9.png)<br>
+
+Setelah kita menambahkan beberapa file maka pada Table of contents akan terlihat seperti ini.
+
+![](./10.png)<br>
+
+Dengan demikian kita telah berhasil menambahkan beberapa file yang dibutuhkan ke dalam halaman kerja ArcMap.
 
 <br>
 
