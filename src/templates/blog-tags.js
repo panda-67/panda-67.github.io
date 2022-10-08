@@ -4,16 +4,28 @@ import { Link, graphql } from "gatsby"
 import _ from "lodash"
 import Navbar from "../components/navbar"
 import Footer from "../components/footer"
+import TagsLink from "../components/tags-link"
 
-const Tags = ({ pageContext, data }) => {
+const BlogTags = (
+  {
+    data: {
+      tagsPosts: { group },
+      allMarkdownRemark,
+      site,
+      siteSearchIndex
+    },
+    pageContext,
+  }) => {
   const { tag } = pageContext
-  const { edges, totalCount } = data.allMarkdownRemark
+  const { edges, totalCount } = allMarkdownRemark
+  const Tags = group
+    .map(tag => <TagsLink key={tag.fieldValue} tag={tag} />)
   // const tagHeader = `${totalCount} post${totalCount === 1 ? "" : "s"} tagged with "${tag}"`
 
   return (
     <div>
       <div className="mx-4 lg:mx-16">
-        <Navbar menuLinks={data.site.meta.menuLinks} searchData={data.siteSearchIndex.index} />
+        <Navbar menuLinks={site.meta.menuLinks} searchData={siteSearchIndex.index} />
         <h4 className="flex justify-center gap-2 text-lg lg:text-2xl mb-6">
           <div className="italic font-semibold">{`${totalCount} Post${totalCount === 1 ? "" : "s"}`}</div>
           <div>{`tagged with "${_.capitalize(tag)}"`}</div>
@@ -34,18 +46,28 @@ const Tags = ({ pageContext, data }) => {
             )
           })}
         </div>
-        <div className="font-semibold rounded-lg bg-gray-200 hover:bg-gray-600 hover:text-gray-100 shadow-lg p-4 w-max mt-4">
-          <Link to="/blog">All Posts</Link>
+      </div>
+      <div className="lg:mx-10 my-8 px-6 lg:flex gap-4">
+        <Link to="/blog">
+          <div className="w-full font-semibold rounded-lg bg-gray-200 hover:bg-gray-600 hover:text-gray-100 shadow-lg p-4">
+            All Posts
+          </div>
+        </Link>
+        <div className="lg:flex items-center gap-4 rounded-lg bg-gray-200 shadow-lg p-4 mt-2 lg:mt-0">
+          <h4><strong>All Tags</strong></h4>
+          <div className="lg:flex gap-2">
+            {Tags}
+          </div>
         </div>
       </div>
       <div>
-        <Footer socials={data.site.meta.socials} siteTitle={data.site.meta.title} />
+        <Footer socials={site.meta.socials} siteTitle={site.meta.title} />
       </div>
     </div>
   )
 }
 
-Tags.propTypes = {
+BlogTags.propTypes = {
   pageContext: PropTypes.shape({
     tag: PropTypes.string.isRequired,
   }),
@@ -68,7 +90,7 @@ Tags.propTypes = {
   }),
 }
 
-export default Tags
+export default BlogTags
 
 export const tagQuery = graphql`
   query($tag: String) {
@@ -90,6 +112,12 @@ export const tagQuery = graphql`
             tags
           }
         }
+      }
+    }
+    tagsPosts: allMarkdownRemark(limit: 2000) {
+      group(field: frontmatter___tags) {
+        fieldValue
+        totalCount
       }
     }
     site {

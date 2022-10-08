@@ -81,7 +81,7 @@ Setelah mengorfirmasi password pilih menu Create PDF seperti gambar ini.
 
 ![](./13.png)<br>
 
-Apabila kita membuat pdf sebelum menyimpan file dokumen maka akan diminta untuk menyimpannya terlebih dahulu dalam forma ms word, seperti gambar ini.
+Apabila kita membuat pdf sebelum menyimpan file dokumen maka akan diminta untuk menyimpannya terlebih dahulu dalam format ms word, seperti gambar ini.
 
 ![](./14.png)<br>
 
