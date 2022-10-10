@@ -51,7 +51,7 @@ Pastikan kita mencentang pada bagian seperti pada gambar ini.
 
 ![](./6.png)<br>
 
-Isiskan password sesuai dengan yang diinginkan. Pada bagian ini kita mulai memberikan batasan yang kita inginkan. Mulai dari membatasi resolusi untuk proses pencetakan file atau tidak memberikan izin untuk mencetak, seperti gambar ini.
+Berikan password sesuai dengan yang diinginkan. Pada bagian ini kita mulai memberikan batasan yang kita inginkan. Mulai dari membatasi resolusi untuk proses pencetakan file atau tidak memberikan izin untuk mencetak, seperti gambar ini.
 
 ![](./7.png)<br>
 

@@ -6,7 +6,7 @@ import React from 'react'
 const Footer = ({ socials, siteTitle }) => {
   return (
     <div>
-      <div className="mt-8 py-8 px-6 lg:px-16 bg-zinc-400 md:grid grid-flow-col font-teko text-sm">
+      <div className="mt-8 py-8 px-6 lg:px-16 bg-zinc-400 md:grid grid-flow-col text-sm">
         <div className='grid grid-flow-col'>
           <div>
             <h2 className='font-edu'>Social Links</h2>
