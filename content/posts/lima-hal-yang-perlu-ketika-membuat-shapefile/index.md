@@ -1,0 +1,85 @@
+---
+title: Lima hal yang perlu diperhatikan sebelum membuat shapefile (.shp) di ArcMap
+date: 2022-09-05 2100
+tags: ["mapping", "design"]
+---
+
+<br>
+
+**Shapefile** *ESRI* atau biasa disebut *shapefile* adalah format data geospasial yang umum untuk perangkat lunak sistem informasi geografis. Dikembangkan dan atur oleh ESRI sebagai spesifikasi (hampir) terbuka untuk interoperabilitas data antara ESRI dan produk perangkat lunak lainnya. Sebuah **"shapefile"** biasanya terdiri dari kumpulan file yang berekstensi *". shp", ". shx", ". dbf"*, dan ekstensi lainnya pada sebuah nama yang sama (e.g. , "jalan. *"). Saat penggunaan, shapefile sebenarnya yang rujuk adalah yang berekstensi **". shp"**, namun file ini tidak lengkap dan membutuhkan file lainnya. Shapefile keruangan digambarkan dengan geometri: titik, garis, dan luasan. Geometri tersebut, sebagai contoh, dapat mewakili pancuran, sungai, dan danau. Tiap bagian memiliki atribut yang menjelaskan atribut tersebut, seperti nama sungai atau temperatur (<a href="http://id.dbpedia.org/page/Shapefile" target="_blank">DBPedia</a>).
+<br>
+Berikut beberapa hal yang perlu dilakukan sebelum membuat shapefile ketika membuat peta ataupun digitasi.
+
+<br>
+
+### 1. Membuat Halaman Kerja Baru
+
+Membuat halaman kerja baru dengan cara klik menu **File** kemudian New atau menggunakan shortcut *Ctrl + N*.
+
+<br>
+
+### 2. Menentukan Format Koordinat
+
+Menentukan koordinat yang akan digunakan dengan cara sebagai berikut:
+
+a. Aktifkan *Table Of Contents* dengan cara klik menu **Windows** kemudian klik *Table Of Contents*
+
+![](./1.png)<br>
+
+b. Pada panel *Table of Contents* klik kanan pada **Layers** dan pilih *Properties*
+
+![](./2.png)<br>
+
+c. Pada jendela properties pilih *Coordinate System, Geographic Coordinate Systems, World, WGS 1984.* Dapat juga dipilih sesuai dengan yang diinginkan.
+
+![](./3.png)
+![](./4.png)<br>
+
+### 3. Mengaktifkan Toolbar Editor
+
+Aktifkan toolbar *Editor* dengan cara klik menu *Customize, Toobars,* dan select **Editor**.
+
+![](./5.png)<br>
+
+### 4. Membuat Shapefile
+
+Membuat file *.shp* sesuai yang diinginkan dengan cara sebagai berikut:
+
+a. Aktifkan toolbars *Standard* dengan cara klik menu *Customize, Toolbars,* dan select **Standard**.
+
+![](./6.png)<br>
+
+b. Pada toolbars Standard klik icon
+![](./7.png)<br>
+
+
+c. Pilihlah folder yang akan digunakan untuk menyimpan file *.shp* tersebut, kemudian klik kanan pada folder tersebut lalu pilih **New -> Shapefile**.
+
+![](./8.png)<br>
+
+d. Sesuaikan informasi mengenai shapefile tersebut sesuai yang diinginkan.
+
+![](./9.png)<br>
+
+### 5. Start Editing
+
+Memulai editing *shapefile* atau *digitasi* dengan cara sebagai berikut:
+
+a. Klik *Editor* pada toolbar *Editor* dan pilih **Start Editing**. Hal ini akan mengaktifkan seluruh tool pada toolbar *Editor*.
+
+![](./10.png)<br>
+
+b. Untuk memulai digitasi kita harus memilih tool **Create Features**.
+
+![](./11.png)<br>
+
+c. Pilih shapefile yang akan diedit dan select tool sesuai dengan yang diperlukan pada panel *Create Features*.
+
+![](./12.png)<br>
+
+Dengan demikian kita sudah siap untuk melakukan digitasi ataupun **edit Shapefile (.shp)**.
+
+<br>
+
+Terima kasih telah membaca artikel ini.
+

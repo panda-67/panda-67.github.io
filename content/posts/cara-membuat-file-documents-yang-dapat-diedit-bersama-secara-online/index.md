@@ -1,0 +1,93 @@
+---
+title: Cara membuat file dokumen yang dapat diedit bersama secara online
+date: 2022-09-20 2100
+tags: ["writting"]
+---
+
+<br>
+
+ [***Google Dokumen***](https://www.google.com/intl/id/docs/about/) adalah sebuah layanan pengolah kata, yang merupakan salah satu bagian dari suite Google Docs Editors dari Google, yang juga terdiri dari Google Sheets, Google Slides, Google Drawings, Google Formulir, Google Sites, dan Google Keep. Google Dokumen dapat diakses dengan sebuah peramban web sebagai sebuah aplikasi berbasis web. Google Dokumen juga tersedia dalam bentuk aplikasi seluler di Android dan iOS, dan sebagai aplikasi desktop pada Chrome OS [(Wikipedia)](https://id.wikipedia.org/wiki/Google_Dokumen). 
+
+<br>
+Cara untuk membuat file dokumen tersebut akan dijelaskan sebagai berikut.
+
+<br>
+
+### 1. Login ke Akun Email Google
+
+Login ke akun [*email Google*](https://mail.google.com/) dapat dilakukan melalui browser sepert chrome, mozila, edge, opera, dll.
+
+<br>
+
+### 2. Membuat file dokumen baru
+
+File dokumen baru dapat dibuat dengan cara mengklik menu titik sembilan di samping foto profil.
+
+![](./menu.png)<br>
+
+Kemudian pilih menu dokumen.
+
+![](./document.png)<br>
+
+### 3. Mengikuti tur Google Dokumen
+
+Ketika pertama kali membuka Google Dokumen kita akan ditawarkan tur dari google.
+
+![](./3.png)<br>    
+
+Kita akan diberitahu untuk memulai dokumen baru.
+
+![](./6.png)<br>
+
+Kita akan diarahkan untuk melihat folder dari google drive.
+
+![](./7.png)<br>
+
+Kita akan diarahkan pada bar pencarian untuk mencari file.
+
+![](./8.png)<br>
+
+Bagian terakhir akan diberitahu untuk membuka menu hamburger.
+
+![](./9.png)<br>
+
+Kita dapat mengklik ***Ok, mengerti!***<br><br>
+
+### 4. Memulai dokumen baru
+
+Kita dapat memilih untuk memulai dokumen kosong atau menggunakan template yang disediakan.
+
+![](./4.png)<br>
+
+Kita dapat memilih dokumen kosong dan berikut adalah tampilan awal dari dokumen konsong.
+
+![](./11.png)<br>
+
+Kemudian kita dapat menyesuaikan nama file dokumen pada bagian kiri atas sebagai berikut.
+
+![](./12.png)<br>
+
+Setelah menyesuaikan nama filenya, selanjutnya kita dapat membagikan file tersebut.
+
+![](./13.png)<br>
+
+Apabila kita membagikan file dokumen sebelum menyesuaikan nama filenya, maka kita akan diminta untuk menyesuaikan nama file tersebut.
+
+![](./14.png)<br>
+
+Untuk dapat membagikan file tersebut sehingga dapat diedit secara online bersama-sama, kita perlu menambahkan alamat email yang ingin kita bagikan file tersebut. Kemudian kita menentukan status apakah sebagai dapat melihat atau sebagai editor.
+
+![](./15.png)<br>
+
+Selain itu, kita dapat juga membagikan menggunakan link, dapat disesuaikan link yang akan dibagikan.
+
+![](./16.png)<br>
+
+<br>
+
+Demikian cara membuat file dokumen yang dapat diedit bersama secara online.
+
+<br>
+
+Terima kasih telah membaca artikel ini.
+

@@ -4,7 +4,7 @@ import _ from "lodash"
 
 const PostLink = ({ post, author }) => (
   <div className="mb-4 flex flex-col justify-start border p-4 rounded-md">
-    <h3 className="lg:text-2xl">
+    <h3 className="lg:text-2xl text-zinc-700 link-primary">
       <Link to={`/blog${post.fields.slug}`}>
         {post.frontmatter.title}
       </Link>
