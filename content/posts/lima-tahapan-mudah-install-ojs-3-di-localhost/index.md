@@ -37,7 +37,7 @@ Kemudian, pindahkan folder yang telah diekstrak ke dalam folder **htdocs** yang 
 
 ### 3. Persiapan instalasi melalui webbrowser
 
-Buka aplikasi XAPP dan aktifkan *apache* dan *MySQL*, tunggu hingga bewarna hijau.
+Buka aplikasi XAMPP dan aktifkan *apache* dan *MySQL*, tunggu hingga bewarna hijau.
 
 ![](./3.png)<br>
 
