@@ -16,7 +16,7 @@ const BlogPost = (
       recentPosts: { edges },
       tagsPosts: { group },
       site: { meta },
-      markdownRemark: { frontmatter, html, excerpt }
+      markdownRemark: { frontmatter, html, excerpt, tableOfContents }
     },
     pageContext: { breadcrumb: { crumbs }, previous, next },
     location
@@ -101,7 +101,7 @@ const BlogPost = (
                     </div>
                     <h5>{frontmatter.date}</h5>
                   </div>
-                </div>
+                </div>                
 
                 {/* Content */}
                 <div className="mx-2" dangerouslySetInnerHTML={{ __html: html }} />
@@ -168,13 +168,19 @@ const BlogPost = (
         <div className="col-span-2 mx-2 mt-4 lg:mt-0">
           <div>
             <h3>Tags</h3>
-            <div className="grid sm:grid-cols-2">
+            <div className="grid">
               {Tags}
+            </div>
+          </div>
+
+          {/* TOC */}
+          <div className="sticky top-3 mt-6 bg-gray-100 rounded-lg -mx-4 px-4 py-3">
+            <div className="font-semibold">Daftar Isi</div>
+              <div className="text-blue-500" dangerouslySetInnerHTML={{ __html: tableOfContents }} />
             </div>
           </div>
         </div>
 
-      </div>
       <div>
         <Footer socials={meta.socials} siteTitle={meta.title} />
       </div>
@@ -207,6 +213,7 @@ export const query = graphql`
     markdownRemark (fields: { slug: { eq: $slug }}) {
       html
       excerpt(pruneLength: 170)
+      tableOfContents
       frontmatter {
         date(formatString: "dddd, Do MMMM YYYY", locale: "id-ID")
         title

@@ -7,12 +7,14 @@ import TagsLink from "../components/tags-link"
 import Footer from "../components/footer"
 
 const IndexBlog = (
-  { data: {
-    siteSearchIndex,
-    allMarkdownRemark: { edges },
-    tagsPosts: { group },
-    site: { meta }
-  },
+  { 
+    data: {
+      siteSearchIndex,
+      allMarkdownRemark: { edges },
+      tagsPosts: { group },
+      site: { meta }     
+    },
+    pageContext: { skip, limit, numPages, currentPage }
   }) => {
   const Posts = edges
     .filter(edge => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
@@ -52,7 +54,7 @@ const IndexBlog = (
           </div>
         </div>
         <div className="divider divider-vertical lg:divider-horizontal px-2 lg:px-0 lg:py-4"></div>
-        <div className="col-span-8 lg:-ml-8">
+        <div className="col-span-8 lg:-ml-8">         
           {Posts}
         </div>
       </div>
@@ -64,8 +66,12 @@ const IndexBlog = (
 export default IndexBlog
 
 export const blogQuery = graphql`
-  query {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+  query BlogList($skip: Int!, $limit: Int!) {
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      limit: $limit
+      skip: $skip
+    ) {
       edges {
         node {
           id
@@ -102,7 +108,7 @@ export const blogQuery = graphql`
           url
         }
       }
-    }
+    }   
     siteSearchIndex {
       index
     }

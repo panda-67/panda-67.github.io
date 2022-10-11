@@ -35,8 +35,6 @@ module.exports = {
         name: `about`,
         link: `/about`
       },
-
-
     ],
     polioPath: [
       {
@@ -152,6 +150,7 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          `gatsby-remark-autolink-headers`,
           `gatsby-remark-responsive-iframe`,       
           {
             resolve: `gatsby-remark-images`,

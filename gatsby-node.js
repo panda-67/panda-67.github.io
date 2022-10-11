@@ -33,16 +33,31 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     `).then(result => {
-    if (result.errors) {
-      throw result.errors
-    }
+    if (result.errors) { throw result.errors }
+
+    // Create blog list.
+    const posts = result.data.postsRemark.edges
+    const postsPerPage = 5
+    const numPages = Math.ceil(posts.length / postsPerPage)
+    Array.from({ length: numPages }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? `/blog` : `/blog/${i + 1}`,
+        component: path.resolve("./src/pages/blog.js"),
+        context: {
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          numPages,
+          currentPage: i + 1,
+        },
+      })
+    })
 
     // Create blog posts pages.
-    const posts = result.data.postsRemark.edges
+    const feeds = result.data.postsRemark.edges
 
-    posts.forEach((post, index) => {
-      const previous = index === posts.length - 1 ? null : posts[index + 1].node
-      const next = index === 0 ? null : posts[index - 1].node
+    feeds.forEach((post, index) => {
+      const previous = index === feeds.length - 1 ? null : feeds[index + 1].node
+      const next = index === 0 ? null : feeds[index - 1].node
 
       createPage({
         path: `blog${post.node.fields.slug}`,
@@ -66,8 +81,7 @@ exports.createPages = ({ graphql, actions }) => {
           tag: tag.fieldValue,
         },
       })
-    })
-    
+    })      
   })
 }
 
