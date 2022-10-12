@@ -26,37 +26,41 @@ const BlogTags = (
     <div>
       <div className="mx-4 lg:mx-16">
         <Navbar menuLinks={site.meta.menuLinks} searchData={siteSearchIndex.index} />
-        <h4 className="flex justify-center gap-2 text-lg lg:text-2xl mb-6">
-          <div className="italic font-semibold">{`${totalCount} Post${totalCount === 1 ? "" : "s"}`}</div>
-          <div>{`tagged with "${_.capitalize(tag)}"`}</div>
-        </h4>
-        <div className="grid md:grid-cols-2 gap-2">
-          {edges.map(({ node }) => {
-            const { slug } = node.fields
-            const { excerpt } = node
-            const { title, date } = node.frontmatter
-            return (
-              <div key={slug} className="p-4 rounded-lg border border-gray-300 shadow-lg">
-                <Link to={`/blog${slug}`}>
-                  <h3 className="mb-2 leading-5 text-neutral link-primary">{title}</h3>
-                </Link>
-                <h5>{date}</h5>
-                <p>{excerpt}</p>
-              </div>
-            )
-          })}
-        </div>
       </div>
-      <div className="lg:mx-10 my-8 px-6 lg:flex gap-4">
-        <Link to="/blog">
-          <div className="w-full font-semibold rounded-lg bg-gray-200 hover:bg-gray-600 hover:text-gray-100 shadow-lg p-4">
-            All Posts
+      <div className="mx-4 lg:mx-16 lg:grid gap-4 grid-flow-col grid-cols-10">
+        <div className="col-span-8">
+          <h4 className="flex justify-center gap-2 text-lg lg:text-2xl mb-6">
+            <div className="italic font-semibold">{`${totalCount} Post${totalCount === 1 ? "" : "s"}`}</div>
+            <div>{`tagged with "${_.capitalize(tag)}"`}</div>
+          </h4>
+          <div className="grid md:grid-cols-2 gap-2">
+            {edges.map(({ node }) => {
+              const { slug } = node.fields
+              const { excerpt } = node
+              const { title, date } = node.frontmatter
+              return (
+                <div key={slug} className="p-4 rounded-lg border border-gray-300 shadow-lg">
+                  <Link to={`/blog${slug}`}>
+                    <h4 className="mb-2 leading-5 text-neutral font-semibold link-primary">{title}</h4>
+                  </Link>
+                  <h5>{date}</h5>
+                  <p className="text-gray-500">{excerpt}</p>
+                </div>
+              )
+            })}
           </div>
-        </Link>
-        <div className="lg:flex items-center gap-4 rounded-lg bg-gray-200 shadow-lg p-4 mt-2 lg:mt-0">
-          <h4><strong>All Tags</strong></h4>
-          <div className="lg:flex gap-2">
-            {Tags}
+        </div>
+        <div className="col-span-2 mt-8 lg:mt-14 space-y-4">
+          <Link to="/blog">
+            <div className="w-full font-semibold rounded-lg bg-gray-200 hover:bg-gray-600 hover:text-gray-100 shadow-lg p-4">
+              All Posts
+            </div>
+          </Link>
+          <div className="rounded-lg bg-gray-200 shadow-lg p-4 mt-2 lg:mt-0 space-y-2">
+            <h4><strong>All Tags</strong></h4>
+            <div className="flex flex-wrap gap-2">
+              {Tags}
+            </div>
           </div>
         </div>
       </div>

@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "dev": "gatsby develop",
+    "refresh": "gatsby clean && gatsby develop",
     "start": "gatsby build && gatsby serve",
     "build": "gatsby build",
     "serve": "gatsby serve",
@@ -19,6 +20,7 @@
   "dependencies": {
     "@gatsby-contrib/gatsby-plugin-elasticlunr-search": "^3.0.2",
     "gatsby": "^4.20.0",
+    "gatsby-awesome-pagination": "^0.3.8",
     "gatsby-plugin-breadcrumb": "^12.3.1",
     "gatsby-plugin-google-gtag": "^4.22.0",
     "gatsby-plugin-image": "^2.20.0",

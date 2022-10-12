@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import Navbar from "../components/navbar"
 import PostLink from "../components/post-link"
@@ -7,15 +7,17 @@ import TagsLink from "../components/tags-link"
 import Footer from "../components/footer"
 
 const IndexBlog = (
-  { 
+  {
     data: {
       siteSearchIndex,
       allMarkdownRemark: { edges },
       tagsPosts: { group },
-      site: { meta }     
+      site: { meta }
     },
-    pageContext: { skip, limit, numPages, currentPage }
+    pageContext
   }) => {
+  const previousPage = pageContext.previousPagePath
+  const nextPage = pageContext.nextPagePath
   const Posts = edges
     .filter(edge => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
     .map(edge => <PostLink key={edge.node.id} post={edge.node} author={meta.author} />)
@@ -37,7 +39,7 @@ const IndexBlog = (
       >
       </Helmet>
       <div className="px-4 lg:px-16 absolute z-10 bg-gray-100 bg-opacity-70 w-full">
-        <Navbar menuLinks={meta.menuLinks} searchData={siteSearchIndex.index}/>
+        <Navbar menuLinks={meta.menuLinks} searchData={siteSearchIndex.index} />
       </div>
       <div className="lg:h-screen h-[18rem] sm:h-[24rem] mb-8">
         <div style={bgImage} className="bg-cover w-full h-full bg-left relative">
@@ -46,19 +48,29 @@ const IndexBlog = (
           </div>
         </div>
       </div>
-      <div className="flex flex-col-reverse lg:grid grid-cols-10 mx-6 lg:mx-14 lg:px-6 mt-2">
-        <div className="col-span-1">
+      <div className="flex flex-col-reverse lg:grid grid-cols-10 mx-6 lg:mx-10 lg:px-6 mt-2">
+        <div className="col-span-2 space-y-4">
           <div>
             <h3>Tags</h3>
-            {Tags}
+            <div className="flex flex-wrap gap-x-2">
+              {Tags}
+            </div>
+          </div>
+          <div className="space-x-2">
+            {previousPage && (
+              <Link className="btn btn-sm btn-base bg-gray-400 border-gray-400 capitalize" to={previousPage}>Previous</Link>
+            )}
+            {nextPage && (
+              <Link className="btn btn-sm btn-base bg-gray-400 border-gray-400 capitalize" to={nextPage}>Next</Link>
+            )}
           </div>
         </div>
-        <div className="divider divider-vertical lg:divider-horizontal px-2 lg:px-0 lg:py-4"></div>
-        <div className="col-span-8 lg:-ml-8">         
+        <div className="col-span-1 divider divider-vertical lg:divider-horizontal mx-0 px-2 lg:px-0 lg:py-4"></div>
+        <div className="col-span-7 lg:-ml-8">
           {Posts}
         </div>
       </div>
-      <Footer socials={meta.socials} siteTitle={meta.title}/>
+      <Footer socials={meta.socials} siteTitle={meta.title} />
     </div>
   )
 }

@@ -16,10 +16,9 @@ const BlogPost = (
       recentPosts: { edges },
       tagsPosts: { group },
       site: { meta },
-      markdownRemark: { frontmatter, html, excerpt, tableOfContents }
+      markdownRemark: { frontmatter, html, excerpt, headings }
     },
-    pageContext: { breadcrumb: { crumbs }, previous, next },
-    location
+    pageContext: { breadcrumb: { crumbs }, previous, next }
   }) => {
   const Posts = edges
     .filter(edge => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
@@ -101,7 +100,23 @@ const BlogPost = (
                     </div>
                     <h5>{frontmatter.date}</h5>
                   </div>
-                </div>                
+                </div>
+
+                {/* TOC */}
+                <div className="lg:hidden sticky top-0 z-10 mt-6 bg-gray-100 rounded-lg px-4 py-3">
+                  <div className="font-semibold">Daftar Isi</div>
+                  <ul className="text-blue-400 text-[15px]">
+                    {headings.map(toc =>
+                      <li key={toc.id} className="hover:text-gray-500">
+                        <Link
+                          activeClassName="bg-zinc-400 text-white"
+                          partiallyActive={true}
+                          to={`#${toc.id}`}>{toc.value}
+                        </Link>
+                      </li>
+                    )}
+                  </ul>
+                </div>
 
                 {/* Content */}
                 <div className="mx-2" dangerouslySetInnerHTML={{ __html: html }} />
@@ -147,7 +162,7 @@ const BlogPost = (
                     </Link>
                   )}
                 </div>
-                
+
                 <div>
                   {next && (
                     <Link to={`/blog${next.fields.slug}`}>
@@ -166,20 +181,30 @@ const BlogPost = (
 
         {/* Right Sidebar */}
         <div className="col-span-2 mx-2 mt-4 lg:mt-0">
-          <div>
+          <div className="-mx-2">
             <h3>Tags</h3>
-            <div className="grid">
+            <div className="flex flex-wrap gap-x-2">
               {Tags}
             </div>
           </div>
 
           {/* TOC */}
-          <div className="sticky top-3 mt-6 bg-gray-100 rounded-lg -mx-4 px-4 py-3">
+          <div className="hidden lg:block sticky top-3 mt-6 bg-gray-100 rounded-lg -mx-4 px-4 py-3">
             <div className="font-semibold">Daftar Isi</div>
-              <div className="text-blue-500" dangerouslySetInnerHTML={{ __html: tableOfContents }} />
-            </div>
+            <ul className="text-blue-400 text-[15px]">
+              {headings.map(toc =>
+                <li key={toc.id} className="hover:text-gray-500">
+                  <Link
+                    activeClassName="bg-zinc-400 text-white"
+                    partiallyActive={true}
+                    to={`#${toc.id}`}>{toc.value}
+                  </Link>
+                </li>
+              )}
+            </ul>
           </div>
         </div>
+      </div>
 
       <div>
         <Footer socials={meta.socials} siteTitle={meta.title} />
@@ -213,7 +238,10 @@ export const query = graphql`
     markdownRemark (fields: { slug: { eq: $slug }}) {
       html
       excerpt(pruneLength: 170)
-      tableOfContents
+      headings {
+        id
+        value
+      }
       frontmatter {
         date(formatString: "dddd, Do MMMM YYYY", locale: "id-ID")
         title

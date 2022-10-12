@@ -53,6 +53,7 @@ module.exports = {
   },
   graphqlTypegen: true,
   plugins: [
+    `gatsby-awesome-pagination`,
     `gatsby-plugin-postcss`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-image`,
