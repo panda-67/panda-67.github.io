@@ -38,31 +38,15 @@ exports.createPages = ({ graphql, actions }) => {
     if (result.errors) { throw result.errors }
 
     const allPosts = result.data.postsRemark.edges
+
     // Create your paginated pages
     paginate({
       createPage, // The Gatsby `createPage` function
       items: allPosts, // An array of objects
-      itemsPerPage: 4, // How many items you want per page
+      itemsPerPage: 5, // How many items you want per page
       pathPrefix: '/blog', // Creates pages like `/blog`, `/blog/2`, etc
       component: blogList, // Just like `createPage()`
-    })
-
-    // Create blog list.
-    // const posts = result.data.postsRemark.edges
-    // const postsPerPage = 5
-    // const numPages = Math.ceil(posts.length / postsPerPage)
-    // Array.from({ length: numPages }).forEach((_, i) => {
-    //   createPage({
-    //     path: i === 0 ? `/blog` : `/blog/${i + 1}`,
-    //     component: path.resolve("./src/templates/blog-list.js"),
-    //     context: {
-    //       limit: postsPerPage,
-    //       skip: i * postsPerPage,
-    //       numPages,
-    //       currentPage: i + 1,
-    //     },
-    //   })
-    // })
+    })   
 
     // Create blog posts pages.
     const feeds = result.data.postsRemark.edges

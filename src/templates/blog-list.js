@@ -14,8 +14,10 @@ const IndexBlog = (
       tagsPosts: { group },
       site: { meta }
     },
-    pageContext
+    pageContext,
+    path
   }) => {
+  const hero = path === '/blog'
   const previousPage = pageContext.previousPagePath
   const nextPage = pageContext.nextPagePath
   const Posts = edges
@@ -41,27 +43,33 @@ const IndexBlog = (
       <div className="px-4 lg:px-16 absolute z-10 bg-gray-100 bg-opacity-70 w-full">
         <Navbar menuLinks={meta.menuLinks} searchData={siteSearchIndex.index} />
       </div>
-      <div className="lg:h-screen h-[18rem] sm:h-[24rem] mb-8">
-        <div style={bgImage} className="bg-cover w-full h-full bg-left relative">
-          <div className="w-full h-full bg-gray-800 bg-opacity-40 flex justify-end items-center px-12 lg:px-28">
-            <h1 className="lg:text-7xl sm:text-5xl text-white font-edu transform translate-y-16">Welcome to Blog Post</h1>
+      {hero && (
+        <div className="lg:h-screen h-[18rem] sm:h-[24rem] mb-8">
+          <div style={bgImage} className="bg-cover w-full h-full bg-left relative">
+            <div className="w-full h-full bg-gray-800 bg-opacity-40 flex justify-end items-center px-12 lg:px-28">
+              <h1 className="lg:text-7xl sm:text-5xl text-white font-edu transform translate-y-16">Welcome to Blog Post</h1>
+            </div>
           </div>
         </div>
-      </div>
+      )}
+
+      {!hero && (<div className="h-24"></div>)}
+
       <div className="flex flex-col-reverse lg:grid grid-cols-10 mx-6 lg:mx-10 lg:px-6 mt-2">
         <div className="col-span-2 space-y-4">
-          <div>
+          <div className="mb-12">
             <h3>Tags</h3>
             <div className="flex flex-wrap gap-x-2">
               {Tags}
             </div>
           </div>
-          <div className="space-x-2">
+          <div className="space-x-2 sticky top-4 rounded-lg shadow-lg px-2 py-4 -ml-4 flex justify-center border items-center">
             {previousPage && (
-              <Link className="btn btn-sm btn-base bg-gray-400 border-gray-400 capitalize" to={previousPage}>Previous</Link>
+              <Link className="hover:bg-slate-500 rounded-lg px-2 py-1 hover:text-white" to={previousPage}> ❮ </Link>
             )}
+            <span className="text-gray-500 text-sm">Page {pageContext.humanPageNumber} of {pageContext.numberOfPages} Page(s)</span>
             {nextPage && (
-              <Link className="btn btn-sm btn-base bg-gray-400 border-gray-400 capitalize" to={nextPage}>Next</Link>
+              <Link className="hover:bg-slate-500 rounded-lg px-2 py-1 hover:text-white" to={nextPage}> ❯ </Link>
             )}
           </div>
         </div>
