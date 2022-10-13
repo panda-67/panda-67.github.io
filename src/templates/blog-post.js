@@ -36,10 +36,10 @@ const BlogPost = (
         ]}
       >
       </Helmet>
-      <div className="mx-4 lg:mx-16">
+      <div className="px-4 lg:px-16 absolute top-0 z-10 bg-zinc-100 bg-opacity-70 w-full">
         <Navbar menuLinks={meta.menuLinks} searchData={siteSearchIndex.index} />
       </div>
-      <div className="mx-4 lg:mx-16 mt-4 lg:grid grid-cols-10 gap-6">
+      <div className="mx-4 mt-16 pt-2 lg:mx-16 lg:grid grid-cols-10 gap-6">
 
         <div className="col-span-8 flex flex-col-reverse lg:grid grid-cols-8 gap-6">
           {/* Left Sidebar */}
@@ -103,7 +103,7 @@ const BlogPost = (
                 </div>
 
                 {/* TOC */}
-                <div className="lg:hidden sticky top-0 z-10 mt-6 bg-gray-100 rounded-lg px-4 py-3">
+                <div className="lg:hidden mt-6 bg-gray-100 rounded-lg px-4 py-3">
                   <div className="font-semibold">Daftar Isi</div>
                   <ul className="text-blue-400 text-[15px]">
                     {headings.map(toc =>
@@ -156,7 +156,7 @@ const BlogPost = (
                   {previous && (
                     <Link to={`/blog${previous.fields.slug}`}>
                       <div className="flex flex-col items-start link-primary text-neutral">
-                        <span>&larr; Previous</span>
+                        <span>❮ Previous</span>
                         <h4>{previous.frontmatter.title}</h4>
                       </div>
                     </Link>
@@ -167,7 +167,7 @@ const BlogPost = (
                   {next && (
                     <Link to={`/blog${next.fields.slug}`}>
                       <div className="flex flex-col items-end link-primary text-neutral">
-                        <span>Next &rarr;</span>
+                        <span>Next ❯</span>
                         <h4 className="text-right">{next.frontmatter.title}</h4>
                       </div>
                     </Link>

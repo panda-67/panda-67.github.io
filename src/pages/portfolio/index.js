@@ -1,16 +1,19 @@
-import { StaticImage } from "gatsby-plugin-image";
-import * as React from "react";
-import Frame from "../../layouts/layout";
+import * as React from "react"
+import { StaticImage } from "gatsby-plugin-image"
+import Frame from "../../layouts/layout"
 
-export default function ExperiencePage() {
+const ExperiencePage = (
+  {
+    pageContext: {breadcrumb: {crumbs}}
+  }
+) => {
   const gambar = `https://images.unsplash.com/photo-1620509400948-f9c2c0a61e37?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80`
   const gambar2 = `https://images.unsplash.com/photo-1619369029907-b8d8d5eac859?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80`
   const gambar3 = `https://images.unsplash.com/photo-1628158088936-68ccaaa400dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80`
   const gambar4 = `https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80`
   return (
-    <Frame title={"Experience"}>
+    <Frame title="Experience" bread={crumbs}>
       <div className="w-full max-w-5xl mx-auto px-4 my-4 space-y-8 font-sans">
-        {/* <h2>Experience</h2> */}
         <div className="flex flex-col md:flex-row gap-2 md:gap-8">
           <div className="mx-auto">
             <StaticImage
@@ -85,3 +88,5 @@ export default function ExperiencePage() {
     </Frame>
   )
 }
+
+export default ExperiencePage

@@ -125,7 +125,8 @@ export const tagQuery = graphql`
       }
     }
     site {
-      meta: siteMetadata {       
+      meta: siteMetadata { 
+        title      
         menuLinks {
           name
           link

@@ -2,11 +2,15 @@ import { Link } from "gatsby";
 import * as React from "react";
 import Frame from "../../layouts/layout";
 
-export default function ExpertisePage() {
+const ExpertisePage = (
+  {
+    pageContext: {breadcrumb: {crumbs}}
+  }
+) => {
   return (
-    <Frame title={"Expertise"}>
-      <div className="divider divider-vertical my-12 mx-4 px-8 text-2xl md:text-4xl">Skills</div>
-      <div className="mx-6 md:mx-10 mb-8 grid gap-4 md:gap-6 md:grid-cols-3">
+    <Frame title="Expertise" bread={crumbs}>
+      <div className="divider divider-vertical my-12 mx-6 md:mx-0 px-2 text-2xl md:text-4xl">Skills</div>
+      <div className="mx-6 md:mx-0 mb-8 grid gap-4 md:gap-6 md:grid-cols-3">
         
         <div className="rounded-lg hover:border border-indigo-600">
           <Link to="/" className="relative w-full flex flex-col transform hover:translate-x-1 hover:translate-y-1">
@@ -53,3 +57,5 @@ export default function ExpertisePage() {
     </Frame>
   )
 }
+
+export default ExpertisePage

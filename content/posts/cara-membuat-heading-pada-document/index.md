@@ -18,7 +18,7 @@ Fitur ini akan sangat bermanfaat dalam membuat sebuah tulisan, karena dengan ada
 
 <br> 
 
-**Membuat struktur tulisan**
+### 1. Membuat Struktur Tulisan
 
 Siapkan struktur tulisan yang akan digunakan, contoh sederhananya seperti berikut:
 
@@ -30,7 +30,7 @@ c. BAB III
 
 <br>
 
-**Mengaktifkan fitur heading**
+### 2. Mengaktifkan Fitur Heading
 
 Fitur ini sendiri terdapat pada tab *Home* pada aplikasi Microsoft Word, kemudian di *Styles* dan pilih **Heading**.
 
@@ -68,7 +68,7 @@ Setelah mengaktifkan *List Library* kemudian kita dapat memilih **Heading** yang
 
 <br>
 
-**Menentukan level struktur sesuai level heading**
+### 3. Menentukan Level Struktur Sesuai Leveh Heading
 
 Misalnya, judul bab sebagai heading satu, subbab heading dua, subsubbab sebagai heading tiga, dan seterusnya. Letakkan kursor pada judul bab yang diinginkan misalnya *BAB I*, kemudian pada toolbar *Home*, pada bagian **Styles** klik *Heading 1*.
 
@@ -78,7 +78,7 @@ Misalnya, judul bab sebagai heading satu, subbab heading dua, subsubbab sebagai 
 
 <br>
 
-**Mengubah style heading**
+### 4. Mengubah Style Heading
 
 Selain dari format style yang telah disediakan dalam aplikasi Microsoft word, kita juga dapat mengubah style tersebut sesuai dengan yang diinginkan. Misalnya, mengubah font family, menjadikan bold, mengubah ukuran font, dll. Caranya sebagai berikut:
 
