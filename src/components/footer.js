@@ -6,7 +6,7 @@ import React from 'react'
 const Footer = ({ socials, siteTitle }) => {
   return (
     <div className='bg-zinc-400 mt-4'>
-      <div className="flex flex-wrap gap-4 mx-12 justify-around pt-8 pb-4">
+      <div className="flex flex-wrap gap-x-12 gap-y-4 mx-12 justify-around pt-8 pb-4">
         <div>
           <h2 className='font-edu'>Social Links</h2>
           <div className='flex gap-2 items-center'>
