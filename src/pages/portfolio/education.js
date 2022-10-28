@@ -1,9 +1,13 @@
 import * as React from "react";
 import Frame from "../../layouts/layout";
 
-export default function EducationPage() {
+const EducationPage = (
+	{
+		pageContext: { breadcrumb: { crumbs } }
+	}
+) => {
 	return (
-		<Frame title={"Education"}>
+		<Frame title="Education" bread={crumbs}>
 			<div className="h-max">
 				<div className="m-10 space-y-10 flex flex-col items-center">
 					<div className="w-40">
@@ -100,5 +104,7 @@ export default function EducationPage() {
 				</div>
 			</div>
 		</Frame>
-	);
-};
+	)
+}
+
+export default EducationPage

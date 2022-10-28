@@ -1,4 +1,5 @@
 .vscode
+.theia
 .cache/
 yarn-error.log
 node_modules/

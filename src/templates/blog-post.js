@@ -16,10 +16,9 @@ const BlogPost = (
       recentPosts: { edges },
       tagsPosts: { group },
       site: { meta },
-      markdownRemark: { frontmatter, html, excerpt }
+      markdownRemark: { frontmatter, html, excerpt, headings }
     },
-    pageContext: { breadcrumb: { crumbs }, previous, next },
-    location
+    pageContext: { breadcrumb: { crumbs }, previous, next }
   }) => {
   const Posts = edges
     .filter(edge => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
@@ -37,10 +36,10 @@ const BlogPost = (
         ]}
       >
       </Helmet>
-      <div className="mx-4 lg:mx-16">
+      <div className="px-4 lg:px-16 absolute top-0 z-10 bg-zinc-100 bg-opacity-70 w-full">
         <Navbar menuLinks={meta.menuLinks} searchData={siteSearchIndex.index} />
       </div>
-      <div className="mx-4 lg:mx-16 mt-4 lg:grid grid-cols-10 gap-6">
+      <div className="mx-4 mt-16 pt-2 lg:mx-16 lg:grid grid-cols-10 gap-6">
 
         <div className="col-span-8 flex flex-col-reverse lg:grid grid-cols-8 gap-6">
           {/* Left Sidebar */}
@@ -103,6 +102,22 @@ const BlogPost = (
                   </div>
                 </div>
 
+                {/* TOC */}
+                <div className="lg:hidden mt-6 bg-gray-100 rounded-lg px-4 py-3">
+                  <div className="font-semibold">Daftar Isi</div>
+                  <ul className="text-blue-400 text-[15px]">
+                    {headings.map(toc =>
+                      <li key={toc.id} className="hover:text-gray-500">
+                        <Link
+                          activeClassName="bg-zinc-400 text-white"
+                          partiallyActive={true}
+                          to={`#${toc.id}`}>{toc.value}
+                        </Link>
+                      </li>
+                    )}
+                  </ul>
+                </div>
+
                 {/* Content */}
                 <div className="mx-2" dangerouslySetInnerHTML={{ __html: html }} />
               </div>
@@ -141,18 +156,18 @@ const BlogPost = (
                   {previous && (
                     <Link to={`/blog${previous.fields.slug}`}>
                       <div className="flex flex-col items-start link-primary text-neutral">
-                        <span>&larr; Previous</span>
+                        <span>❮ Previous</span>
                         <h4>{previous.frontmatter.title}</h4>
                       </div>
                     </Link>
                   )}
                 </div>
-                
+
                 <div>
                   {next && (
                     <Link to={`/blog${next.fields.slug}`}>
                       <div className="flex flex-col items-end link-primary text-neutral">
-                        <span>Next &rarr;</span>
+                        <span>Next ❯</span>
                         <h4 className="text-right">{next.frontmatter.title}</h4>
                       </div>
                     </Link>
@@ -166,15 +181,31 @@ const BlogPost = (
 
         {/* Right Sidebar */}
         <div className="col-span-2 mx-2 mt-4 lg:mt-0">
-          <div>
+          <div className="-mx-2">
             <h3>Tags</h3>
-            <div className="grid sm:grid-cols-2">
+            <div className="flex flex-wrap gap-x-2">
               {Tags}
             </div>
           </div>
-        </div>
 
+          {/* TOC */}
+          <div className="hidden lg:block sticky top-3 mt-6 bg-gray-100 rounded-lg -mx-4 px-4 py-3">
+            <div className="font-semibold">Daftar Isi</div>
+            <ul className="text-blue-400 text-[15px]">
+              {headings.map(toc =>
+                <li key={toc.id} className="hover:text-gray-500">
+                  <Link
+                    activeClassName="bg-zinc-400 text-white"
+                    partiallyActive={true}
+                    to={`#${toc.id}`}>{toc.value}
+                  </Link>
+                </li>
+              )}
+            </ul>
+          </div>
+        </div>
       </div>
+
       <div>
         <Footer socials={meta.socials} siteTitle={meta.title} />
       </div>
@@ -207,6 +238,10 @@ export const query = graphql`
     markdownRemark (fields: { slug: { eq: $slug }}) {
       html
       excerpt(pruneLength: 170)
+      headings {
+        id
+        value
+      }
       frontmatter {
         date(formatString: "dddd, Do MMMM YYYY", locale: "id-ID")
         title
