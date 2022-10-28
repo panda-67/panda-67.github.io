@@ -68,7 +68,7 @@ Setelah mengaktifkan *List Library* kemudian kita dapat memilih **Heading** yang
 
 <br>
 
-### 3. Menentukan Level Struktur Sesuai Leveh Heading
+### 3. Menentukan Level Struktur Sesuai Level Heading
 
 Misalnya, judul bab sebagai heading satu, subbab heading dua, subsubbab sebagai heading tiga, dan seterusnya. Letakkan kursor pada judul bab yang diinginkan misalnya *BAB I*, kemudian pada toolbar *Home*, pada bagian **Styles** klik *Heading 1*.
 
