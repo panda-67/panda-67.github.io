@@ -48,11 +48,11 @@ export default function Layout({ title, path, children }) {
 								<div div className="h-screen -mb-16">
 									<div style={bgImage} className="bg-cover bg-blend-multiply bg-center h-full flex justify-start ">
 										<div className="flex flex-col justify-center items-center w-full h-full pb-20 bg-gradient-to-tr from-slate-900 to-transparent">
-											<div className="text-gray-100 lg:text-left font-semibold font-sans mx-6 my-32 lg:my-2">
-												<p className="text-2xl md:text-4xl lg:text-6xl break-words lg:mb-2">
+											<div className="text-gray-100 md:text-center font-semibold font-sans space-y-2 lg:space-y-8 mx-6 my-32 lg:my-2">
+												<p className="text-3xl md:text-5xl lg:text-6xl break-words lg:mb-2">
 													Hello, I am Samsul Muarrif
 												</p>
-												<p className="font-normal text-lg md:text-2xl lg:text-4xl lg:m-0 font-serif">Traveler</p>
+												<p className="font-normal text-lg lg:text-3xl lg:m-0">Forester | Tech Eunthusiast | Traveler | Scientist</p>
 											</div>
 										</div>
 									</div>
