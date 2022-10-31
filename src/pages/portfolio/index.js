@@ -1,10 +1,16 @@
 import * as React from "react"
+import { graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import Frame from "../../layouts/layout"
 
 const ExperiencePage = (
   {
-    pageContext: {breadcrumb: {crumbs}}
+    data:
+    {
+      site: { meta },
+      siteSearchIndex
+    },
+    pageContext: { breadcrumb: { crumbs } }
   }
 ) => {
   const gambar = `https://images.unsplash.com/photo-1620509400948-f9c2c0a61e37?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80`
@@ -12,7 +18,7 @@ const ExperiencePage = (
   const gambar3 = `https://images.unsplash.com/photo-1628158088936-68ccaaa400dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80`
   const gambar4 = `https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80`
   return (
-    <Frame title="Experience" bread={crumbs}>
+    <Frame data={meta} search={siteSearchIndex} bread={crumbs}>
       <div className="w-full max-w-5xl mx-auto px-4 my-4 space-y-8 font-sans">
         <div className="flex flex-col md:flex-row gap-2 md:gap-8">
           <div className="mx-auto">
@@ -90,3 +96,38 @@ const ExperiencePage = (
 }
 
 export default ExperiencePage
+
+export const Head = ({ data: { site: { meta } }}) => (
+	<>
+		<title>Experience | {meta.title}</title>
+		<meta name='description' content='Personal portfolio by Samsul Muarrif' />
+		<meta name='keywords' content='resume, portfolio, profile' />
+	</>
+)
+
+export const expQuery = graphql`
+  query {
+    site {
+      meta: siteMetadata {
+        title
+        author
+        desc
+        polioPath {
+          name
+          link
+          }
+        menuLinks {
+          name
+          link
+          }
+        socials {
+          name
+          url
+        }
+      }
+    }
+    siteSearchIndex {
+      index
+    }
+  }
+`

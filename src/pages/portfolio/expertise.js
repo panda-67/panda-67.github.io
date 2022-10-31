@@ -1,14 +1,20 @@
-import { Link } from "gatsby";
-import * as React from "react";
-import Frame from "../../layouts/layout";
+import { Link } from "gatsby"
+import * as React from "react"
+import { graphql } from "gatsby"
+import Frame from "../../layouts/layout"
 
 const ExpertisePage = (
   {
+    data:
+    {
+      site: { meta },
+      siteSearchIndex
+    },
     pageContext: { breadcrumb: { crumbs } }
   }
 ) => {
   return (
-    <Frame title="Expertise" bread={crumbs}>
+    <Frame data={meta} search={siteSearchIndex} bread={crumbs}>
       <div className="divider divider-vertical my-12 mx-6 md:mx-0 px-2 text-2xl md:text-4xl">Skills</div>
       <div className="mx-6 md:mx-0 mb-8 grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-4">
 
@@ -73,3 +79,38 @@ const ExpertisePage = (
 }
 
 export default ExpertisePage
+
+export const Head = ({ data: { site: { meta } }}) => (
+	<>
+		<title>Expertise | {meta.title}</title>
+		<meta name='description' content='Personal portfolio by Samsul Muarrif' />
+		<meta name='keywords' content='resume, portfolio, profile' />
+	</>
+)
+
+export const expertiseQuery = graphql`
+  query {
+    site {
+      meta: siteMetadata {
+        title
+        author
+        desc
+        polioPath {
+          name
+          link
+          }
+        menuLinks {
+          name
+          link
+          }
+        socials {
+          name
+          url
+        }
+      }
+    }
+    siteSearchIndex {
+      index
+    }
+  }
+`

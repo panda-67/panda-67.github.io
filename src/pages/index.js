@@ -8,13 +8,14 @@ const IndexPage = (
   {
     data: {
       allMarkdownRemark: { edges },
-      site: { meta }
+      site: { meta },
+      siteSearchIndex
     },
     path
   }) => {
   const blogImage = `https://cdn.pixabay.com/photo/2019/01/17/23/14/work-3938875_960_720.jpg`
   return (
-    <Frame title={"Welcome"} path={path}>
+    <Frame data={meta} search={siteSearchIndex} path={path}>
       <main>
         <div className="my-16">
           {/* Latest Blog */}
@@ -135,6 +136,14 @@ const IndexPage = (
 
 export default IndexPage
 
+export const Head = ({ data: { site: { meta } }}) => (
+	<>
+		<title>Welcome | {meta.title}</title>
+		<meta name='description' content='Personal portfolio by Samsul Muarrif' />
+		<meta name='keywords' content='resume, portfolio, profile' />
+	</>
+)
+
 export const indexQuery = graphql`
   query {
     allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, limit: 4) {
@@ -159,7 +168,18 @@ export const indexQuery = graphql`
         title
         author
         desc
+				menuLinks {
+					name
+					link
+				}
+				socials {
+					name
+					url
+				}
       }
+    }
+    siteSearchIndex {
+      index
     }
   }
 `

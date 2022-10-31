@@ -3846,20 +3846,10 @@ type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = { readonly tracedSVG: st
 
 type GatsbyImageSharpFluidLimitPresentationSizeFragment = { readonly maxHeight: number, readonly maxWidth: number };
 
-type MetaQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type MetaQueryQuery = { readonly site: { readonly siteMetadata: { readonly title: string | null, readonly menuLinks: ReadonlyArray<{ readonly name: string | null, readonly link: string | null } | null> | null, readonly socials: ReadonlyArray<{ readonly name: string | null, readonly url: string | null } | null> | null } | null } | null, readonly siteSearchIndex: { readonly index: any | null } | null };
-
 type NotFoundQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type NotFoundQueryQuery = { readonly site: { readonly siteMetadata: { readonly title: string | null, readonly menuLinks: ReadonlyArray<{ readonly name: string | null, readonly link: string | null } | null> | null, readonly socials: ReadonlyArray<{ readonly name: string | null, readonly url: string | null } | null> | null } | null } | null, readonly siteSearchIndex: { readonly index: any | null } | null };
-
-type SiteQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type SiteQueryQuery = { readonly site: { readonly siteMetadata: { readonly title: string | null, readonly polioPath: ReadonlyArray<{ readonly name: string | null, readonly link: string | null } | null> | null, readonly menuLinks: ReadonlyArray<{ readonly name: string | null, readonly link: string | null } | null> | null, readonly socials: ReadonlyArray<{ readonly name: string | null, readonly url: string | null } | null> | null } | null } | null, readonly siteSearchIndex: { readonly index: any | null } | null };
 
 
 }

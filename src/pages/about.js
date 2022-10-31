@@ -2,9 +2,12 @@ import { Link, graphql } from "gatsby";
 import * as React from "react";
 import Frame from "../layouts/frame";
 
-const AboutPage = ({ data: { site: { meta } } }) => {
+const AboutPage = ({ data: { 
+  site: { meta },
+  siteSearchIndex
+}}) => {
   return (
-    <Frame title={"About"}>
+    <Frame title={"About"} data={meta} search={siteSearchIndex}>
       <div className="w-full max-w-7xl mx-auto px-8 mt-4 pb-4">
         <h2>About {meta.title}</h2>
         <div className="font-sans leading-8 my-8">
@@ -23,6 +26,14 @@ const AboutPage = ({ data: { site: { meta } } }) => {
 
 export default AboutPage
 
+export const Head = ({ data: { site: { meta } }}) => (
+	<>
+		<title>About | {meta.title}</title>
+		<meta name='description' content='Personal portfolio by Samsul Muarrif' />
+		<meta name='keywords' content='resume, portfolio, profile' />
+	</>
+)
+
 export const pageQuery = graphql`
   query {
     site {
@@ -30,7 +41,18 @@ export const pageQuery = graphql`
         title
         author
         desc
+				menuLinks {
+					name
+					link
+				}
+				socials {
+					name
+					url
+				}
       }
+    }
+    siteSearchIndex {
+      index
     }
   }
 `

@@ -1,4 +1,4 @@
-import React from "react"
+import * as React from "react"
 import PropTypes from "prop-types"
 import { Link, graphql } from "gatsby"
 import _ from "lodash"
@@ -50,16 +50,18 @@ const BlogTags = (
             })}
           </div>
         </div>
-        <div className="col-span-2 mt-8 lg:mt-14 space-y-4">
-          <Link to="/blog">
-            <div className="w-full font-semibold rounded-lg bg-gray-200 hover:bg-gray-600 hover:text-gray-100 shadow-lg p-4">
-              All Posts
-            </div>
-          </Link>
-          <div className="rounded-lg bg-gray-200 shadow-lg p-4 mt-2 lg:mt-0 space-y-2">
-            <h4><strong>All Tags</strong></h4>
-            <div className="flex flex-wrap gap-2">
-              {Tags}
+        <div className="col-span-2 mt-8 lg:mt-14">
+          <div className="sticky top-2 space-y-4">
+            <Link to="/blog">
+              <div className="w-full font-semibold rounded-lg bg-gray-200 hover:bg-gray-600 hover:text-gray-100 shadow-lg p-4">
+                All Posts
+              </div>
+            </Link>
+            <div className="rounded-lg bg-gray-200 shadow-lg p-4 mt-2 lg:mt-0 space-y-2">
+              <h4><strong>All Tags</strong></h4>
+              <div className="flex flex-wrap gap-2">
+                {Tags}
+              </div>
             </div>
           </div>
         </div>
@@ -96,6 +98,14 @@ BlogTags.propTypes = {
 
 export default BlogTags
 
+export const Head = ({ data: { site: { meta } }, pageContext }) => (
+  <>
+    <title>{`${_.capitalize(pageContext.tag)} | Blog Tags | ${meta.title}`}</title>
+    <meta name='description' content={`${meta.desc} by ${meta.author}`} />
+    <meta name='keywords' content='blog, travel, hobby, daliy, activity, coding, photography' />
+  </>
+)
+
 export const tagQuery = graphql`
   query($tag: String) {
     allMarkdownRemark(
@@ -126,7 +136,9 @@ export const tagQuery = graphql`
     }
     site {
       meta: siteMetadata { 
-        title      
+        title
+        desc
+        author     
         menuLinks {
           name
           link

@@ -1,6 +1,5 @@
-import React from "react"
+import * as React from "react"
 import { Link, graphql } from "gatsby"
-import { Helmet } from "react-helmet"
 import { Breadcrumb } from 'gatsby-plugin-breadcrumb'
 import Navbar from "../components/navbar"
 import PostLink from "../components/post-link"
@@ -39,14 +38,6 @@ const IndexBlog = (
 
   return (
     <div>
-      <Helmet
-        title={`Blogs | ${meta.title}`}
-        meta={[
-          { name: 'description', content: `${meta.desc} by ${meta.author}` },
-          { name: 'keywords', content: 'blog, travel, hobby, daliy, activity, coding, photography' },
-        ]}
-      >
-      </Helmet>
       <div className="px-4 lg:px-16 fixed top-0 z-10 bg-zinc-100 bg-opacity-70 w-full">
         <Navbar menuLinks={meta.menuLinks} searchData={siteSearchIndex.index} />
       </div>
@@ -100,6 +91,14 @@ const IndexBlog = (
 }
 
 export default IndexBlog
+
+export const Head = ({ data: {site: { meta }} }) => (
+  	<>		
+  		<title>{`Blogs | ${meta.title}`}</title>
+  		<meta name= 'description' content= {`${meta.desc} by ${meta.author}`} />
+      <meta name= 'keywords' content= 'blog, travel, hobby, daliy, activity, coding, photography' />
+  	</>
+  )
 
 export const blogQuery = graphql`
   query BlogList($skip: Int!, $limit: Int!) {

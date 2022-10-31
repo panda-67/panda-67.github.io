@@ -1,6 +1,5 @@
-import React from "react"
+import * as React from "react"
 import { graphql, Link } from "gatsby"
-import { Helmet } from "react-helmet"
 import PropTypes from "prop-types"
 import { Breadcrumb } from 'gatsby-plugin-breadcrumb'
 import _ from "lodash"
@@ -28,14 +27,6 @@ const BlogPost = (
 
   return (
     <div>
-      <Helmet
-        title={(`Blogs | `) + frontmatter.title + (` | `) + meta.title}
-        meta={[
-          { name: 'description', content: excerpt },
-          { name: 'keywords', content: frontmatter.tags },
-        ]}
-      >
-      </Helmet>
       <div className="px-4 lg:px-16 absolute top-0 z-10 bg-zinc-100 bg-opacity-70 w-full">
         <Navbar menuLinks={meta.menuLinks} searchData={siteSearchIndex.index} />
       </div>
@@ -232,6 +223,17 @@ BlogPost.propTypes = {
 }
 
 export default BlogPost
+
+export const Head = ({ data: {
+  site: { meta },
+  markdownRemark: { frontmatter, excerpt }
+} }) => (
+  <>
+    <title>{(`Blogs | `) + frontmatter.title + (` | `) + meta.title}</title>
+    <meta name='description' content={excerpt} />
+    <meta name='keywords' content={frontmatter.tags} />
+  </>
+)
 
 export const query = graphql`
   query BlogQuery($slug: String!) {
