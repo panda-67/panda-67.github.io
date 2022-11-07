@@ -29,7 +29,7 @@ export default class Search extends Component {
               <input type="text" placeholder="Search" className="w-full rounded-lg ring-1 ring-gray-500 focus:outline-none focus:border-amber-300 focus:ring-1 focus:ring-amber-300" value={this.state.query} onChange={this.search} />
               <ul className="mt-2">
                 {this.state.results.map(page => (
-                  <li key={page.id} className="my-1 rounded-lg ring-1 ring-gray-500 bg-slate-800 text-gray-200 hover:text-amber-300">
+                  <li key={page.id} className="my-1 px-2 rounded-lg ring-1 ring-gray-500 bg-slate-800 text-gray-200 hover:text-amber-300">
                     <Link to={`/blog${page.path}`}>{page.title}</Link>
                   </li>
                 ))}
