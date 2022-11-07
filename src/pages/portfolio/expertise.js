@@ -1,26 +1,33 @@
-import { Link } from "gatsby"
-import * as React from "react"
-import { graphql } from "gatsby"
-import Frame from "../../layouts/layout"
+import { Link } from "gatsby";
+import * as React from "react";
+import { graphql } from "gatsby";
+import Frame from "../../layouts/layout";
 
-const ExpertisePage = (
-  {
-    data:
-    {
-      site: { meta },
-      siteSearchIndex
-    },
-    pageContext: { breadcrumb: { crumbs } }
-  }
-) => {
+const ExpertisePage = ({
+  data: {
+    site: { meta },
+    siteSearchIndex,
+  },
+  pageContext: {
+    breadcrumb: { crumbs },
+  },
+}) => {
   return (
     <Frame data={meta} search={siteSearchIndex} bread={crumbs}>
-      <div className="divider divider-vertical my-12 mx-6 md:mx-0 px-2 text-2xl md:text-4xl">Skills</div>
+      <div className="divider divider-vertical my-12 mx-6 md:mx-0 px-2 text-2xl md:text-4xl">
+        Skills
+      </div>
       <div className="mx-6 md:mx-0 mb-8 grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-4">
-
         <div className="rounded-lg hover:border border-indigo-600">
-          <Link to="https://arrifusman.github.io/" target={"_blank"} noreferer noopener className="relative w-full flex flex-col transform hover:translate-x-1 hover:translate-y-1">
-            <img className="rounded-lg object-fill"
+          <Link
+            to="https://arrifusman.github.io/"
+            target={"_blank"}
+            noreferer
+            noopener
+            className="relative w-full flex flex-col transform hover:translate-x-1 hover:translate-y-1"
+          >
+            <img
+              className="rounded-lg object-fill"
               src="https://cdn.pixabay.com/photo/2016/11/23/14/45/coding-1853305_960_720.jpg"
               alt=""
             />
@@ -33,8 +40,12 @@ const ExpertisePage = (
         </div>
 
         <div className="rounded-lg hover:border border-indigo-600">
-          <Link to="/" className="relative w-full flex flex-col transform hover:translate-x-1 hover:translate-y-1">
-            <img className="rounded-lg object-fill"
+          <Link
+            to="/"
+            className="relative w-full flex flex-col transform hover:translate-x-1 hover:translate-y-1"
+          >
+            <img
+              className="rounded-lg object-fill"
               src="https://cdn.pixabay.com/photo/2020/05/06/12/01/compass-5137269_960_720.jpg"
               alt=""
             />
@@ -47,8 +58,12 @@ const ExpertisePage = (
         </div>
 
         <div className="rounded-lg hover:border border-indigo-600">
-          <Link to="/" className="relative w-full flex flex-col transform hover:translate-x-1 hover:translate-y-1">
-            <img className="rounded-lg object-fill"
+          <Link
+            to="/"
+            className="relative w-full flex flex-col transform hover:translate-x-1 hover:translate-y-1"
+          >
+            <img
+              className="rounded-lg object-fill"
               src="https://cdn.pixabay.com/photo/2018/03/24/08/56/colorful-3256055_960_720.jpg"
               alt=""
             />
@@ -61,8 +76,12 @@ const ExpertisePage = (
         </div>
 
         <div className="rounded-lg hover:border border-indigo-600">
-          <Link to="/" className="relative w-full flex flex-col transform hover:translate-x-1 hover:translate-y-1">
-            <img className="rounded-lg object-fill"
+          <Link
+            to="/"
+            className="relative w-full flex flex-col transform hover:translate-x-1 hover:translate-y-1"
+          >
+            <img
+              className="rounded-lg object-fill"
               src="https://cdn.pixabay.com/photo/2019/09/19/17/40/insect-4489864_960_720.jpg"
               alt=""
             />
@@ -75,18 +94,22 @@ const ExpertisePage = (
         </div>
       </div>
     </Frame>
-  )
-}
+  );
+};
 
-export default ExpertisePage
+export default ExpertisePage;
 
-export const Head = ({ data: { site: { meta } }}) => (
-	<>
-		<title>Expertise | {meta.title}</title>
-		<meta name='description' content='Personal portfolio by Samsul Muarrif' />
-		<meta name='keywords' content='resume, portfolio, profile' />
-	</>
-)
+export const Head = ({
+  data: {
+    site: { meta },
+  },
+}) => (
+  <>
+    <title>Expertise | {meta.title}</title>
+    <meta name="description" content="Personal portfolio by Samsul Muarrif" />
+    <meta name="keywords" content="resume, portfolio, profile" />
+  </>
+);
 
 export const expertiseQuery = graphql`
   query {
@@ -98,14 +121,10 @@ export const expertiseQuery = graphql`
         polioPath {
           name
           link
-          }
+        }
         menuLinks {
           name
           link
-          }
-        socials {
-          name
-          url
         }
       }
     }
@@ -113,4 +132,4 @@ export const expertiseQuery = graphql`
       index
     }
   }
-`
+`;

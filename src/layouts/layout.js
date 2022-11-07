@@ -3,17 +3,13 @@ import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import { Breadcrumb } from 'gatsby-plugin-breadcrumb'
 import SideLink from "../components/sidelink"
-import Navbar from "../components/navbar"
-import Footer from "../components/footer"
+import Frame from "./template"
 
-const Layout = ({ data, bread, search, children }) => {
+const Layout = ({ data, bread, children }) => {
 	return (
-		<>
+		<Frame>
 			<div style={{ margin: `0 auto`, padding: `0` }}>
-				<div className="px-4 lg:px-16 fixed top-0 z-10 bg-gray-100 bg-opacity-50 w-full">
-					<Navbar menuLinks={data.menuLinks} searchData={search.index} />
-				</div>
-				<div className="mx-8 mt-16 md:mx-6 lg:mx-12">
+				<div className="mx-8 mt-4 md:mx-6 lg:mx-12">
 					<Breadcrumb
 						className="text-base font-light font-sans capitalize pl-[9px] border-l border-zinc-400"
 						crumbs={bread}
@@ -64,13 +60,9 @@ const Layout = ({ data, bread, search, children }) => {
 							</div>
 						</div>
 					</div>
-				</div>
-				<div className="">
-					{/* !-- Footer --> */}
-					<Footer socials={data.socials} siteTitle={data.title} />
-				</div>
+				</div>				
 			</div>
-		</>
+		</Frame>
 	)
 }
 

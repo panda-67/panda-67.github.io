@@ -4,52 +4,38 @@ module.exports = {
     author: `panda_67`,
     siteUrl: `https://samsulmuarrif.me`,
     desc: `My personal blogs`,
-    socials: [
-      {
-        name: `Twitter`,
-        url: `https://twitter.com/sams_panda`,
-      },
-      {
-        name: `GitHub`,
-        url: `https://github.com/panda-67`,
-      },
-      {
-        name: `LinkedIn`,
-        url: `https://id.linkedin.com/in/samsul-muarrif`
-      },
-      {
-        name: `Instagram`,
-        url: `https://www.instagram.com/Sams_67/`
-      }
-    ],
+    twitter: `https://twitter.com/sams_panda`,
+    github: `https://github.com/panda-67`,
+    linkedin: `https://id.linkedin.com/in/samsul-muarrif`,
+    instagram: `https://www.instagram.com/Sams_67/`,
     menuLinks: [
       {
         name: `portfolio`,
-        link: `/portfolio`
+        link: `/portfolio`,
       },
       {
         name: `blog`,
-        link: `/blog`
+        link: `/blog`,
       },
       {
         name: `about`,
-        link: `/about`
+        link: `/about`,
       },
     ],
     polioPath: [
       {
         name: `experience`,
-        link: ``
+        link: ``,
       },
       {
         name: `expertise`,
-        link: `/expertise`
+        link: `/expertise`,
       },
       {
         name: `education`,
-        link: `/education`
+        link: `/education`,
       },
-    ]
+    ],
   },
   graphqlTypegen: true,
   plugins: [
@@ -65,9 +51,9 @@ module.exports = {
           `**/dev-404-page/**`,
           `**/404/**`,
           `**/404.html`,
-          `**/offline-plugin-app-shell-fallback/**`
+          `**/offline-plugin-app-shell-fallback/**`,
         ],
-      }
+      },
     },
     {
       resolve: `gatsby-plugin-google-gtag`,
@@ -111,18 +97,18 @@ module.exports = {
           `**/dev-404-page/**`,
           `**/404/**`,
           `**/404.html`,
-          `**/offline-plugin-app-shell-fallback/**`
+          `**/offline-plugin-app-shell-fallback/**`,
         ],
         // isMatchOptions: optional, include this object to configure the wildcard-match library.
         excludeOptions: {
-          separator: '.'
+          separator: ".",
         },
         // crumbLabelUpdates: optional, update specific crumbLabels in the path
         crumbLabelUpdates: [
           {
-            pathname: '/blog',
-            crumbLabel: 'Blogs'
-          }
+            pathname: "/blog",
+            crumbLabel: "Blogs",
+          },
         ],
         // trailingSlashes: optional, will add trailing slashes to the end
         // of crumb pathnames. default is false
@@ -138,9 +124,9 @@ module.exports = {
         resolvers: {
           // For any node of type MarkdownRemark, list how to resolve the fields` values
           MarkdownRemark: {
-            title: node => node.frontmatter.title,
-            tags: node => node.frontmatter.tags,
-            path: node => node.fields.slug,
+            title: (node) => node.frontmatter.title,
+            tags: (node) => node.frontmatter.tags,
+            path: (node) => node.fields.slug,
           },
         },
         // Optional filter to limit indexed nodes
@@ -152,7 +138,7 @@ module.exports = {
       options: {
         plugins: [
           `gatsby-remark-autolink-headers`,
-          `gatsby-remark-responsive-iframe`,       
+          `gatsby-remark-responsive-iframe`,
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -188,6 +174,6 @@ module.exports = {
         icon: "src/images/icon.svg",
         crossOrigin: `use-credentials`,
       },
-    }
+    },
   ],
-}
+};

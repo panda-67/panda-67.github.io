@@ -2699,6 +2699,9 @@ type SiteFieldsEnum =
   | 'siteMetadata.author'
   | 'siteMetadata.desc'
   | 'siteMetadata.description'
+  | 'siteMetadata.github'
+  | 'siteMetadata.instagram'
+  | 'siteMetadata.linkedin'
   | 'siteMetadata.menuLinks'
   | 'siteMetadata.menuLinks.link'
   | 'siteMetadata.menuLinks.name'
@@ -2706,10 +2709,8 @@ type SiteFieldsEnum =
   | 'siteMetadata.polioPath.link'
   | 'siteMetadata.polioPath.name'
   | 'siteMetadata.siteUrl'
-  | 'siteMetadata.socials'
-  | 'siteMetadata.socials.name'
-  | 'siteMetadata.socials.url'
   | 'siteMetadata.title'
+  | 'siteMetadata.twitter'
   | 'trailingSlash';
 
 type SiteFilterInput = {
@@ -3714,22 +3715,28 @@ type SiteSiteMetadata = {
   readonly author: Maybe<Scalars['String']>;
   readonly desc: Maybe<Scalars['String']>;
   readonly description: Maybe<Scalars['String']>;
+  readonly github: Maybe<Scalars['String']>;
+  readonly instagram: Maybe<Scalars['String']>;
+  readonly linkedin: Maybe<Scalars['String']>;
   readonly menuLinks: Maybe<ReadonlyArray<Maybe<SiteSiteMetadataMenuLinks>>>;
   readonly polioPath: Maybe<ReadonlyArray<Maybe<SiteSiteMetadataPolioPath>>>;
   readonly siteUrl: Maybe<Scalars['String']>;
-  readonly socials: Maybe<ReadonlyArray<Maybe<SiteSiteMetadataSocials>>>;
   readonly title: Maybe<Scalars['String']>;
+  readonly twitter: Maybe<Scalars['String']>;
 };
 
 type SiteSiteMetadataFilterInput = {
   readonly author: InputMaybe<StringQueryOperatorInput>;
   readonly desc: InputMaybe<StringQueryOperatorInput>;
   readonly description: InputMaybe<StringQueryOperatorInput>;
+  readonly github: InputMaybe<StringQueryOperatorInput>;
+  readonly instagram: InputMaybe<StringQueryOperatorInput>;
+  readonly linkedin: InputMaybe<StringQueryOperatorInput>;
   readonly menuLinks: InputMaybe<SiteSiteMetadataMenuLinksFilterListInput>;
   readonly polioPath: InputMaybe<SiteSiteMetadataPolioPathFilterListInput>;
   readonly siteUrl: InputMaybe<StringQueryOperatorInput>;
-  readonly socials: InputMaybe<SiteSiteMetadataSocialsFilterListInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
+  readonly twitter: InputMaybe<StringQueryOperatorInput>;
 };
 
 type SiteSiteMetadataMenuLinks = {
@@ -3758,20 +3765,6 @@ type SiteSiteMetadataPolioPathFilterInput = {
 
 type SiteSiteMetadataPolioPathFilterListInput = {
   readonly elemMatch: InputMaybe<SiteSiteMetadataPolioPathFilterInput>;
-};
-
-type SiteSiteMetadataSocials = {
-  readonly name: Maybe<Scalars['String']>;
-  readonly url: Maybe<Scalars['String']>;
-};
-
-type SiteSiteMetadataSocialsFilterInput = {
-  readonly name: InputMaybe<StringQueryOperatorInput>;
-  readonly url: InputMaybe<StringQueryOperatorInput>;
-};
-
-type SiteSiteMetadataSocialsFilterListInput = {
-  readonly elemMatch: InputMaybe<SiteSiteMetadataSocialsFilterInput>;
 };
 
 type SiteSortInput = {
@@ -3811,14 +3804,19 @@ type BlogListQueryVariables = Exact<{
 }>;
 
 
-type BlogListQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: { readonly id: string, readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly author: string | null } | null } }> }, readonly tagsPosts: { readonly group: ReadonlyArray<{ readonly fieldValue: string | null, readonly totalCount: number }> }, readonly site: { readonly meta: { readonly title: string | null, readonly author: string | null, readonly desc: string | null, readonly menuLinks: ReadonlyArray<{ readonly name: string | null, readonly link: string | null } | null> | null, readonly socials: ReadonlyArray<{ readonly name: string | null, readonly url: string | null } | null> | null } | null } | null, readonly siteSearchIndex: { readonly index: any | null } | null };
+type BlogListQuery = { readonly allMarkdownRemark: { readonly edges: ReadonlyArray<{ readonly node: { readonly id: string, readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly author: string | null } | null } }> }, readonly tagsPosts: { readonly group: ReadonlyArray<{ readonly fieldValue: string | null, readonly totalCount: number }> }, readonly site: { readonly meta: { readonly title: string | null, readonly author: string | null, readonly desc: string | null, readonly menuLinks: ReadonlyArray<{ readonly name: string | null, readonly link: string | null } | null> | null } | null } | null, readonly siteSearchIndex: { readonly index: any | null } | null };
 
 type BlogQueryQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-type BlogQueryQuery = { readonly markdownRemark: { readonly html: string | null, readonly excerpt: string | null, readonly headings: ReadonlyArray<{ readonly id: string | null, readonly value: string | null } | null> | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly author: string | null, readonly tags: ReadonlyArray<string | null> | null } | null } | null, readonly recentPosts: { readonly edges: ReadonlyArray<{ readonly node: { readonly id: string, readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null } | null } }> }, readonly tagsPosts: { readonly group: ReadonlyArray<{ readonly fieldValue: string | null, readonly totalCount: number }> }, readonly site: { readonly meta: { readonly title: string | null, readonly author: string | null, readonly menuLinks: ReadonlyArray<{ readonly name: string | null, readonly link: string | null } | null> | null, readonly socials: ReadonlyArray<{ readonly name: string | null, readonly url: string | null } | null> | null } | null } | null, readonly siteSearchIndex: { readonly index: any | null } | null };
+type BlogQueryQuery = { readonly markdownRemark: { readonly html: string | null, readonly excerpt: string | null, readonly headings: ReadonlyArray<{ readonly id: string | null, readonly value: string | null } | null> | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly author: string | null, readonly tags: ReadonlyArray<string | null> | null } | null } | null, readonly recentPosts: { readonly edges: ReadonlyArray<{ readonly node: { readonly id: string, readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null } | null } }> }, readonly tagsPosts: { readonly group: ReadonlyArray<{ readonly fieldValue: string | null, readonly totalCount: number }> }, readonly site: { readonly meta: { readonly title: string | null, readonly author: string | null, readonly menuLinks: ReadonlyArray<{ readonly name: string | null, readonly link: string | null } | null> | null } | null } | null, readonly siteSearchIndex: { readonly index: any | null } | null };
+
+type FooterQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type FooterQueryQuery = { readonly site: { readonly meta: { readonly title: string | null, readonly twitter: string | null, readonly github: string | null, readonly instagram: string | null, readonly linkedin: string | null } | null } | null };
 
 type GatsbyImageSharpFixedFragment = { readonly base64: string | null, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
 
@@ -3846,10 +3844,15 @@ type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = { readonly tracedSVG: st
 
 type GatsbyImageSharpFluidLimitPresentationSizeFragment = { readonly maxHeight: number, readonly maxWidth: number };
 
+type NavbarQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type NavbarQueryQuery = { readonly site: { readonly meta: { readonly title: string | null, readonly menuLinks: ReadonlyArray<{ readonly name: string | null, readonly link: string | null } | null> | null } | null } | null, readonly siteSearchIndex: { readonly index: any | null } | null };
+
 type NotFoundQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type NotFoundQueryQuery = { readonly site: { readonly siteMetadata: { readonly title: string | null, readonly menuLinks: ReadonlyArray<{ readonly name: string | null, readonly link: string | null } | null> | null, readonly socials: ReadonlyArray<{ readonly name: string | null, readonly url: string | null } | null> | null } | null } | null, readonly siteSearchIndex: { readonly index: any | null } | null };
+type NotFoundQueryQuery = { readonly site: { readonly siteMetadata: { readonly title: string | null, readonly menuLinks: ReadonlyArray<{ readonly name: string | null, readonly link: string | null } | null> | null } | null } | null, readonly siteSearchIndex: { readonly index: any | null } | null };
 
 
 }
