@@ -1,14 +1,12 @@
 import * as React from "react";
 import { Link, graphql } from "gatsby";
 import { Breadcrumb } from "gatsby-plugin-breadcrumb";
-import Navbar from "../components/navbar";
+import Frame from "../layouts/template";
 import PostLink from "../components/post-link";
 import TagsLink from "../components/tags-link";
-import Footer from "../components/footer";
 
 const IndexBlog = ({
   data: {
-    siteSearchIndex,
     allMarkdownRemark: { edges },
     tagsPosts: { group },
     site: { meta },
@@ -37,16 +35,12 @@ const IndexBlog = ({
   };
 
   return (
-    <div>
-      <div className="px-4 lg:px-16 fixed top-0 z-10 bg-zinc-100 bg-opacity-70 w-full">
-        <Navbar menuLinks={meta.menuLinks} searchData={siteSearchIndex.index} />
-      </div>
-
+    <Frame>
       {hero ? (
         <div className="lg:h-screen h-[18rem] sm:h-[24rem]">
           <div
             style={bgImage}
-            className="bg-cover w-full h-full bg-left relative"
+            className="bg-cover w-full h-full -mt-16 bg-left"
           >
             <div className="w-full h-full bg-gray-800 bg-opacity-40 flex justify-end items-center px-12 lg:px-28">
               <h1 className="lg:text-7xl sm:text-5xl text-white font-edu transform translate-y-16">
@@ -106,8 +100,7 @@ const IndexBlog = ({
         <div className="col-span-1 divider divider-vertical lg:divider-horizontal mx-0 px-2 lg:px-0 lg:pb-4"></div>
         <div className="col-span-7 lg:-ml-16">{Posts}</div>
       </div>
-      <Footer socials={meta.socials} siteTitle={meta.title} />
-    </div>
+    </Frame>
   );
 };
 
@@ -162,14 +155,7 @@ export const blogQuery = graphql`
         title
         author
         desc
-        menuLinks {
-          name
-          link
-        }
       }
-    }
-    siteSearchIndex {
-      index
     }
   }
 `;

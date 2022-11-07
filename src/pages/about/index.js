@@ -1,14 +1,17 @@
-import { Link, graphql } from "gatsby";
 import * as React from "react";
-import Frame from "../layouts/template";
+import { Link, graphql } from "gatsby";
+import Frame from "../../layouts/layout";
 
 const AboutPage = ({
   data: {
-    site: { meta }
+    site: { meta },
+  },
+  pageContext: {
+    breadcrumb: { crumbs },
   },
 }) => {
   return (
-    <Frame title={"About"}>
+    <Frame bread={crumbs}>
       <div className="w-full max-w-7xl mx-auto px-8 mt-4 pb-4">
         <h2>About {meta.title}</h2>
         <div className="font-sans leading-8 my-8">
@@ -124,16 +127,18 @@ export const Head = ({
 }) => (
   <>
     <title>About | {meta.title}</title>
-    <meta name="description" content="Personal portfolio by Samsul Muarrif" />
+    <meta name="description" content={meta.desc} />
     <meta name="keywords" content="resume, portfolio, profile" />
   </>
 );
 
-export const pageQuery = graphql`
+export const aboutQuery = graphql`
   query {
     site {
       meta: siteMetadata {
         title
+        author
+        desc
       }
     }
   }

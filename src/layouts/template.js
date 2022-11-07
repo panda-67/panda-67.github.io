@@ -7,8 +7,8 @@ const Layout = ({ path, children }) => {
   return (
     <>
       <div style={{ margin: `0 auto`, padding: `0` }}>
+        {/* <!-- Welcome --> */}
         <div className="h-full">
-          {/* <!-- Welcome --> */}
           {path === "/" && (
             <div div className="h-screen -mb-16">
               <div className="bg-cover bg-blend-multiply bg-center h-full flex justify-start ">
@@ -35,13 +35,13 @@ const Layout = ({ path, children }) => {
         </div>
 
         {/* <!-- Content --> */}
-        <div className="font-edu">
+        <div className="">
           {children}
           <div className="divider divider-vertical my-12 mx-4 px-4 md:px-8 text-2xl md:text-4xl"></div>
         </div>
 
-        <div>
-          {/* !-- Footer --> */}
+        {/* !-- Footer --> */}
+        <div className="w-full">
           <Footer />
         </div>
       </div>

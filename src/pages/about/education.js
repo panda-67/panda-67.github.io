@@ -2,17 +2,13 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import Frame from "../../layouts/layout";
 
-const EducationPage = ({
-  data: {
-    site: { meta },
-    siteSearchIndex,
-  },
+const EducationPage = ({  
   pageContext: {
     breadcrumb: { crumbs },
   },
 }) => {
   return (
-    <Frame data={meta} search={siteSearchIndex} bread={crumbs}>
+    <Frame bread={crumbs}>
       <div className="h-max">
         <div className="m-10 space-y-10 flex flex-col items-center">
           <div className="w-40">
@@ -546,22 +542,18 @@ export const Head = ({
 }) => (
   <>
     <title>Education | {meta.title}</title>
-    <meta name="description" content="Personal portfolio by Samsul Muarrif" />
+    <meta name="description" content={meta.desc}/>
     <meta name="keywords" content="resume, portfolio, profile" />
   </>
 );
 
-export const expQuery = graphql`
+export const eduQuery = graphql`
   query {
     site {
       meta: siteMetadata {
         title
         author
         desc
-        polioPath {
-          name
-          link
-        }
       }
     }
   }

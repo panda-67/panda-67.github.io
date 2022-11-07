@@ -10,8 +10,6 @@ const BlogTags = ({
   data: {
     tagsPosts: { group },
     allMarkdownRemark,
-    site,
-    siteSearchIndex,
   },
   pageContext,
 }) => {
@@ -23,10 +21,7 @@ const BlogTags = ({
   return (
     <div>
       <div className="mx-4 lg:mx-16">
-        <Navbar
-          menuLinks={site.meta.menuLinks}
-          searchData={siteSearchIndex.index}
-        />
+        <Navbar />
       </div>
       <div className="mx-4 lg:mx-16 lg:grid gap-4 grid-flow-col grid-cols-10">
         <div className="col-span-8">
@@ -75,7 +70,7 @@ const BlogTags = ({
         </div>
       </div>
       <div>
-        <Footer socials={site.meta.socials} siteTitle={site.meta.title} />
+        <Footer />
       </div>
     </div>
   );
@@ -157,14 +152,7 @@ export const tagQuery = graphql`
         title
         desc
         author
-        menuLinks {
-          name
-          link
-        }
       }
-    }
-    siteSearchIndex {
-      index
     }
   }
 `;

@@ -14,22 +14,18 @@ module.exports = {
         link: `/portfolio`,
       },
       {
-        name: `blog`,
-        link: `/blog`,
-      },
-      {
         name: `about`,
         link: `/about`,
       },
-    ],
-    polioPath: [
       {
-        name: `experience`,
-        link: ``,
+        name: `blog`,
+        link: `/blog`,
       },
+    ],
+    aboutPath: [
       {
-        name: `expertise`,
-        link: `/expertise`,
+        name: `personal`,
+        link: ``,
       },
       {
         name: `education`,

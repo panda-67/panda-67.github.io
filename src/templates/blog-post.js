@@ -3,14 +3,12 @@ import { graphql, Link } from "gatsby";
 import PropTypes from "prop-types";
 import { Breadcrumb } from "gatsby-plugin-breadcrumb";
 import _ from "lodash";
-import Navbar from "../components/navbar";
+import Frame from "../layouts/template";
 import SidePost from "../components/side-post";
 import TagsLink from "../components/tags-link";
-import Footer from "../components/footer";
 
 const BlogPost = ({
   data: {
-    siteSearchIndex,
     recentPosts: { edges },
     tagsPosts: { group },
     site: { meta },
@@ -28,11 +26,8 @@ const BlogPost = ({
   const Tags = group.map((tag) => <TagsLink key={tag.fieldValue} tag={tag} />);
 
   return (
-    <div>
-      <div className="px-4 lg:px-16 absolute top-0 z-10 bg-zinc-100 bg-opacity-70 w-full">
-        <Navbar menuLinks={meta.menuLinks} searchData={siteSearchIndex.index} />
-      </div>
-      <div className="mx-4 mt-16 pt-2 lg:mx-16 lg:grid grid-cols-10 gap-6">
+    <Frame>
+      <div className="mx-4 pt-2 lg:mx-16 lg:grid grid-cols-10 gap-6">
         <div className="col-span-8 flex flex-col-reverse lg:grid grid-cols-8 gap-6">
           {/* Left Sidebar */}
           <div className="col-span-2 mx-2 mt-8 lg:mt-0">
@@ -220,7 +215,7 @@ const BlogPost = ({
           </div>
 
           {/* TOC */}
-          <div className="hidden lg:block sticky top-3 mt-6 bg-gray-100 rounded-lg -mx-4 px-4 py-3">
+          <div className="hidden lg:block sticky top-20 mt-6 bg-gray-100 rounded-lg -mx-4 px-4 py-3">
             <div className="font-semibold">Daftar Isi</div>
             <ul className="text-blue-400 text-[15px]">
               {headings.map((toc) => (
@@ -238,11 +233,7 @@ const BlogPost = ({
           </div>
         </div>
       </div>
-
-      <div>
-        <Footer socials={meta.socials} siteTitle={meta.title} />
-      </div>
-    </div>
+    </Frame>
   );
 };
 
@@ -323,14 +314,7 @@ export const query = graphql`
       meta: siteMetadata {
         title
         author
-        menuLinks {
-          name
-          link
-        }
       }
-    }
-    siteSearchIndex {
-      index
     }
   }
 `;

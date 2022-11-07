@@ -1,13 +1,10 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
-import Frame from "../../layouts/layout";
+import { Breadcrumb } from "gatsby-plugin-breadcrumb";
+import Frame from "../layouts/template";
 
 const ExperiencePage = ({
-  data: {
-    site: { meta },
-    siteSearchIndex,
-  },
   pageContext: {
     breadcrumb: { crumbs },
   },
@@ -17,8 +14,15 @@ const ExperiencePage = ({
   const gambar3 = `https://images.unsplash.com/photo-1628158088936-68ccaaa400dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80`;
   const gambar4 = `https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80`;
   return (
-    <Frame data={meta} search={siteSearchIndex} bread={crumbs}>
-      <div className="w-full max-w-5xl mx-auto px-4 my-4 space-y-8 font-sans">
+    <Frame>
+      <div className="mx-6 md:mx-10 lg:mx-28">
+        <Breadcrumb
+          className="text-base font-light font-sans capitalize pl-[9px] border-l border-zinc-400"
+          crumbs={crumbs}
+          crumbSeparator=""
+        />
+      </div>
+      <div className="w-full max-w-6xl mx-auto px-4 my-4 space-y-8 font-sans">
         <div className="flex flex-col md:flex-row gap-2 md:gap-8">
           <div className="mx-auto">
             <StaticImage
@@ -126,7 +130,7 @@ export const Head = ({
 }) => (
   <>
     <title>Experience | {meta.title}</title>
-    <meta name="description" content="Personal portfolio by Samsul Muarrif" />
+    <meta name="description" content={meta.desc} />
     <meta name="keywords" content="resume, portfolio, profile" />
   </>
 );
@@ -138,18 +142,7 @@ export const expQuery = graphql`
         title
         author
         desc
-        polioPath {
-          name
-          link
-        }
-        menuLinks {
-          name
-          link
-        }
       }
-    }
-    siteSearchIndex {
-      index
     }
   }
 `;

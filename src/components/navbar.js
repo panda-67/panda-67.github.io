@@ -56,7 +56,7 @@ const Navbar = ({path}) => {
                     </li>
                   ))}
                   {/* Services */}
-                  <li className="dropdown dropdown-hover hidden md:block capitalize">
+                  {/* <li className="dropdown dropdown-hover hidden md:block capitalize">
                     <button tabIndex={0} className="">
                       Services
                     </button>
@@ -76,7 +76,7 @@ const Navbar = ({path}) => {
                         </li>
                       </ul>
                     </button>
-                  </li>
+                  </li> */}
                   {/* Contact */}
                   <li className="dropdown dropdown-hover hidden md:block capitalize">
                     <button tabIndex={0} className="">

@@ -16,7 +16,7 @@ const IndexPage = ({
     <Frame path={path}>
       <main>
         {/* <!-- Expertise --> */}
-        <div className="divider divider-vertical my-12 mx-4 px-4 md:px-8 text-2xl md:text-4xl">
+        <div className="divider divider-vertical my-10 mx-4 px-4 md:px-8 text-xl md:text-4xl">
           Expertise
         </div>
         <div className="mx-6 md:mx-10 mb-8 grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -36,6 +36,23 @@ const IndexPage = ({
               <div className="flex items-center justify-center absolute inset-x-0 bottom-0">
                 <div className="w-full text-center font-bold text-lg md:hover:text-2xl pt-5 pl-3 hover:pt-10 h-16 hover:h-24 transition-all ease-in-out duration-600 delay-100 rounded-b-lg bg-gradient-to-t from-indigo-500 to-transparent text-gray-200">
                   Programming
+                </div>
+              </div>
+            </Link>
+          </div>
+          <div className="rounded-lg hover:border border-indigo-600">
+            <Link
+              to="/entomologist"
+              className="relative w-full flex flex-col transform hover:translate-x-1 hover:translate-y-1"
+            >
+              <img
+                className="rounded-lg object-fill"
+                src="https://cdn.pixabay.com/photo/2019/09/19/17/40/insect-4489864_960_720.jpg"
+                alt=""
+              />
+              <div className="flex items-center justify-center absolute inset-x-0 bottom-0">
+                <div className="w-full text-center font-bold text-lg md:hover:text-2xl pt-5 pl-3 hover:pt-10 h-16 hover:h-24 transition-all ease-in-out duration-600 delay-100 rounded-b-lg bg-gradient-to-t from-indigo-500 to-transparent text-gray-200">
+                  Entomology Expert
                 </div>
               </div>
             </Link>
@@ -74,27 +91,10 @@ const IndexPage = ({
               </div>
             </Link>
           </div>
-          <div className="rounded-lg hover:border border-indigo-600">
-            <Link
-              to="/"
-              className="relative w-full flex flex-col transform hover:translate-x-1 hover:translate-y-1"
-            >
-              <img
-                className="rounded-lg object-fill"
-                src="https://cdn.pixabay.com/photo/2019/09/19/17/40/insect-4489864_960_720.jpg"
-                alt=""
-              />
-              <div className="flex items-center justify-center absolute inset-x-0 bottom-0">
-                <div className="w-full text-center font-bold text-lg md:hover:text-2xl pt-5 pl-3 hover:pt-10 h-16 hover:h-24 transition-all ease-in-out duration-600 delay-100 rounded-b-lg bg-gradient-to-t from-indigo-500 to-transparent text-gray-200">
-                  Entomology Expert
-                </div>
-              </div>
-            </Link>
-          </div>
         </div>
 
         {/* Latest Blog */}
-        <div className="divider divider-vertical my-12 mx-4 px-4 md:px-8 text-2xl md:text-4xl">
+        <div className="divider divider-vertical my-10 mx-4 px-4 md:px-8 text-xl md:text-4xl">
           Latest Post
         </div>
         <div className=" grid lg:grid-cols-2 grid-flow-row gap-4 mx-6 lg:mx-10">
