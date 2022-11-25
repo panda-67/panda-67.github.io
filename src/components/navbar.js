@@ -3,7 +3,7 @@ import { Link, StaticQuery, graphql } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import Search from "./search";
 
-const Navbar = ({path}) => {
+const Navbar = ({ path }) => {
   return (
     <StaticQuery
       query={graphql`
@@ -23,10 +23,10 @@ const Navbar = ({path}) => {
         }
       `}
       render={(data) => (
-        <header>
+        <>
           <div className="flex justify-between">
             {/* main navigate */}
-            <div className="navbar">
+            <nav className="navbar">
               {/* logo */}
               <div className="mr-2 w-8 flex justify-center">
                 <Link
@@ -78,35 +78,28 @@ const Navbar = ({path}) => {
                     </button>
                   </li> */}
                   {/* Contact */}
-                  <li className="dropdown dropdown-hover hidden md:block capitalize">
-                    <button tabIndex={0} className="">
-                      Contact
-                    </button>
-                    <button
-                      tabIndex={0}
-                      className="dropdown-content p-2 shadow bg-base-100 rounded-box w-max"
-                    >
-                      <ul>
-                        <li>
-                          <Link
-                            to="mailto:samuarrif@gmail.com"
-                            target="_blank"
-                            className="flex gap-2"
-                          >
-                            Gmail
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            to="https://wa.me/6285159606776?text=Hello+Samsul+Muarrif"
-                            target="_blank"
-                            className="flex gap-2"
-                          >
-                            Whatsapp
-                          </Link>
-                        </li>
-                      </ul>
-                    </button>
+                  <li className="dropdown dropdown-open hidden md:block capitalize">
+                    <button>Contact</button>
+                    <ul className="dropdown-content p-2 shadow bg-base-100 rounded-box w-max">
+                      <li>
+                        <Link
+                          to="mailto:samuarrif@gmail.com"
+                          target="_blank"
+                          className="flex gap-2"
+                        >
+                          Gmail
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="https://wa.me/6285159606776?text=Hello+Samsul+Muarrif"
+                          target="_blank"
+                          className="flex gap-2"
+                        >
+                          Whatsapp
+                        </Link>
+                      </li>
+                    </ul>
                   </li>
                 </ul>
                 <div className="md:hidden w-full font-edu text-lg">
@@ -196,11 +189,11 @@ const Navbar = ({path}) => {
                     </button>
                   </div>
                   {path === `/` ? null : (
-                    <Search searchIndex={data.site.siteSearchIndex} />
+                    <Search searchIndex={data.siteSearchIndex.index} />
                   )}
                 </div>
               </div>
-            </div>
+            </nav>
 
             {/* dropdown navigate */}
             <div className="dropdown flex items-center dropdown-left md:hidden">
@@ -245,7 +238,7 @@ const Navbar = ({path}) => {
               </button>
             </div>
           </div>
-        </header>
+        </>
       )}
     />
   );

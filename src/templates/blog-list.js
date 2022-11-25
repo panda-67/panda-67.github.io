@@ -49,9 +49,7 @@ const IndexBlog = ({
             </div>
           </div>
         </div>
-      ) : (
-        <div className="h-16"></div>
-      )}
+      ) : null}
 
       <div className="bg-zinc-200 bg-opacity-70 pb-2 pt-1 mb-4 sticky top-16">
         <div className="lg:mx-12 mx-4">
