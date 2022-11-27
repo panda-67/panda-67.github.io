@@ -23,7 +23,7 @@ const Navbar = ({ path }) => {
         }
       `}
       render={(data) => (
-        <>
+        <div className="px-4 lg:px-16 z-10 bg-gray-100 bg-opacity-60 w-full">
           <div className="flex justify-between">
             {/* main navigate */}
             <nav className="navbar">
@@ -238,7 +238,7 @@ const Navbar = ({ path }) => {
               </button>
             </div>
           </div>
-        </>
+        </div>
       )}
     />
   );

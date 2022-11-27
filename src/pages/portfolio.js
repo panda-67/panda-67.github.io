@@ -15,16 +15,16 @@ const ExperiencePage = ({
   const gambar4 = `https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80`;
   return (
     <Frame>
-      <div className="mx-6 md:mx-10 lg:mx-28">
+      <div className="mx-6 md:mx-10 lg:mx-20">
         <Breadcrumb
           className="text-base font-light font-sans capitalize pl-[9px] border-l border-zinc-400"
           crumbs={crumbs}
           crumbSeparator=""
         />
       </div>
-      <div className="w-full max-w-6xl mx-auto px-4 my-4 space-y-8 font-sans">
+      <div className=" mx-6 md:mx-10 lg:mx-20 my-4 space-y-8 font-sans">
         <div className="flex flex-col md:flex-row gap-2 md:gap-8">
-          <div className="mx-auto">
+          <figure className="mx-auto">
             <StaticImage
               src={gambar}
               title="Palm Oil"
@@ -32,7 +32,7 @@ const ExperiencePage = ({
               width={360}
               className="object-fill w-80 h-52 rounded-lg my-4"
             />
-          </div>
+          </figure>
           <div className="px-4 lg:px-0">
             <h3>Community Palm Oil Plantations Survey</h3>
             <h2>
@@ -49,7 +49,7 @@ const ExperiencePage = ({
           </div>
         </div>
         <div className="flex flex-col md:flex-row-reverse gap-2 md:gap-8">
-          <div className="mx-auto">
+          <figure className="mx-auto">
             <StaticImage
               src={gambar2}
               title="Sumatran Orangutan"
@@ -57,7 +57,7 @@ const ExperiencePage = ({
               width={360}
               className="object-fill w-80 h-52 rounded-lg my-4"
             />
-          </div>
+          </figure>
           <div className="px-4 lg:px-0 md:text-right">
             <h3>Sumatran Orangutan Survey</h3>
             <h2>
@@ -76,7 +76,7 @@ const ExperiencePage = ({
           </div>
         </div>
         <div className="flex flex-col md:flex-row gap-2 md:gap-8">
-          <div className="mx-auto">
+          <figure className="mx-auto">
             <StaticImage
               src={gambar4}
               title="Graphic Design"
@@ -84,7 +84,7 @@ const ExperiencePage = ({
               width={360}
               className="object-fill w-80 h-52 rounded-lg my-4"
             />
-          </div>
+          </figure>
           <div className="px-4 lg:px-0">
             <h3>Graphic Designer</h3>
             <h2>
@@ -99,7 +99,7 @@ const ExperiencePage = ({
           </div>
         </div>
         <div className="flex flex-col md:flex-row-reverse gap-2 md:gap-8">
-          <div className="mx-auto">
+          <figure className="mx-auto">
             <StaticImage
               src={gambar3}
               title="Mapping Technician"
@@ -107,7 +107,7 @@ const ExperiencePage = ({
               width={360}
               className="object-fill w-80 h-52 rounded-lg my-4"
             />
-          </div>
+          </figure>
           <div className="px-4 lg:px-0 md:text-right">
             <h3>Mapping Technician</h3>
             <p>

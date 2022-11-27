@@ -6,9 +6,8 @@ import { StaticImage } from "gatsby-plugin-image";
 const Layout = ({ path, children }) => {
   return (
     <div style={{ margin: `0 auto`, padding: `0` }}>
-
       <header>
-      {/* <!-- Welcome --> */}
+        {/* <!-- Welcome --> */}
         <hero className="h-full">
           {path === "/" && (
             <div div className="h-screen -mb-16">
@@ -33,7 +32,7 @@ const Layout = ({ path, children }) => {
         </hero>
 
         {/* Navbar */}
-        <div className="px-4 lg:px-16 sticky top-0 z-10 bg-gray-100 bg-opacity-60 w-full">
+        <div className="sticky top-0">
           <Navbar path={path} />
         </div>
       </header>

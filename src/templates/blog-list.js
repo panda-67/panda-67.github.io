@@ -37,7 +37,7 @@ const IndexBlog = ({
   return (
     <Frame>
       {hero ? (
-        <div className="lg:h-screen h-[18rem] sm:h-[24rem]">
+        <section className="lg:h-screen h-[18rem] sm:h-[24rem]">
           <div
             style={bgImage}
             className="bg-cover w-full h-full -mt-16 bg-left"
@@ -48,10 +48,10 @@ const IndexBlog = ({
               </h1>
             </div>
           </div>
-        </div>
+        </section>
       ) : null}
 
-      <div className="bg-zinc-200 bg-opacity-70 pb-2 pt-1 mb-4 sticky top-16">
+      <section className="bg-zinc-200 bg-opacity-70 pb-2 pt-1 mb-4 sticky top-0">
         <div className="lg:mx-12 mx-4">
           <Breadcrumb
             className="text-base font-light pl-[9px] border-l border-zinc-400"
@@ -59,15 +59,15 @@ const IndexBlog = ({
             crumbSeparator=""
           />
         </div>
-      </div>
+      </section>
 
       <div className="flex flex-col-reverse lg:grid grid-cols-10 mx-6 lg:mx-10 lg:px-6 mt-2">
-        <div className="col-span-2 gap-y-8 flex flex-col-reverse lg:flex-col">
-          <div className="mx-4 lg:mx-0">
+        <section className="col-span-2 gap-y-8 flex flex-col-reverse lg:flex-col">
+          <tags className="mx-4 lg:mx-0">
             <h3>Tags</h3>
             <div className="flex flex-wrap gap-x-2">{Tags}</div>
-          </div>
-          <div className="space-x-2 lg:sticky top-32 rounded-lg shadow-lg px-2 py-4 lg:-ml-4 flex justify-around border items-center">
+          </tags>
+          <nav className="space-x-2 lg:sticky top-16 rounded-lg shadow-lg px-2 py-4 lg:-ml-4 flex justify-around border items-center">
             {previousPage ? (
               <Link
                 className="hover:bg-zinc-300 rounded-lg px-2 py-1 hover:text-white"
@@ -93,10 +93,10 @@ const IndexBlog = ({
             ) : (
               <div className="text-zinc-400 px-2"> ❯ </div>
             )}
-          </div>
-        </div>
+          </nav>
+        </section>
         <div className="col-span-1 divider divider-vertical lg:divider-horizontal mx-0 px-2 lg:px-0 lg:pb-4"></div>
-        <div className="col-span-7 lg:-ml-16">{Posts}</div>
+        <section className="col-span-7 lg:-ml-16">{Posts}</section>
       </div>
     </Frame>
   );

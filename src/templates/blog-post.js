@@ -30,10 +30,12 @@ const BlogPost = ({
       <div className="mx-4 pt-2 lg:mx-16 lg:grid grid-cols-10 gap-6">
         <div className="col-span-8 flex flex-col-reverse lg:grid grid-cols-8 gap-6">
           {/* Left Sidebar */}
-          <div className="col-span-2 mx-2 mt-8 lg:mt-0">
-            <h3>Recent Post</h3>
-            <div>{Posts}</div>
-          </div>
+          <section className="col-span-2 mx-2 mt-8 lg:mt-0">
+            <div className="sticky top-4">
+              <h3>Recent Post</h3>
+              <article>{Posts}</article>
+            </div>
+          </section>
 
           {/* Post */}
           <div className="col-span-6 ">
@@ -65,7 +67,7 @@ const BlogPost = ({
             </di>
 
             <div className="flex flex-col shadow-lg border border-zinc-300 border-t-0 border-l-0 p-4 mt-2 ">
-              <div>
+              <article>
                 {/* Head */}
                 <div className="mb-4 px-2 mx-2 pb-6 pt-2 lg:pt-6 border-b border-slate-300 flex gap-4 flex-col lg:flex-row-reverse lg:justify-end">
                   <div className="flex flex-col lg:items-end w-full">
@@ -84,10 +86,10 @@ const BlogPost = ({
                   </div>
                   <div className="divider lg:divider-horizontal my-0 lg:mx-1"></div>
                   <div className="flex lg:flex-col flex-col-reverse justify-center items-center lg:items-end lg:text-right">
-                    <div className="font-edu capitalize">
+                    <author className="font-edu capitalize">
                       {frontmatter.author ? frontmatter.author : meta.author}
-                    </div>
-                    <h5>{frontmatter.date}</h5>
+                    </author>
+                    <date>{frontmatter.date}</date>
                   </div>
                 </div>
 
@@ -110,15 +112,15 @@ const BlogPost = ({
                 </div>
 
                 {/* Content */}
-                <div
+                <content
                   className="mx-2"
                   dangerouslySetInnerHTML={{ __html: html }}
                 />
-              </div>
+              </article>
 
               {/* Contact */}
 
-              <div className="p-4 rounded-lg border mt-4 space-y-2">
+              <article className="p-4 rounded-lg border mt-4 space-y-2">
                 <p>
                   Jika Anda punya pertanyaan lebih lanjut tentang artikel ini
                   atau ingin <em>request</em> artikel lain.
@@ -177,10 +179,10 @@ const BlogPost = ({
                     Whatsapp
                   </Link>
                 </div>
-              </div>
+              </article>
 
               {/* Navigation */}
-              <div className="mt-8 mx-1 space-x-2 grid grid-flow-col grid-cols-2">
+              <nav className="mt-8 mx-1 space-x-2 grid grid-flow-col grid-cols-2">
                 <div className="pr-4">
                   {previous && (
                     <Link to={`/blog${previous.fields.slug}`}>
@@ -202,21 +204,21 @@ const BlogPost = ({
                     </Link>
                   )}
                 </div>
-              </div>
+              </nav>
             </div>
           </div>
         </div>
 
         {/* Right Sidebar */}
         <div className="col-span-2 mx-2 mt-4 lg:mt-0">
-          <div className="-mx-2">
+          <section className="-mx-2">
             <h3>Tags</h3>
             <div className="flex flex-wrap gap-x-2">{Tags}</div>
-          </div>
+          </section>
 
           {/* TOC */}
-          <div className="hidden lg:block sticky top-20 mt-6 bg-gray-100 rounded-lg -mx-4 px-4 py-3">
-            <div className="font-semibold">Daftar Isi</div>
+          <toc className="hidden lg:block sticky top-4 mt-6 bg-gray-100 rounded-lg -mx-4 px-4 py-3">
+            <h4 className="font-semibold">Daftar Isi</h4>
             <ul className="text-blue-400 text-[15px]">
               {headings.map((toc) => (
                 <li key={toc.id} className="hover:text-gray-500">
@@ -230,7 +232,7 @@ const BlogPost = ({
                 </li>
               ))}
             </ul>
-          </div>
+          </toc>
         </div>
       </div>
     </Frame>
@@ -288,7 +290,7 @@ export const query = graphql`
     }
     recentPosts: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      limit: 7
+      limit: 3
     ) {
       edges {
         node {

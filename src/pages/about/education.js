@@ -514,7 +514,7 @@ const EducationPage = ({
             <h4 className="text-lg tracking-tighter">
               Fakultas Matematika dan Ilmu Pengetahuan Alam
             </h4>
-            <p className="text-xl font-serif">Jurusan Biologi</p>
+            <h4 className="text-xl font-serif">Jurusan Biologi</h4>
           </div>
 
           <div className="text-center max-w-2xl">

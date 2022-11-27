@@ -21,7 +21,7 @@ const Footer = () => {
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row gap-y-4 justify-around pb-8">
           <div className="flex items-baseline justify-center gap-x-6">
             <div>
-              <p className="font-edu text-xl">Contact Us</p>
+              <h4 className="font-edu text-xl">Contact Us</h4>
             </div>
             <div className="flex items-center gap-x-4">
               <Link
@@ -90,9 +90,9 @@ const Footer = () => {
           </div>
           <div className="flex items-center justify-center gap-x-6">
             <div>
-              <p className="font-edu text-xl">Social Links</p>
+              <h4 className="font-edu text-xl">Social Links</h4>
             </div>
-            <div className="flex items-center gap-x-4">
+            <div className="flex items-center gap-x-4 pb-2">
               <Link to={data.site.meta.twitter}>
                 <svg viewBox="0 0 310 310" className="w-5">
                   <path
@@ -128,9 +128,9 @@ const Footer = () => {
               </Link>
             </div>
           </div>
-          <div className="flex justify-center font-edu text-lg">
+          <copyright className="flex justify-center font-edu text-lg">
             Copyright © 2022 {data.site.meta.title}
-          </div>
+          </copyright>
         </div>
       )}
     />
