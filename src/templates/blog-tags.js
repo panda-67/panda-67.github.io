@@ -2,9 +2,8 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { Link, graphql } from "gatsby";
 import _ from "lodash";
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
 import TagsLink from "../components/tags-link";
+import Frame from "../layouts/template";
 
 const BlogTags = ({
   data: {
@@ -19,10 +18,7 @@ const BlogTags = ({
   // const tagHeader = `${totalCount} post${totalCount === 1 ? "" : "s"} tagged with "${tag}"`
 
   return (
-    <div>
-      <div className="mx-4 lg:mx-16">
-        <Navbar />
-      </div>
+    <Frame>
       <div className="mx-4 lg:mx-16 lg:grid gap-4 grid-flow-col grid-cols-10">
         <div className="col-span-8">
           <h4 className="flex justify-center gap-2 text-lg lg:text-2xl mb-6">
@@ -69,10 +65,7 @@ const BlogTags = ({
           </div>
         </div>
       </div>
-      <div>
-        <Footer />
-      </div>
-    </div>
+    </Frame>
   );
 };
 
