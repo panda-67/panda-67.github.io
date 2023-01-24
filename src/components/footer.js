@@ -1,7 +1,7 @@
-import { Link, StaticQuery, graphql } from "gatsby";
-import React from "react";
+import React from "react"
+import { Link, StaticQuery, graphql } from "gatsby"
 
-const Footer = () => {
+export default function Footer() {
   return (
     <StaticQuery
       query={graphql`
@@ -129,12 +129,10 @@ const Footer = () => {
             </div>
           </div>
           <section className="flex justify-center font-edu text-lg">
-            Copyright © 2022 {data.site.meta.title}
+            {data.site.meta.title} &copy; 2022 - {new Date().getFullYear()}
           </section>
         </div>
       )}
     />
-  );
-};
-
-export default Footer;
+  )
+}

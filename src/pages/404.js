@@ -46,8 +46,9 @@ const NotFoundPage = () => {
                 </div>
               </div>
               <div className="pb-2 font-light flex flex-col items-center gap-2">
-                <span className="">
-                  Sorry 😔, we couldn’t find what you were looking for.
+                <span className="text-center leading-7">
+                  Sorry 😔, we couldn’t find what you were looking for. <br />
+                  You might wanna go to link below ... 
                 </span>
                 <br />
                 {process.env.NODE_ENV === "development" ? (

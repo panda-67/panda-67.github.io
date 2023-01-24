@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Link, StaticQuery, graphql } from "gatsby";
-import { StaticImage } from "gatsby-plugin-image";
-import Search from "./search";
+import React, { useState } from "react"
+import { Link, StaticQuery, graphql } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
+import Search from "./search"
 
 export default function Navbar({ path }) {
 
@@ -47,10 +47,12 @@ export default function Navbar({ path }) {
               </div>
               {/* menu link */}
               <div className="flex gap-2 justify-between w-full">
-                <ul className="menu menu-compact menu-horizontal gap-1 p-0">
+                <ul className="menu menu-compact menu-horizontal gap-1">
+
                   {data.site.meta.menuLinks.map((link) => (
                     <li key={link.name} className="hidden md:block capitalize">
                       <Link
+                        className="rounded-lg"
                         activeClassName="bg-zinc-400 text-white"
                         partiallyActive={true}
                         to={link.link}
@@ -59,37 +61,16 @@ export default function Navbar({ path }) {
                       </Link>
                     </li>
                   ))}
-                  {/* Services */}
-                  {/* <li className="dropdown dropdown-hover hidden md:block capitalize">
-                    <button tabIndex={0} className="">
-                      Services
-                    </button>
-                    <button
-                      tabIndex={0}
-                      className="dropdown-content p-2 shadow bg-base-100 rounded-box w-max"
-                    >
-                      <ul className="space-y-2">
-                        <li>
-                          <Link>Mapping</Link>
-                        </li>
-                        <li>
-                          <Link>Web Programming</Link>
-                        </li>
-                        <li>
-                          <Link>Statistics</Link>
-                        </li>
-                      </ul>
-                    </button>
-                  </li> */}
+
                   {/* Contact */}
                   <li className="dropdown dropdown-open hidden lg:block capitalize">
-                    <button>Contact</button>
-                    <ul className="dropdown-content p-2 shadow bg-base-100 rounded-box w-max">
+                    <button className="rounded-lg">Contact</button>
+                    <ul className="dropdown-content p-2 space-y-1 shadow bg-base-100 rounded-box w-max">
                       <li>
                         <Link
                           to="mailto:samuarrif@gmail.com"
                           target="_blank"
-                          className="flex gap-2"
+                          className="rounded-lg"
                         >
                           Gmail
                         </Link>
@@ -98,13 +79,14 @@ export default function Navbar({ path }) {
                         <Link
                           to="https://wa.me/6285159606776?text=Hello+Samsul+Muarrif"
                           target="_blank"
-                          className="flex gap-2"
+                          className="rounded-lg"
                         >
                           Whatsapp
                         </Link>
                       </li>
                     </ul>
                   </li>
+
                 </ul>
                 <div className="md:hidden w-full font-edu text-lg">
                   {data.site.meta.title}
