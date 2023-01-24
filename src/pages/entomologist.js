@@ -1,6 +1,6 @@
-import * as React from "react";
-import { graphql, Link } from "gatsby";
-import Frame from "../layouts/template";
+import * as React from "react"
+import { graphql, Link } from "gatsby"
+import Frame from '../layouts/main'
 
 const EntomologistPage = ({
   pageContext: {
@@ -74,8 +74,8 @@ const EntomologistPage = ({
         </ul>
       </article>
     </Frame>
-  );
-};
+  )
+}
 
 export default EntomologistPage;
 
@@ -89,7 +89,7 @@ export const Head = ({
     <meta name="description" content={meta.desc} />
     <meta name="keywords" content="resume, portfolio, profile" />
   </>
-);
+)
 
 export const expQuery = graphql`
   query {
@@ -101,4 +101,4 @@ export const expQuery = graphql`
       }
     }
   }
-`;
+`

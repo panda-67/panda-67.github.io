@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Link, StaticQuery, graphql } from "gatsby";
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
+import Frame from '../layouts/main'
 
 const codeStyles = {
   color: "#8A6534",
@@ -32,12 +31,8 @@ const NotFoundPage = () => {
           }
         `}
         render={(data) => (
-          <div>
+          <Frame>
             <div className="mx-2 md:mx-16 absolute">
-              <Navbar
-                menuLinks={data.site.siteMetadata.menuLinks}
-                searchData={data.siteSearchIndex.index}
-              />
             </div>
             <div className="h-screen mx-2 md:mx-16 flex flex-col gap-4 w-full max-w-6xl items-center justify-center">
               <div className="flex items-center mb-8">
@@ -78,12 +73,7 @@ const NotFoundPage = () => {
                 </Link>
               </div>
             </div>
-            {/* !-- Footer --> */}
-            <Footer
-              socials={data.site.siteMetadata.socials}
-              siteTitle={data.site.siteMetadata.title}
-            />
-          </div>
+          </Frame>
         )}
       />
     </div>

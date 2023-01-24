@@ -1,6 +1,6 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import Frame from "../../layouts/layout";
+import Frame from "../../layouts/about";
 
 const EducationPage = ({  
   pageContext: {

@@ -27,7 +27,7 @@ export default function Navbar({ path }) {
         }
       `}
       render={(data) => (
-        <div className="px-4 lg:px-16 z-30 bg-gray-100 bg-opacity-50 w-full sticky top-0">
+        <div className="px-4 lg:px-16 bg-gray-100 bg-opacity-50 w-full sticky top-0">
           <div className="flex justify-between">
             {/* main navigate */}
             <nav className="navbar">
@@ -113,10 +113,10 @@ export default function Navbar({ path }) {
                   <Link to="https://sociabuzz.com/panda67/tribe">
                     <svg className="w-5" viewBox="0 0 24 24" fill="none">
                       <path
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                         d="M6.47358 1.96511C8.27963 1.93827 10.2651 2.62414 12 4.04838C13.7349 2.62414 15.7204 1.93827 17.5264 1.96511C19.5142 1.99465 21.3334 2.90112 22.2141 4.68531C23.0878 6.45529 22.9326 8.87625 21.4643 11.7362C19.9939 14.6003 17.1643 18.0021 12.4867 21.8566C12.4382 21.898 12.3855 21.9324 12.3298 21.9596C12.1243 22.0601 11.8798 22.0624 11.6702 21.9596C11.6145 21.9324 11.5618 21.898 11.5133 21.8566C6.83565 18.0021 4.00609 14.6003 2.53569 11.7362C1.06742 8.87625 0.912211 6.45529 1.78589 4.68531C2.66659 2.90112 4.4858 1.99465 6.47358 1.96511Z"
                         fill="red"
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                       />
                     </svg>
                   </Link>
@@ -138,8 +138,8 @@ export default function Navbar({ path }) {
                             <g transform="translate(251.000000, 207.000000)">
                               <rect
                                 fill="current"
-                                fill-opacity="0.01"
-                                fill-rule="nonzero"
+                                fillOpacity="0.01"
+                                fillRule="nonzero"
                                 height="24"
                                 width="24"
                                 x="0"
@@ -149,21 +149,21 @@ export default function Navbar({ path }) {
                               <path
                                 d="M18,16 L18,16 C20.20915,16 22,14.20915 22,12 C22,9.79085 20.20915,8 18,8"
                                 stroke="#212121"
-                                stroLinejoin="round"
+                                strokeLinejoin="round"
                                 strokeWidth="1.5"
                               />
                               <path d="M6,8 C3.79086,8 2,9.79085 2,12 C2,14.20915 3.79086,16 6,16" />
                               <path
                                 d="M6,8 C3.79086,8 2,9.79085 2,12 C2,14.20915 3.79086,16 6,16 L6,16"
                                 stroke="#212121"
-                                stroLinejoin="round"
+                                strokeLinejoin="round"
                                 strokeWidth="1.5"
                               />
                               <path
                                 d="M6,16 L6,15.75 L6,14.5 L6,12 L6,8 C6,4.68629 8.6863,2 12,2 C15.3137,2 18,4.68629 18,8 L18,16 C18,19.3137 15.3137,22 12,22"
                                 stroke="#212121"
-                                stroLinecap="round"
-                                stroLinejoin="round"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                                 strokeWidth="1.5"
                               />
                             </g>
@@ -219,7 +219,7 @@ export default function Navbar({ path }) {
                   />
                 </svg>
               </button>
-              <menu className={`${navOpen ? '-translate-x-20 ease-in duration-200' : 'translate-x-56 ease-out duration-300'} absolute gap-1 top-16 mt-1 p-2 shadow bg-gradient-to-bl from-slate-300 to-transparent text-slate-800 rounded-lg w-max`} >
+              <menu className={`${navOpen ? '-translate-x-20 ease-in duration-200' : `${path === "/" ? 'hidden' : ''} translate-x-24  ease-out duration-300`} absolute gap-1 top-16 mt-1 p-2 shadow bg-gradient-to-bl from-slate-300 to-transparent text-slate-800 rounded-lg w-max`} >
                 <Link
                   className="btn btn-sm btn-ghost flex justify-start font-normal capitalize w-full"
                   activeClassName="bg-zinc-400 text-white"

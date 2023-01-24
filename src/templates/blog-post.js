@@ -1,13 +1,13 @@
-import * as React from "react";
-import { graphql, Link } from "gatsby";
-import PropTypes from "prop-types";
-import { Breadcrumb } from "gatsby-plugin-breadcrumb";
-import _ from "lodash";
-import Frame from "../layouts/template";
-import SidePost from "../components/side-post";
-import TagsLink from "../components/tags-link";
+import * as React from "react"
+import { graphql, Link } from "gatsby"
+import PropTypes from "prop-types"
+import { Breadcrumb } from "gatsby-plugin-breadcrumb"
+import _ from "lodash"
+import Frame from '../layouts/main'
+import SidePost from "../components/side-post"
+import TagsLink from "../components/tags-link"
 
-const BlogPost = ({
+export default function BlogPost({
   data: {
     recentPosts: { edges },
     tagsPosts: { group },
@@ -19,7 +19,7 @@ const BlogPost = ({
     previous,
     next,
   },
-}) => {
+}) {
   const Posts = edges
     .filter((edge) => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
     .map((edge) => <SidePost key={edge.node.id} post={edge.node} />);
@@ -236,8 +236,8 @@ const BlogPost = ({
         </div>
       </div>
     </Frame>
-  );
-};
+  )
+}
 
 BlogPost.propTypes = {
   data: PropTypes.shape({
@@ -255,9 +255,7 @@ BlogPost.propTypes = {
       }),
     }),
   }),
-};
-
-export default BlogPost;
+}
 
 export const Head = ({
   data: {
@@ -314,4 +312,4 @@ export const query = graphql`query BlogQuery($slug: String!) {
       author
     }
   }
-}`;
+}`

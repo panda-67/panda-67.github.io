@@ -32,4 +32,8 @@ html {
     box-shadow: 0 4px 10px rgba(71, 73, 75, 0.5);
     @apply w-full fixed top-0 duration-300;
   }
+
+  .nav-up[data-active="true"] {
+    @apply pt-6;
+  }
 }

@@ -1,9 +1,9 @@
-import * as React from "react";
-import PropTypes from "prop-types";
-import { Link, graphql } from "gatsby";
+import * as React from "react"
+import PropTypes from "prop-types"
+import { Link, graphql } from "gatsby"
 import _ from "lodash";
-import TagsLink from "../components/tags-link";
-import Frame from "../layouts/template";
+import TagsLink from "../components/tags-link"
+import Frame from '../layouts/main'
 
 const BlogTags = ({
   data: {

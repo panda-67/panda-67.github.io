@@ -1,9 +1,9 @@
-import * as React from "react";
-import { Link, graphql } from "gatsby";
-import { Breadcrumb } from "gatsby-plugin-breadcrumb";
-import Frame from "../layouts/template";
-import PostLink from "../components/post-link";
-import TagsLink from "../components/tags-link";
+import * as React from "react"
+import { Link, graphql } from "gatsby"
+import { Breadcrumb } from "gatsby-plugin-breadcrumb"
+import Frame from '../layouts/main'
+import PostLink from "../components/post-link"
+import TagsLink from "../components/tags-link"
 
 export default function IndexBlog({
   data: {
@@ -30,7 +30,7 @@ export default function IndexBlog({
   const Tags = group.map((tag) => <TagsLink key={tag.fieldValue} tag={tag} />)
   return (
     <Frame path={path}>
-      <section className="bg-slate-200 pb-2 pt-1 sticky top-16">
+      <section className="bg-slate-200 pb-2 z-10 pt-1 sticky top-16">
         <div className="lg:mx-12 mx-4">
           <Breadcrumb
             className="text-base font-light pl-[9px] border-l border-zinc-400"
@@ -40,7 +40,7 @@ export default function IndexBlog({
         </div>
       </section>
 
-      <div className={`flex flex-col-reverse lg:grid grid-cols-10 mx-6 lg:mx-10 lg:px-6 ${path === "/blog/" ? "mt-4" : "mt-20"}`}>
+      <div className="flex flex-col-reverse lg:grid grid-cols-10 mx-6 lg:mx-10 lg:px-6 mt-4">
         <section className="col-span-2 gap-y-8 flex flex-col-reverse lg:flex-col">
           <tags className="mx-4 lg:mx-0">
             <h3>Tags</h3>

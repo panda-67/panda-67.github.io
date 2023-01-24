@@ -3,7 +3,7 @@ import { Link, StaticQuery, graphql } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import { Breadcrumb } from "gatsby-plugin-breadcrumb";
 import SideLink from "../components/sidelink";
-import Frame from "./template";
+import Frame from "./main"
 
 const Layout = ({ bread, children}) => {
   return (
@@ -24,7 +24,7 @@ const Layout = ({ bread, children}) => {
       render={(data) => (
         <Frame>
           <div style={{ margin: `0 auto`, padding: `0` }}>
-            <div className="mt-16 mx-6 md:mx-10 lg:mx-20">
+            <div className="mx-6 md:mx-10 lg:mx-20">
               <Breadcrumb
                 className="text-base font-light font-sans capitalize pl-[9px] border-l border-zinc-400"
                 crumbs={bread}

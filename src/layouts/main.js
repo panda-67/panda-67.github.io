@@ -9,7 +9,7 @@ export default function Layout({ path, children }) {
       "url('https://cdn.pixabay.com/photo/2019/01/17/23/14/work-3938875_960_720.jpg')",
   }
 
-  const [scrolled, setScrolled] = useState(false)  
+  const [scrolled, setScrolled] = useState(false)
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 200;
@@ -27,15 +27,16 @@ export default function Layout({ path, children }) {
     <div style={{ margin: `0 auto`, padding: `0` }}>
       <header>
         {/* <!-- Welcome --> */}
-        <hero className="h-full">
+        <section className="h-full">
           {path === "/" ? (
             <div div className="h-screen -mb-16">
-              <div className="bg-cover bg-blend-multiply bg-center h-full flex justify-start ">
+              <div className="bg-cover bg-blend-multiply bg-center h-screen flex justify-start ">
                 <StaticImage
+                  alt="Welcome"
                   src="../images/dendelion.jpg"
                   className="relative"
                 />
-                <div className="absolute flex flex-col justify-center items-center w-full h-full pb-20 bg-gradient-to-tr from-slate-900 to-transparent">
+                <div className="absolute flex flex-col justify-center items-center w-full h-screen pb-20 bg-gradient-to-tr from-slate-900 to-transparent">
                   <div className="text-gray-100 md:text-center font-semibold font-sans space-y-2 lg:space-y-8 mx-6 my-32 lg:my-2">
                     <h1 className="text-3xl md:text-5xl lg:text-6xl break-words lg:mb-2">
                       Hello, I am Samsul Muarrif
@@ -48,14 +49,16 @@ export default function Layout({ path, children }) {
               </div>
             </div>
           ) : null}
-        </hero>
+        </section>
 
         {/* Navbar */}
-        <navbar data-active={scrolled} className={`${path === "/" ? "" : "w-full fixed top-0"} h-nav z-10`}>
+        <div data-active={scrolled} className={`${path === "/" ? "" : "w-full fixed top-0"} h-nav z-20`}>
           <Navbar path={path} />
-        </navbar>
+        </div>
+
+        {/* Blog */}
         {path === "/blog/" ? (
-          <div className="lg:h-screen h-[18rem] sm:h-[24rem]">
+          <div className="lg:h-screen -mb-16 h-[18rem] sm:h-[24rem]">
             <div
               style={bgImage}
               className="bg-cover w-full h-full bg-left"
@@ -71,7 +74,7 @@ export default function Layout({ path, children }) {
       </header>
 
       {/* <!-- Content --> */}
-      <main>{children}</main>
+      <main className="mt-16">{children}</main>
       <div className="divider divider-vertical my-12 mx-4 px-4 md:px-8 text-2xl md:text-4xl"></div>
 
       {/* !-- Footer --> */}
