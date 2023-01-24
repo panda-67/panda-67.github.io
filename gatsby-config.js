@@ -34,10 +34,11 @@ module.exports = {
     ],
   },
   graphqlTypegen: true,
+  trailingSlash: `always`,
   plugins: [
     `gatsby-awesome-pagination`,
     `gatsby-plugin-postcss`,
-    `gatsby-transformer-sharp`,
+    // `gatsby-transformer-sharp`, // sedang error.
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     {

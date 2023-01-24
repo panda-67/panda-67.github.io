@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, StaticQuery, graphql } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import Search from "./search";
 
-const Navbar = ({ path }) => {
+export default function Navbar({ path }) {
+
+  const [navOpen, setNavOpen] = useState(false)
+  const navToggle = () => { setNavOpen(!navOpen) }
+
   return (
     <StaticQuery
       query={graphql`
@@ -23,7 +27,7 @@ const Navbar = ({ path }) => {
         }
       `}
       render={(data) => (
-        <div className="px-4 lg:px-16 z-10 bg-gray-100 bg-opacity-60 w-full">
+        <div className="px-4 lg:px-16 z-30 bg-gray-100 bg-opacity-50 w-full sticky top-0">
           <div className="flex justify-between">
             {/* main navigate */}
             <nav className="navbar">
@@ -78,7 +82,7 @@ const Navbar = ({ path }) => {
                     </button>
                   </li> */}
                   {/* Contact */}
-                  <li className="dropdown dropdown-open hidden md:block capitalize">
+                  <li className="dropdown dropdown-open hidden lg:block capitalize">
                     <button>Contact</button>
                     <ul className="dropdown-content p-2 shadow bg-base-100 rounded-box w-max">
                       <li>
@@ -116,7 +120,9 @@ const Navbar = ({ path }) => {
                       />
                     </svg>
                   </Link>
-                  <div className="dropdown md:hidden capitalize flex items-center">
+                  <div className="dropdown lg:hidden capitalize flex items-center">
+
+                    {/* Contact */}
                     <button tabIndex={0} className="ml-4">
                       <svg
                         className="w-5 text-zinc-300 mx-2"
@@ -196,8 +202,8 @@ const Navbar = ({ path }) => {
             </nav>
 
             {/* dropdown navigate */}
-            <div className="dropdown flex items-center dropdown-left md:hidden">
-              <button tabIndex={0} className="">
+            <div className=" flex items-center md:hidden">
+              <button onClick={navToggle}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -213,10 +219,7 @@ const Navbar = ({ path }) => {
                   />
                 </svg>
               </button>
-              <button
-                tabIndex={0}
-                className="gap-1 dropdown-content mt-6 p-2 shadow bg-base-100 rounded-box w-max"
-              >
+              <menu className={`${navOpen ? '-translate-x-20 ease-in duration-200' : 'translate-x-56 ease-out duration-300'} absolute gap-1 top-16 mt-1 p-2 shadow bg-gradient-to-bl from-slate-300 to-transparent text-slate-800 rounded-lg w-max`} >
                 <Link
                   className="btn btn-sm btn-ghost flex justify-start font-normal capitalize w-full"
                   activeClassName="bg-zinc-400 text-white"
@@ -235,13 +238,11 @@ const Navbar = ({ path }) => {
                     {link.name}
                   </Link>
                 ))}
-              </button>
+              </menu>
             </div>
           </div>
         </div>
       )}
     />
-  );
-};
-
-export default Navbar;
+  )
+}

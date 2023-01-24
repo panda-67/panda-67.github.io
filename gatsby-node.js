@@ -10,31 +10,26 @@ exports.createPages = ({ graphql, actions }) => {
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
   const blogTags = path.resolve(`./src/templates/blog-tags.js`)
 
-  return graphql(`
-      {
-        postsRemark: allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
-        ) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                tags
-              }
-            }
-          }
+  return graphql(`{
+  postsRemark: allMarkdownRemark(sort: {frontmatter: {date: DESC}}, limit: 1000) {
+    edges {
+      node {
+        fields {
+          slug
         }
-        tagsGroup: allMarkdownRemark(limit: 2000) {
-          group(field: frontmatter___tags) {
-            fieldValue
-          }
+        frontmatter {
+          title
+          tags
         }
       }
-    `).then(result => {
+    }
+  }
+  tagsGroup: allMarkdownRemark(limit: 2000) {
+    group(field: {frontmatter: {tags: SELECT}}) {
+      fieldValue
+    }
+  }
+}`).then(result => {
     if (result.errors) { throw result.errors }
 
     const allPosts = result.data.postsRemark.edges
@@ -78,7 +73,7 @@ exports.createPages = ({ graphql, actions }) => {
         },
       })
     })
-  })
+  });
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

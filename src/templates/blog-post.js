@@ -272,51 +272,46 @@ export const Head = ({
   </>
 );
 
-export const query = graphql`
-  query BlogQuery($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      excerpt(pruneLength: 170)
-      headings {
-        id
-        value
-      }
-      frontmatter {
-        date(formatString: "dddd, Do MMMM YYYY", locale: "id-ID")
-        title
-        author
-        tags
-      }
+export const query = graphql`query BlogQuery($slug: String!) {
+  markdownRemark(fields: {slug: {eq: $slug}}) {
+    html
+    excerpt(pruneLength: 170)
+    headings {
+      id
+      value
     }
-    recentPosts: allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
-      limit: 3
-    ) {
-      edges {
-        node {
-          id
-          fields {
-            slug
-          }
-          excerpt(pruneLength: 50)
-          frontmatter {
-            date(formatString: "dddd, Do MMMM YYYY", locale: "id-ID")
-            title
-          }
+    frontmatter {
+      date(formatString: "dddd, Do MMMM YYYY", locale: "id-ID")
+      title
+      author
+      tags
+    }
+  }
+  recentPosts: allMarkdownRemark(sort: {frontmatter: {date: DESC}}, limit: 3) {
+    edges {
+      node {
+        id
+        fields {
+          slug
+        }
+        excerpt(pruneLength: 50)
+        frontmatter {
+          date(formatString: "dddd, Do MMMM YYYY", locale: "id-ID")
+          title
         }
       }
     }
-    tagsPosts: allMarkdownRemark(limit: 2000) {
-      group(field: frontmatter___tags) {
-        fieldValue
-        totalCount
-      }
-    }
-    site {
-      meta: siteMetadata {
-        title
-        author
-      }
+  }
+  tagsPosts: allMarkdownRemark(limit: 2000) {
+    group(field: {frontmatter: {tags: SELECT}}) {
+      fieldValue
+      totalCount
     }
   }
-`;
+  site {
+    meta: siteMetadata {
+      title
+      author
+    }
+  }
+}`;

@@ -15,7 +15,7 @@ const ExperiencePage = ({
   const gambar4 = `https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80`;
   return (
     <Frame>
-      <div className="mx-6 md:mx-10 lg:mx-20">
+      <div className="mt-16 mx-6 md:mx-10 lg:mx-20">
         <Breadcrumb
           className="text-base font-light font-sans capitalize pl-[9px] border-l border-zinc-400"
           crumbs={crumbs}

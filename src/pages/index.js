@@ -4,13 +4,13 @@ import { StaticImage } from "gatsby-plugin-image";
 import Frame from "../layouts/template";
 import _ from "lodash";
 
-const IndexPage = ({
+export default function IndexPage({
   data: {
     allMarkdownRemark: { edges },
     site: { meta },
   },
   path,
-}) => {
+}) {
   const blogImage = `https://cdn.pixabay.com/photo/2019/01/17/23/14/work-3938875_960_720.jpg`;
   return (
     <Frame path={path}>
@@ -166,10 +166,8 @@ const IndexPage = ({
         </section>
       </>
     </Frame>
-  );
-};
-
-export default IndexPage;
+  )
+}
 
 export const Head = ({
   data: {
@@ -183,34 +181,29 @@ export const Head = ({
   </>
 );
 
-export const indexQuery = graphql`
-  query {
-    allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
-      limit: 4
-    ) {
-      edges {
-        node {
-          id
-          fields {
-            slug
-          }
-          excerpt(pruneLength: 260)
-          frontmatter {
-            date(formatString: "dddd, Do MMMM YYYY", locale: "id-ID")
-            title
-            tags
-            author
-          }
+export const indexQuery = graphql`{
+  allMarkdownRemark(sort: {frontmatter: {date: DESC}}, limit: 4) {
+    edges {
+      node {
+        id
+        fields {
+          slug
+        }
+        excerpt(pruneLength: 260)
+        frontmatter {
+          date(formatString: "dddd, Do MMMM YYYY", locale: "id-ID")
+          title
+          tags
+          author
         }
       }
     }
-    site {
-      meta: siteMetadata {
-        title
-        author
-        desc
-      }
+  }
+  site {
+    meta: siteMetadata {
+      title
+      author
+      desc
     }
   }
-`;
+}`;

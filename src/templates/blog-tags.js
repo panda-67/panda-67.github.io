@@ -112,40 +112,38 @@ export const Head = ({
   </>
 );
 
-export const tagQuery = graphql`
-  query ($tag: String) {
-    allMarkdownRemark(
-      limit: 2000
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
-    ) {
-      totalCount
-      edges {
-        node {
-          fields {
-            slug
-          }
-          excerpt(pruneLength: 250)
-          frontmatter {
-            title
-            date(formatString: "dddd, Do MMMM YYYY", locale: "id-ID")
-            tags
-          }
+export const tagQuery = graphql`query ($tag: String) {
+  allMarkdownRemark(
+    limit: 2000
+    sort: {frontmatter: {date: DESC}}
+    filter: {frontmatter: {tags: {in: [$tag]}}}
+  ) {
+    totalCount
+    edges {
+      node {
+        fields {
+          slug
+        }
+        excerpt(pruneLength: 250)
+        frontmatter {
+          title
+          date(formatString: "dddd, Do MMMM YYYY", locale: "id-ID")
+          tags
         }
       }
     }
-    tagsPosts: allMarkdownRemark(limit: 2000) {
-      group(field: frontmatter___tags) {
-        fieldValue
-        totalCount
-      }
-    }
-    site {
-      meta: siteMetadata {
-        title
-        desc
-        author
-      }
+  }
+  tagsPosts: allMarkdownRemark(limit: 2000) {
+    group(field: {frontmatter: {tags: SELECT}}) {
+      fieldValue
+      totalCount
     }
   }
-`;
+  site {
+    meta: siteMetadata {
+      title
+      desc
+      author
+    }
+  }
+}`;

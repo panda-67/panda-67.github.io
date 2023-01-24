@@ -16,7 +16,7 @@ export default class Search extends Component {
     return (
       <>
         {/* <!-- The button to open modal --> */}
-        <button className="h-5 w-5 mx-6 flex justify-center items-center">
+        <button className="h-5 w-5 mx-4 flex justify-center items-center">
           <label
             htmlFor="search-box"
             className="hover:bg-gray-600 hover:bg-opacity-20 rounded-lg cursor-pointer"

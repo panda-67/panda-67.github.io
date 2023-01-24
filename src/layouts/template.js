@@ -1,15 +1,34 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import { StaticImage } from "gatsby-plugin-image";
 
-const Layout = ({ path, children }) => {
+export default function Layout({ path, children }) {
+  const bgImage = {
+    backgroundImage:
+      "url('https://cdn.pixabay.com/photo/2019/01/17/23/14/work-3938875_960_720.jpg')",
+  }
+
+  const [scrolled, setScrolled] = useState(false)  
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 200;
+      if (isScrolled !== scrolled) {
+        setScrolled(!scrolled);
+      }
+    }
+    document.addEventListener('scroll', handleScroll, { passive: true })
+    return () => {
+      document.removeEventListener('scroll', handleScroll);
+    }
+  }, [scrolled])
+
   return (
     <div style={{ margin: `0 auto`, padding: `0` }}>
       <header>
         {/* <!-- Welcome --> */}
         <hero className="h-full">
-          {path === "/" && (
+          {path === "/" ? (
             <div div className="h-screen -mb-16">
               <div className="bg-cover bg-blend-multiply bg-center h-full flex justify-start ">
                 <StaticImage
@@ -28,13 +47,27 @@ const Layout = ({ path, children }) => {
                 </div>
               </div>
             </div>
-          )}
+          ) : null}
         </hero>
 
         {/* Navbar */}
-        <div className="sticky top-0">
+        <navbar data-active={scrolled} className={`${path === "/" ? "" : "w-full fixed top-0"} h-nav z-10`}>
           <Navbar path={path} />
-        </div>
+        </navbar>
+        {path === "/blog/" ? (
+          <div className="lg:h-screen h-[18rem] sm:h-[24rem]">
+            <div
+              style={bgImage}
+              className="bg-cover w-full h-full bg-left"
+            >
+              <div className="w-full h-full bg-gray-800 bg-opacity-40 flex justify-end items-center px-12 lg:px-28">
+                <h1 className="lg:text-7xl sm:text-5xl text-white font-edu transform translate-y-16">
+                  Welcome to Blog Post
+                </h1>
+              </div>
+            </div>
+          </div>
+        ) : null}
       </header>
 
       {/* <!-- Content --> */}
@@ -46,7 +79,5 @@ const Layout = ({ path, children }) => {
         <Footer />
       </footer>
     </div>
-  );
-};
-
-export default Layout;
+  )
+}
