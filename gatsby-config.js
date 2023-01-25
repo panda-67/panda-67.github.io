@@ -42,6 +42,14 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     {
+      resolve: 'gatsby-plugin-use-dark-mode',
+      options: {
+        classNameDark: 'night',
+        storageKey: 'theme',
+        minify: true,
+      },
+    },
+    {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         excludes: [

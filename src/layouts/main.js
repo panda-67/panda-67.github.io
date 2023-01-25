@@ -29,7 +29,7 @@ export default function Layout({ path, children }) {
         {/* <!-- Welcome --> */}
         <section className="h-full">
           {path === "/" ? (
-            <div div className="h-screen -mb-16">
+            <div div className="h-screen mb-10 md:-mb-16">
               <div className="bg-cover bg-blend-multiply bg-center h-screen flex justify-start ">
                 <StaticImage
                   alt="Welcome"
@@ -52,7 +52,7 @@ export default function Layout({ path, children }) {
         </section>
 
         {/* Navbar */}
-        <div data-active={scrolled} className={`m-nav h-nav z-30`}>
+        <div data-active={scrolled} className={`${path === '/' ? '' : 'md:top-0'} m-nav h-nav z-30`}>
           <Navbar path={path} />
         </div>
 
@@ -74,7 +74,7 @@ export default function Layout({ path, children }) {
       </header>
 
       {/* <!-- Content --> */}
-      <main className="md:mt-16">{children}</main>
+      <main className="mt-2 md:mt-16">{children}</main>
       <div className="divider divider-vertical my-12 mx-4 px-4 md:px-8 text-2xl md:text-4xl"></div>
 
       {/* !-- Footer --> */}

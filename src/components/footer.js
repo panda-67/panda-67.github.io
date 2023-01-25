@@ -92,7 +92,7 @@ export default function Footer() {
             <div>
               <h4 className="font-edu text-xl">Social Links</h4>
             </div>
-            <div className="flex items-center gap-x-4 pb-2">
+            <div className="flex items-center gap-x-4 pb-2 fill-current">
               <Link to={data.site.meta.twitter}>
                 <svg viewBox="0 0 310 310" className="w-5">
                   <path
