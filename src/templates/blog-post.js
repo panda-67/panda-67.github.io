@@ -31,7 +31,7 @@ export default function BlogPost({
         <div className="col-span-8 flex flex-col-reverse lg:grid grid-cols-8 gap-6">
           {/* Left Sidebar */}
           <section className="col-span-2 mx-2 mt-8 lg:mt-0">
-            <div className="sticky top-4">
+            <div className="sticky top-[5rem]">
               <h3>Recent Post</h3>
               <article>{Posts}</article>
             </div>
@@ -39,14 +39,14 @@ export default function BlogPost({
 
           {/* Post */}
           <div className="col-span-6 ">
-            <di className="flex rounded-lg py-1 leading-4 tranform -translate-x-1">
+            <div className="flex rounded-lg py-1 leading-4 tranform -translate-x-1">
               <div className="md:hidden">
                 <Breadcrumb
                   className="text-xs font-light pl-[9px] border-l border-zinc-400"
                   crumbs={crumbs}
                   crumbSeparator=""
                   crumbLabel={_.truncate(frontmatter.title, {
-                    length: 30,
+                    length: 40,
                     omission: " ...",
                   })}
                 />
@@ -60,11 +60,9 @@ export default function BlogPost({
                     length: 70,
                     omission: " ...",
                   })}
-                  border-t-0
-                  border-l-0
                 />
               </div>
-            </di>
+            </div>
 
             <div className="flex flex-col shadow-lg border border-zinc-300 border-t-0 border-l-0 p-4 mt-2 ">
               <article>
@@ -86,21 +84,21 @@ export default function BlogPost({
                   </div>
                   <div className="divider lg:divider-horizontal my-0 lg:mx-1"></div>
                   <div className="flex lg:flex-col flex-col-reverse justify-center items-center lg:items-end lg:text-right">
-                    <author className="font-edu capitalize">
+                    <div aria-label="author" className="font-edu capitalize">
                       {frontmatter.author ? frontmatter.author : meta.author}
-                    </author>
-                    <date>{frontmatter.date}</date>
+                    </div>
+                    <div aria-label="date">{frontmatter.date}</div>
                   </div>
                 </div>
 
                 {/* TOC */}
-                <div className="lg:hidden mt-6 bg-gray-100 rounded-lg px-4 py-3">
+                <div aria-label="table of content" className="lg:hidden sticky top-1 md:relative z-20 mt-6 bg-base-300 bg-opacity-70 rounded-lg px-4 py-3">
                   <div className="font-semibold">Daftar Isi</div>
-                  <ul className="text-blue-400 text-[15px]">
+                  <ul className="text-inherit text-[15px]">
                     {headings.map((toc) => (
-                      <li key={toc.id} className="hover:text-gray-500">
+                      <li key={toc.id} className=" hover:text-white">
                         <Link
-                          activeClassName="bg-zinc-400 text-white"
+                          activeClassName="bg-zinc-400 text-current"
                           partiallyActive={true}
                           to={`#${toc.id}`}
                         >
@@ -112,7 +110,8 @@ export default function BlogPost({
                 </div>
 
                 {/* Content */}
-                <content
+                <div
+                  aria-label="content"
                   className="mx-2"
                   dangerouslySetInnerHTML={{ __html: html }}
                 />
@@ -168,7 +167,7 @@ export default function BlogPost({
                       <path
                         fill="#25d366"
                         stroke="#fff"
-                        stroke-width="26"
+                        strokeWidth="26"
                         d="M123 393l14-65a138 138 0 1150 47z"
                       />
                       <path
@@ -186,7 +185,7 @@ export default function BlogPost({
                 <div className="pr-4">
                   {previous && (
                     <Link to={`/blog${previous.fields.slug}`}>
-                      <div className="flex flex-col items-start link-primary text-neutral">
+                      <div className="flex flex-col items-start link-primary text-current">
                         <span>❮ Previous</span>
                         <h4>{previous.frontmatter.title}</h4>
                       </div>
@@ -197,7 +196,7 @@ export default function BlogPost({
                 <div>
                   {next && (
                     <Link to={`/blog${next.fields.slug}`}>
-                      <div className="flex flex-col items-end link-primary text-neutral">
+                      <div className="flex flex-col items-end link-primary text-current">
                         <span>Next ❯</span>
                         <h4 className="text-right">{next.frontmatter.title}</h4>
                       </div>
@@ -211,13 +210,13 @@ export default function BlogPost({
 
         {/* Right Sidebar */}
         <div className="col-span-2 mx-2 mt-4 lg:mt-0">
-          <section className="-mx-2">
+          <section className="px-0">
             <h3>Tags</h3>
-            <div className="flex flex-wrap gap-x-2">{Tags}</div>
+            <div className="flex flex-wrap gap-x-2 mx-1">{Tags}</div>
           </section>
 
           {/* TOC */}
-          <toc className="hidden lg:block sticky top-4 mt-6 bg-gray-100 rounded-lg -mx-4 px-4 py-3">
+          <div aria-label="table of content" className="hidden lg:block sticky top-[5rem] mt-6 bg-base-200 rounded-lg -mx-4 px-4 py-3">
             <h4 className="font-semibold">Daftar Isi</h4>
             <ul className="text-blue-400 text-[15px]">
               {headings.map((toc) => (
@@ -232,7 +231,7 @@ export default function BlogPost({
                 </li>
               ))}
             </ul>
-          </toc>
+          </div>
         </div>
       </div>
     </Frame>

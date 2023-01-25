@@ -3,12 +3,12 @@ import { Link } from "gatsby"
 import _ from "lodash"
 
 const TagsLink = ({ tag }) => (
-  <tag key={tag.fieldValue} className="link-primary text-neutral">
-    <Link to={`/tags/${_.kebabCase(tag.fieldValue)}/`} >
+  <div aria-label="tags" key={tag.fieldValue}>
+    <Link to={`/tags/${_.kebabCase(tag.fieldValue)}/`} className="hover:text-sky-500 text-current">
       {_.startCase(tag.fieldValue)}
-      <span className="badge bg-amber-300 border-amber-300 text-gray-800 transform -translate-y-1 text-xs ml-1">{tag.totalCount}</span>
+      <span className="badge text-neutral-focus bg-neutral-content border-neutral-focus transform -translate-y-1 text-xs ml-1">{tag.totalCount}</span>
     </Link>
-  </tag>
+  </div>
 )
 
 export default TagsLink

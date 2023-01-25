@@ -30,10 +30,10 @@ export default function IndexBlog({
   const Tags = group.map((tag) => <TagsLink key={tag.fieldValue} tag={tag} />)
   return (
     <Frame path={path}>
-      <section className="bg-slate-200 pb-2 z-10 pt-1 sticky top-16">
+      <section className="bg-neutral-content pb-2 z-10 pt-1 sticky top-0 md:top-16">
         <div className="lg:mx-12 mx-4">
           <Breadcrumb
-            className="text-base font-light pl-[9px] border-l border-zinc-400"
+            className="text-base text-neutral-focus font-light pl-[9px] border-l border-current"
             crumbs={crumbs}
             crumbSeparator=""
           />

@@ -18,7 +18,7 @@ export default function Footer() {
         }
       `}
       render={(data) => (
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row gap-y-4 justify-around pb-8">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row gap-y-4 justify-around pb-16 md:pb-8">
           <div className="flex items-baseline justify-center gap-x-6">
             <div>
               <h4 className="font-edu text-xl">Contact Us</h4>
@@ -129,7 +129,7 @@ export default function Footer() {
             </div>
           </div>
           <section className="flex justify-center font-edu text-lg">
-            {data.site.meta.title} &copy; 2022 - {new Date().getFullYear()}
+            &copy; 2022 - {new Date().getFullYear()} {data.site.meta.title}
           </section>
         </div>
       )}

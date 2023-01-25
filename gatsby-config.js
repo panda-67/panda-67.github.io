@@ -33,7 +33,7 @@ module.exports = {
       },
     ],
   },
-  graphqlTypegen: true,
+  // graphqlTypegen: true,
   trailingSlash: `always`,
   plugins: [
     `gatsby-awesome-pagination`,

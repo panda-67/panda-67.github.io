@@ -5,12 +5,12 @@ import { Link } from "gatsby"
 
 export default function PostCard({ meta, edge }) {
    return (
-      <article className="my-5 mx-8 font-sans hover:translate-x-0.5 hover:translate-y-0.5">
+      <article className="my-5 mx-8 font-sans hover:translate-x-0.5 hover:translate-y-0.5 text-base-content">
          <div className="flex gap-1">
             {edge.node.frontmatter.tags.map((tag) => (
                <span key={tag}>
                   <Link to={`/tags/${tag}`}>
-                     <small className="my-1 italic bg-yellow-300 border-amber-300 text-zinc-700 badge">
+                     <small className="my-1 italic text-neutral-focus bg-neutral-content border-none badge">
                         {_.startCase(tag)}
                      </small>
                   </Link>
@@ -18,7 +18,7 @@ export default function PostCard({ meta, edge }) {
             ))}
          </div>
          <Link to={`/blog${edge.node.fields.slug}`}>
-            <h3 aria-label="blog-title" >
+            <h3 aria-label="blog-title" className="">
                {_.truncate(edge.node.frontmatter.title, {
                   length: 64,
                   omission: " ...",

@@ -52,11 +52,11 @@ const BlogTags = ({
         <div className="col-span-2 mt-8 lg:mt-14">
           <div className="sticky top-2 space-y-4">
             <Link to="/blog">
-              <div className="w-full font-semibold rounded-lg bg-gray-200 hover:bg-gray-600 hover:text-gray-100 shadow-lg p-4">
+              <div className="w-full font-semibold rounded-lg bg-inherit hover:bg-neutral-content hover:text-neutral-focus shadow-md shadow-current p-4">
                 All Posts
               </div>
             </Link>
-            <div className="rounded-lg bg-gray-200 shadow-lg p-4 mt-2 lg:mt-0 space-y-2">
+            <div className="rounded-lg bg-inherit shadow-md shadow-current p-4 mt-2 lg:mt-0 space-y-2">
               <h4>
                 <strong>All Tags</strong>
               </h4>

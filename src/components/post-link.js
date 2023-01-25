@@ -9,26 +9,25 @@ const PostLink = ({ post, author }) => (
         {post.frontmatter.title}
       </Link>
     </h3>
-    <tags className="flex gap-1">
+    <div aril-label="tags" className="flex gap-1">
       {post.frontmatter.tags.map(tag => (
-        <tag key={tag}>
+        <div key={tag}>
           <Link to={`/tags/${tag}`}>
-            <small className="my-1 italic bg-yellow-300 border-amber-300 text-gray-800 badge">{_.startCase(tag)}</small>
+            <small className="my-1 italic bg-neutral-content text-neutral-focus border-current badge">{_.startCase(tag)}</small>
           </Link>
-        </tag>
+        </div>
       ))}
-    </tags>
-    <div className="flex gap-2 mt-1">
-      <author className="font-edu text-base">By {post.frontmatter.author ? post.frontmatter.author : author}</author>
-      <p className="divider divider-horizontal py-1 mx-0"></p>
-      <date>{post.frontmatter.date}</date>
     </div>
-    <excerpt>
+    <div className="flex gap-2 mt-1">
+      <div aria-label="author" className="font-edu text-base">By {post.frontmatter.author ? post.frontmatter.author : author}</div>      
+      <div aria-label="date" className="text-sm ml-2 pl-1 border-l border-current">{post.frontmatter.date}</div>
+    </div>
+    <div aria-label="excerpt">
       {post.excerpt + ` `}
       <Link to={`/blog${post.fields.slug}`} className="hover:text-primary">
         &rArr;{` more`}
       </Link>
-    </excerpt>
+    </div>
   </article>
 )
 

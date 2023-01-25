@@ -27,13 +27,38 @@ html {
   }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (max-width: 767px) {
+  .m-nav[data-active="false"] {
+    @apply w-full fixed bottom-0;
+  }
+  .m-nav[data-active="true"] {
+    @apply w-full fixed bottom-0 duration-300;
+  }
+
+  .theme-toggle {
+    @apply bottom-16 mb-1;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .h-nav[data-active="false"] {
+    @apply w-full absolute overflow-x-clip;
+  }
+
   .h-nav[data-active="true"] {
     box-shadow: 0 4px 10px rgba(71, 73, 75, 0.5);
     @apply w-full fixed top-0 duration-300;
   }
 
   .nav-up[data-active="true"] {
-    @apply pt-6;
+    @apply pt-1;
+  }
+
+  .theme-toggle[data-active="false"] {
+    @apply bottom-16 mb-1;
+  }
+
+  .theme-toggle[data-active="true"] {
+    @apply top-16 mt-1;
   }
 }

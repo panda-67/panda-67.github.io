@@ -57,10 +57,10 @@ const Layout = ({ bread, children}) => {
                 <div className="sticky top-20">
                   <figure className=" h-48">
                     <StaticImage
-                      src="../images/profile.png"
+                      src="../images/icon.svg"
                       title="Samsul Muarrif"
                       alt="Profile"
-                      width={160}
+                      width={130}
                     />
                   </figure>
                   <ul className="flex flex-col gap-2 text-lg text-center font-medium font-edu">

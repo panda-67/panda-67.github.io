@@ -52,13 +52,13 @@ export default function Layout({ path, children }) {
         </section>
 
         {/* Navbar */}
-        <div data-active={scrolled} className={`${path === "/" ? "" : "w-full fixed top-0"} h-nav z-20`}>
+        <div data-active={scrolled} className={`m-nav h-nav z-30`}>
           <Navbar path={path} />
         </div>
 
         {/* Blog */}
         {path === "/blog/" ? (
-          <div className="lg:h-screen -mb-16 h-[18rem] sm:h-[24rem]">
+          <div className="lg:h-screen md:-mb-16 h-[18rem] sm:h-[24rem]">
             <div
               style={bgImage}
               className="bg-cover w-full h-full bg-left"
@@ -74,7 +74,7 @@ export default function Layout({ path, children }) {
       </header>
 
       {/* <!-- Content --> */}
-      <main className="mt-16">{children}</main>
+      <main className="md:mt-16">{children}</main>
       <div className="divider divider-vertical my-12 mx-4 px-4 md:px-8 text-2xl md:text-4xl"></div>
 
       {/* !-- Footer --> */}

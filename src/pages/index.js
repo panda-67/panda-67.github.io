@@ -34,7 +34,7 @@ export default function IndexPage({
         <section className="lg:w-2/3">
           <Header>Expertise</Header>
           <div className="mx-6 grid gap-4 sm:grid-cols-2">
-            <CardLink href='/programming' src='https://cdn.pixabay.com/photo/2016/11/23/14/45/coding-1853305_960_720.jpg' alt='Progamming'>
+            <CardLink href='/programming' src="https://cdn.pixabay.com/photo/2016/11/23/14/45/coding-1853305_960_720.jpg" alt='Progamming'>
               Programming
             </CardLink>
             <CardLink href='/entomologist' src='https://cdn.pixabay.com/photo/2019/09/19/17/40/insect-4489864_960_720.jpg' alt='Entomologist'>
@@ -52,7 +52,7 @@ export default function IndexPage({
         {/* Latest Blog */}
         <section className="lg:w-1/3 w-full">
           <Header>Latest Post</Header>
-          <div className="mx-6 py-2 min-h-max rounded-lg border border-indigo-600 bg-gradient-to-tl from-slate-300 via-transparent to-transparent text-slate-800">
+          <div className="mx-6 py-2 min-h-max rounded-lg border border-indigo-600 bg-gradient-to-tr from-base-300 to-transparent text-slate-800">
             {edges
               .filter((edge) => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
               .map((edge) => (<PostCard meta={meta} edge={edge} key={edge.node.id} />))}
