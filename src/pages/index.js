@@ -1,34 +1,14 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 import Frame from '../layouts/main'
 import CardLink from "../components/card-link"
 import PostCard from "../components/post-card"
+import { useSiteMetadata } from "../hooks/use-site-metadata"
 
-export default function IndexPage({
-  data: {
-    allMarkdownRemark: { edges },
-    site: { meta },
-  },
-  path,
-}) {
-
-  const [scrolled, setScrolled] = useState(false)
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 200;
-      if (isScrolled !== scrolled) {
-        setScrolled(!scrolled);
-      }
-    }
-    document.addEventListener('scroll', handleScroll, { passive: true })
-    return () => {
-      document.removeEventListener('scroll', handleScroll);
-    }
-  }, [scrolled])
-
+export default function IndexPage({ data: { allMarkdownRemark: { edges } }, path }) {
   return (
     <Frame path={path}>
-      <div data-active={scrolled} className="w-full h-full flex flex-wrap -mt-10 nav-up">
+      <div className="w-full h-full flex flex-wrap -mt-16">
 
         {/* Expertise */}
         <section className="lg:w-2/3">
@@ -55,11 +35,11 @@ export default function IndexPage({
           <div className="mx-6 py-2 min-h-max rounded-lg border border-indigo-600 bg-gradient-to-tr from-base-300 to-transparent text-slate-800">
             {edges
               .filter((edge) => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
-              .map((edge) => (<PostCard meta={meta} edge={edge} key={edge.node.id} />))}
+              .map((edge) => (<PostCard edge={edge} key={edge.node.id} />))}
           </div>
         </section>
-        
-      </div>      
+
+      </div>
     </Frame>
   )
 }
@@ -72,17 +52,16 @@ function Header({ children }) {
   )
 }
 
-export const Head = ({
-  data: {
-    site: { meta },
-  },
-}) => (
-  <>
-    <title>Welcome | {meta.title}</title>
-    <meta name="description" content={meta.desc} />
-    <meta name="keywords" content="resume, portfolio, profile" />
-  </>
-)
+export function Head() {
+  const { meta } = useSiteMetadata()
+  return (
+    <>
+      <title>Welcome | {meta.title}</title>
+      <meta name="keywords" content="resume, portfolio, profile" />
+      <meta name="description" content="Welcome to my personal website." />
+    </>
+  )
+}
 
 export const indexQuery = graphql`{
   allMarkdownRemark(sort: {frontmatter: {date: DESC}}, limit: 4) {
@@ -100,13 +79,6 @@ export const indexQuery = graphql`{
           author
         }
       }
-    }
-  }
-  site {
-    meta: siteMetadata {
-      title
-      author
-      desc
     }
   }
 }`

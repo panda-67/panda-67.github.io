@@ -1,12 +1,8 @@
-import * as React from "react";
-import { graphql } from "gatsby";
-import Frame from "../../layouts/about";
+import * as React from "react"
+import Frame from "../../layouts/about"
+import { useSiteMetadata } from "../../hooks/use-site-metadata"
 
-const EducationPage = ({  
-  pageContext: {
-    breadcrumb: { crumbs },
-  },
-}) => {
+export default function EducationPage({ pageContext: { breadcrumb: { crumbs } } }) {
   return (
     <Frame bread={crumbs}>
       <div className="h-max">
@@ -530,31 +526,16 @@ const EducationPage = ({
         </div>
       </div>
     </Frame>
-  );
-};
+  )
+}
 
-export default EducationPage;
-
-export const Head = ({
-  data: {
-    site: { meta },
-  },
-}) => (
-  <>
-    <title>Education | {meta.title}</title>
-    <meta name="description" content={meta.desc}/>
-    <meta name="keywords" content="resume, portfolio, profile" />
-  </>
-);
-
-export const eduQuery = graphql`
-  query {
-    site {
-      meta: siteMetadata {
-        title
-        author
-        desc
-      }
-    }
-  }
-`;
+export function Head() {
+  const { meta } = useSiteMetadata()
+  return (
+    <>
+      <title>Education | {meta.title}</title>
+      <meta name="keywords" content="resume, portfolio, profile" />
+      <meta name="description" content="Whole thing about my school." />
+    </>
+  )
+}

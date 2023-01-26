@@ -1,18 +1,16 @@
-import * as React from "react";
-import { graphql } from "gatsby";
-import { StaticImage } from "gatsby-plugin-image";
-import { Breadcrumb } from "gatsby-plugin-breadcrumb";
+import * as React from "react"
+import { StaticImage } from "gatsby-plugin-image"
+import { Breadcrumb } from "gatsby-plugin-breadcrumb"
+import { useSiteMetadata } from "../hooks/use-site-metadata"
 import Frame from '../layouts/main'
 
-const ExperiencePage = ({
-  pageContext: {
-    breadcrumb: { crumbs },
-  },
-}) => {
+export default function ExperiencePage({ pageContext: { breadcrumb: { crumbs } } }) {
+
   const gambar = `https://images.unsplash.com/photo-1620509400948-f9c2c0a61e37?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80`;
   const gambar2 = `https://images.unsplash.com/photo-1619369029907-b8d8d5eac859?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80`;
   const gambar3 = `https://images.unsplash.com/photo-1628158088936-68ccaaa400dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80`;
   const gambar4 = `https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80`;
+
   return (
     <Frame>
       <div className="mx-6 md:mx-10 lg:mx-20">
@@ -118,31 +116,16 @@ const ExperiencePage = ({
         </div>
       </div>
     </Frame>
-  );
-};
+  )
+}
 
-export default ExperiencePage;
-
-export const Head = ({
-  data: {
-    site: { meta },
-  },
-}) => (
-  <>
-    <title>Experience | {meta.title}</title>
-    <meta name="description" content={meta.desc} />
-    <meta name="keywords" content="resume, portfolio, profile" />
-  </>
-);
-
-export const expQuery = graphql`
-  query {
-    site {
-      meta: siteMetadata {
-        title
-        author
-        desc
-      }
-    }
-  }
-`;
+export function Head() {
+  const { meta } = useSiteMetadata()
+  return (
+    <>
+      <title>Experience | {meta.title}</title>
+      <meta name="keywords" content="resume, portfolio, profile" />
+      <meta name="description" content="My recent project & work." />
+    </>
+  )
+}

@@ -1,9 +1,11 @@
 import React from "react"
 import _ from "lodash"
 import { Link } from "gatsby"
+import { useSiteMetadata } from "../hooks/use-site-metadata"
 
 
-export default function PostCard({ meta, edge }) {
+export default function PostCard({ edge }) {
+   const { meta } = useSiteMetadata()
    return (
       <article className="my-5 mx-8 font-sans hover:translate-x-0.5 hover:translate-y-0.5 text-base-content">
          <div className="flex gap-1">

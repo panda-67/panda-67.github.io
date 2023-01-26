@@ -33,7 +33,7 @@ export function useScroll() {
 
 export const useMenuLink = () => {
 	const { site } = useStaticQuery(graphql`
-      query MenuQuery {
+      query {
          site {
            	siteMetadata {
 					menuLinks {

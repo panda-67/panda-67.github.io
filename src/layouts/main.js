@@ -41,7 +41,7 @@ export default function Layout({ path, children }) {
         </section>
 
         {/* Navbar */}
-        <div data-active={scrolled} className={`${path === '/' ? '' : 'md:top-0'} m-nav h-nav z-30`}>
+        <div data-active={scrolled} className={`${path === '/' ? '' : 'md:top-0 md:fixed'} m-nav h-nav z-30`}>
           <Navbar path={path} />
         </div>
 

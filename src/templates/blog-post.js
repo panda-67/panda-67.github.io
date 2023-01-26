@@ -1,29 +1,25 @@
-import * as React from "react"
-import { graphql, Link } from "gatsby"
-import PropTypes from "prop-types"
-import { Breadcrumb } from "gatsby-plugin-breadcrumb"
+import React from "react"
 import _ from "lodash"
-import Frame from '../layouts/main'
+import PropTypes from "prop-types"
+import { graphql, Link } from "gatsby"
+import { Breadcrumb } from "gatsby-plugin-breadcrumb"
+import { useSiteMetadata } from "../hooks/use-site-metadata"
 import SidePost from "../components/side-post"
 import TagsLink from "../components/tags-link"
+import Frame from '../layouts/main'
 
 export default function BlogPost({
-  data: {
-    recentPosts: { edges },
-    tagsPosts: { group },
-    site: { meta },
-    markdownRemark: { frontmatter, html, excerpt, headings },
-  },
-  pageContext: {
-    breadcrumb: { crumbs },
-    previous,
-    next,
-  },
+  data: { recentPosts: { edges }, tagsPosts: { group }, markdownRemark: { frontmatter, html, headings } },
+  pageContext: { breadcrumb: { crumbs }, previous, next }
 }) {
+
+  const { meta } = useSiteMetadata()
+
   const Posts = edges
     .filter((edge) => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
-    .map((edge) => <SidePost key={edge.node.id} post={edge.node} />);
-  const Tags = group.map((tag) => <TagsLink key={tag.fieldValue} tag={tag} />);
+    .map((edge) => <SidePost key={edge.node.id} post={edge.node} />)
+
+  const Tags = group.map((tag) => <TagsLink key={tag.fieldValue} tag={tag} />)
 
   return (
     <Frame>
@@ -248,28 +244,22 @@ BlogPost.propTypes = {
         }).isRequired
       ),
     }),
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-      }),
-    }),
   }),
 }
 
-export const Head = ({
-  data: {
-    site: { meta },
-    markdownRemark: { frontmatter, excerpt },
-  },
-}) => (
-  <>
-    <title>{`Blogs | ` + frontmatter.title + ` | ` + meta.title}</title>
-    <meta name="description" content={excerpt} />
-    <meta name="keywords" content={frontmatter.tags} />
-  </>
-);
+export function Head({ data: { markdownRemark: { frontmatter, excerpt } } }) {
+  const { meta } = useSiteMetadata()
+  return (
+    <>
+      <title>{`Blogs | ${frontmatter.title} | ${meta.title }`}</title>
+      <meta name="description" content={excerpt} />
+      <meta name="keywords" content={frontmatter.tags} />
+    </>
+  )
+}
 
-export const query = graphql`query BlogQuery($slug: String!) {
+export const query = graphql`
+query BlogQuery($slug: String!) {
   markdownRemark(fields: {slug: {eq: $slug}}) {
     html
     excerpt(pruneLength: 170)
@@ -303,12 +293,6 @@ export const query = graphql`query BlogQuery($slug: String!) {
     group(field: {frontmatter: {tags: SELECT}}) {
       fieldValue
       totalCount
-    }
-  }
-  site {
-    meta: siteMetadata {
-      title
-      author
     }
   }
 }`
