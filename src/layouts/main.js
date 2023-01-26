@@ -1,27 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import { StaticImage } from "gatsby-plugin-image";
+import { useScroll } from "../hooks/use-navbar";
 
 export default function Layout({ path, children }) {
+
   const bgImage = {
     backgroundImage:
       "url('https://cdn.pixabay.com/photo/2019/01/17/23/14/work-3938875_960_720.jpg')",
   }
-
-  const [scrolled, setScrolled] = useState(false)
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 200;
-      if (isScrolled !== scrolled) {
-        setScrolled(!scrolled);
-      }
-    }
-    document.addEventListener('scroll', handleScroll, { passive: true })
-    return () => {
-      document.removeEventListener('scroll', handleScroll);
-    }
-  }, [scrolled])
+  const scrolled = useScroll()
 
   return (
     <div style={{ margin: `0 auto`, padding: `0` }}>

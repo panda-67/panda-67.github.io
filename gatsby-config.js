@@ -36,6 +36,7 @@ module.exports = {
   // graphqlTypegen: true,
   trailingSlash: `always`,
   plugins: [
+    `gatsby-plugin-advanced-sitemap`,
     `gatsby-awesome-pagination`,
     `gatsby-plugin-postcss`,
     // `gatsby-transformer-sharp`, // sedang error.
@@ -49,17 +50,17 @@ module.exports = {
         minify: true,
       },
     },
-    {
-      resolve: `gatsby-plugin-sitemap`,
-      options: {
-        excludes: [
-          `**/dev-404-page/**`,
-          `**/404/**`,
-          `**/404.html`,
-          `**/offline-plugin-app-shell-fallback/**`,
-        ],
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-sitemap`,
+    //   options: {
+    //     excludes: [
+    //       `**/dev-404-page/**`,
+    //       `**/404/**`,
+    //       `**/404.html`,
+    //       `**/offline-plugin-app-shell-fallback/**`,
+    //     ],
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
