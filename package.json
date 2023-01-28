@@ -11,11 +11,11 @@
     "dev": "gatsby develop",
     "refresh": "gatsby clean && gatsby develop",
     "start": "gatsby build && gatsby serve",
-    "build": "gatsby build",
+    "build": "gatsby clean && gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "deploy": "gh-pages -d public",
-    "prod": "gatsby build && gh-pages -d public",
+    "prod": "yarn build && yarn deploy",
     "solve": "npx gatsby-codemods@latest sort-and-aggr-graphql ."
   },
   "dependencies": {
@@ -36,7 +36,7 @@
     "gatsby-remark-responsive-iframe": "^5.23.0",
     "gatsby-source-filesystem": "^4.20.0",
     "gatsby-transformer-remark": "^6.4.0",
-    "gatsby-transformer-sharp": "^4.20.0",
+    "gatsby-transformer-sharp": "^5.5.0",
     "graphql": "^16.6.0",
     "lodash": "^4.17.21",
     "prop-types": "^15.8.1",

@@ -39,7 +39,7 @@ module.exports = {
     `gatsby-plugin-advanced-sitemap`,
     `gatsby-awesome-pagination`,
     `gatsby-plugin-postcss`,
-    // `gatsby-transformer-sharp`, // sedang error.
+    `gatsby-transformer-sharp`, // sedang error.
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     {

@@ -6,10 +6,7 @@ import { useScroll } from "../hooks/use-navbar";
 
 export default function Layout({ path, children }) {
 
-  const bgImage = {
-    backgroundImage:
-      "url('https://cdn.pixabay.com/photo/2019/01/17/23/14/work-3938875_960_720.jpg')",
-  }
+  const bgImage = "https://cdn.pixabay.com/photo/2019/01/17/23/14/work-3938875_960_720.jpg"
   const scrolled = useScroll()
 
   return (
@@ -21,9 +18,13 @@ export default function Layout({ path, children }) {
             <div div className="h-screen mb-10 md:-mb-16">
               <div className="bg-cover bg-blend-multiply bg-center h-screen flex justify-start ">
                 <StaticImage
+                  width={1920}
+                  height={1080}
+                  transformOptions={{ grayscale: true }}
+                  placeholder={"dominantColor"}
                   alt="Welcome"
                   src="../images/dendelion.jpg"
-                  className="relative"
+                  className="relative object-cover"
                 />
                 <div className="absolute flex flex-col justify-center items-center w-full h-screen pb-20 bg-gradient-to-tr from-slate-900 to-transparent">
                   <div className="text-gray-100 md:text-center font-semibold font-sans space-y-2 lg:space-y-8 mx-6 my-32 lg:my-2">
@@ -48,11 +49,14 @@ export default function Layout({ path, children }) {
         {/* Blog */}
         {path === "/blog/" ? (
           <div className="lg:h-screen md:-mb-16 h-[18rem] sm:h-[24rem]">
-            <div
-              style={bgImage}
-              className="bg-cover w-full h-full bg-left"
-            >
-              <div className="w-full h-full bg-gray-800 bg-opacity-40 flex justify-end items-center px-12 lg:px-28">
+            <div className="bg-cover bg-blend-multiply bg-center h-screen flex justify-start ">
+              <img
+                src={bgImage}
+                loading="lazy"
+                className="object-cover max-w-[720] max-h-[480] object-left"
+                width="1920" height="1080"
+              />
+              <div className="absolute bg-gray-700 w-full h-full bg-opacity-40 flex justify-end items-center px-12 lg:px-28">
                 <h1 className="lg:text-7xl sm:text-5xl text-white font-edu transform translate-y-16">
                   Welcome to Blog Post
                 </h1>
