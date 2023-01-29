@@ -48,15 +48,15 @@ export default function Layout({ path, children }) {
 
         {/* Blog */}
         {path === "/blog/" ? (
-          <div className="lg:h-screen md:-mb-16 h-[18rem] sm:h-[24rem]">
+          <div className="lg:h-screen md:-mb-16 h-[19rem] sm:h-96">
             <div className="bg-cover bg-blend-multiply bg-center h-screen flex justify-start ">
               <img
                 src={bgImage}
                 loading="lazy"
-                className="object-cover max-w-[720] max-h-[480] object-left"
+                className="object-cover w-full h-80 sm:h-96 md:max-w-[720] md:max-h-[480] lg:h-full object-left"
                 width="1920" height="1080"
               />
-              <div className="absolute bg-gray-700 w-full h-full bg-opacity-40 flex justify-end items-center px-12 lg:px-28">
+              <div className="absolute w-full h-80 md:h-full bg-gradient-to-tl from-stone-900 to-transparent flex justify-end items-center px-12 lg:px-28">
                 <h1 className="lg:text-7xl sm:text-5xl text-white font-edu transform translate-y-16">
                   Welcome to Blog Post
                 </h1>
