@@ -6,7 +6,7 @@ import { useScroll } from "../hooks/use-navbar";
 
 export default function Layout({ path, children }) {
 
-  const bgImage = "https://cdn.pixabay.com/photo/2019/01/17/23/14/work-3938875_960_720.jpg"
+  const bgImage = "https://cdn.pixabay.com/photo/2019/01/17/23/14/work-3938875_640.jpg"
   const scrolled = useScroll()
 
   return (
@@ -52,6 +52,7 @@ export default function Layout({ path, children }) {
             <div className="bg-cover bg-blend-multiply bg-center h-screen flex justify-start ">
               <img
                 src={bgImage}
+                alt="Blog"
                 loading="lazy"
                 className="object-cover w-full h-80 sm:h-96 md:max-w-[720] md:max-h-[480] lg:h-full object-left"
                 width="1920" height="1080"
