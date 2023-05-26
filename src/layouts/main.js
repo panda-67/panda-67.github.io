@@ -32,7 +32,7 @@ export default function Layout({ path, children }) {
                       Hello, I am Samsul Muarrif
                     </h1>
                     <h2 className="font-normal text-lg lg:text-3xl lg:m-0">
-                      Forester | Tech Eunthusiast | Traveler | Scientist
+                      Forester | Tech Enthusiast | Traveler | Scientist
                     </h2>
                   </div>
                 </div>

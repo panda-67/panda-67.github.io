@@ -150,13 +150,13 @@ module.exports = {
         path: `${__dirname}/content/posts/`,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `pictures`,
-        path: `${__dirname}/content/assets/`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `pictures`,
+    //     path: `${__dirname}/content/assets/`,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
