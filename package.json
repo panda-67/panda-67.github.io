@@ -1,6 +1,6 @@
 {
   "name": "myfol",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "description": "myfol",
   "author": "Lord Arba",
@@ -15,7 +15,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "deploy": "gh-pages -d public",
-    "prod": "yarn build && yarn deploy",
+    "prod": "npm run build && npm run deploy",
     "solve": "npx gatsby-codemods@latest sort-and-aggr-graphql ."
   },
   "dependencies": {
