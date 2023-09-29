@@ -41,8 +41,8 @@ export default class Search extends Component {
 
         {/* <!-- Put this part before </body> tag --> */}
         <input type="checkbox" id="search-box" className="modal-toggle" />
-        <label htmlFor="search-box" className="modal cursor-pointer w-full h-full">
-          <label className="px-2 w-full h-full pt-3 max-w-2xl relative">
+        <label htmlFor="search-box" className="modal cursor-pointer w-full">
+          <label className="px-2 w-full pt-3 max-w-2xl relative">
             <input
               id="search"
               type="text"

@@ -1,11 +1,11 @@
 import React from "react";
+import { Breadcrumb } from "gatsby-plugin-breadcrumb";
 import { Link, StaticQuery, graphql } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
-import { Breadcrumb } from "gatsby-plugin-breadcrumb";
 import SideLink from "../components/sidelink";
 import Frame from "./main"
 
-const Layout = ({ bread, children}) => {
+function Layout({ bread, children}) {
   return (
     <StaticQuery
       query={graphql`
@@ -82,4 +82,4 @@ const Layout = ({ bread, children}) => {
   );
 };
 
-export default Layout;
+export default Layout

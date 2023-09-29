@@ -1,15 +1,10 @@
 import * as React from "react";
-import { Link, graphql } from "gatsby";
+import { Link } from "gatsby";
 import Frame from "../../layouts/about";
+import { useSiteMetadata } from "../../hooks/use-site-metadata";
 
-const AboutPage = ({
-  data: {
-    site: { meta },
-  },
-  pageContext: {
-    breadcrumb: { crumbs },
-  },
-}) => {
+export default function AboutPage({ pageContext: { breadcrumb: { crumbs } } }) {
+  const { meta } = useSiteMetadata()
   return (
     <Frame bread={crumbs}>
       <div className="w-full max-w-7xl mx-auto px-8 mt-4 pb-4">
@@ -115,31 +110,16 @@ const AboutPage = ({
         </div>
       </div>
     </Frame>
-  );
-};
+  )
+}
 
-export default AboutPage;
-
-export const Head = ({
-  data: {
-    site: { meta },
-  },
-}) => (
-  <>
-    <title>About | {meta.title}</title>
-    <meta name="description" content={meta.desc} />
-    <meta name="keywords" content="resume, portfolio, profile" />
-  </>
-);
-
-export const aboutQuery = graphql`
-  query {
-    site {
-      meta: siteMetadata {
-        title
-        author
-        desc
-      }
-    }
-  }
-`;
+export function Head() {
+  const { meta } = useSiteMetadata()
+  return (
+    <>
+      <title>About | {meta.title}</title>
+      <meta name="keywords" content="resume, portfolio, profile" />
+      <meta name="description" content="It's a little about myself." />
+    </>
+  )
+}

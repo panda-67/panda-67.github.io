@@ -39,28 +39,17 @@ module.exports = {
     `gatsby-plugin-advanced-sitemap`,
     `gatsby-awesome-pagination`,
     `gatsby-plugin-postcss`,
-    // `gatsby-transformer-sharp`, // sedang error.
+    `gatsby-transformer-sharp`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     {
       resolve: 'gatsby-plugin-use-dark-mode',
       options: {
         classNameDark: 'night',
-        storageKey: 'theme',
+        storageKey: 'data-theme',
         minify: true,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-sitemap`,
-    //   options: {
-    //     excludes: [
-    //       `**/dev-404-page/**`,
-    //       `**/404/**`,
-    //       `**/404.html`,
-    //       `**/offline-plugin-app-shell-fallback/**`,
-    //     ],
-    //   },
-    // },
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
@@ -161,25 +150,26 @@ module.exports = {
         path: `${__dirname}/content/posts/`,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `pictures`,
-        path: `${__dirname}/content/assets/`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `pictures`,
+    //     path: `${__dirname}/content/assets/`,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: "Samsul Muarrif",
-        short_name: "panda_67",
+        short_name: "PMED",
         start_url: "/",
-        background_color: "#4b0082",
+        background_color: "#5e81ac",
         theme_color: "#4b0082",
-        display: "standalone",
+        display: "fullscreen",
         icon: "src/images/icon.svg",
         crossOrigin: `use-credentials`,
       },
     },
+    `gatsby-plugin-offline`
   ],
 };

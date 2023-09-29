@@ -4,30 +4,22 @@ import { Breadcrumb } from "gatsby-plugin-breadcrumb"
 import Frame from '../layouts/main'
 import PostLink from "../components/post-link"
 import TagsLink from "../components/tags-link"
+import { useSiteMetadata } from "../hooks/use-site-metadata"
 
 export default function IndexBlog({
-  data: {
-    allMarkdownRemark: { edges },
-    tagsPosts: { group },
-    site: { meta },
-  },
-  pageContext: {
-    breadcrumb: { crumbs },
-    previousPagePath,
-    nextPagePath,
-    humanPageNumber,
-    numberOfPages,
-  },
-  path,
+  data: { allMarkdownRemark: { edges }, tagsPosts: { group } },
+  pageContext: { breadcrumb: { crumbs }, previousPagePath, nextPagePath, humanPageNumber, numberOfPages, },
+  path
 }) {
+  
   const previousPage = previousPagePath
   const nextPage = nextPagePath
-  const Posts = edges
-    .filter((edge) => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
-    .map((edge) => (
-      <PostLink key={edge.node.id} post={edge.node} author={meta.author} />
-    ))
   const Tags = group.map((tag) => <TagsLink key={tag.fieldValue} tag={tag} />)
+  const Posts = edges.filter(
+    (edge) => !!edge.node.frontmatter.date).map((edge) => (
+      <PostLink key={edge.node.id} post={edge.node} />
+    ))
+
   return (
     <Frame path={path}>
       <section className="bg-neutral-content pb-2 z-10 pt-1 sticky top-0 md:top-16">
@@ -79,22 +71,19 @@ export default function IndexBlog({
   )
 }
 
-export const Head = ({
-  data: {
-    site: { meta },
-  },
-}) => (
-  <>
-    <title>{`Blogs | ${meta.title}`}</title>
-    <meta name="description" content={`${meta.desc} by ${meta.author}`} />
-    <meta
-      name="keywords"
-      content="blog, travel, hobby, daliy, activity, coding, photography"
-    />
-  </>
-)
+export function Head() {
+  const { meta } = useSiteMetadata()
+  return (
+    <>
+      <title>{`Blogs | ${meta.title}`}</title>
+      <meta name="keywords" content="blog, travel, hobby, daliy, activity, coding, photography" />
+      <meta name="description" content={`${meta.desc} by ${meta.author}`} />
+    </>
+  )
+}
 
-export const blogQuery = graphql`query BlogList($skip: Int!, $limit: Int!) {
+export const blogQuery = graphql`
+query BlogList($skip: Int!, $limit: Int!) {
   allMarkdownRemark(sort: {frontmatter: {date: DESC}}, limit: $limit, skip: $skip) {
     edges {
       node {
@@ -116,13 +105,6 @@ export const blogQuery = graphql`query BlogList($skip: Int!, $limit: Int!) {
     group(field: {frontmatter: {tags: SELECT}}) {
       fieldValue
       totalCount
-    }
-  }
-  site {
-    meta: siteMetadata {
-      title
-      author
-      desc
     }
   }
 }`

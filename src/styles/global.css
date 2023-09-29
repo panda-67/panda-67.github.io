@@ -43,7 +43,7 @@ html {
 
 @media screen and (min-width: 768px) {
   .h-nav[data-active="false"] {
-    @apply w-full absolute overflow-x-clip;
+    @apply w-full overflow-x-clip;
   }
 
   .h-nav[data-active="true"] {
@@ -52,7 +52,7 @@ html {
   }
 
   .nav-up[data-active="true"] {
-    @apply pt-1;
+    @apply pt-0;
   }
 
   .theme-toggle[data-active="false"] {

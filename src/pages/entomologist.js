@@ -1,19 +1,16 @@
 import * as React from "react"
-import { graphql, Link } from "gatsby"
+import { Link } from "gatsby"
 import Frame from '../layouts/main'
+import { useSiteMetadata } from "../hooks/use-site-metadata"
 
-const EntomologistPage = ({
-  pageContext: {
-    breadcrumb: { crumbs },
-  },
-}) => {
+export default function EntomologistPage({ pageContext: { breadcrumb: { crumbs } } }) {
   return (
     <Frame bread={crumbs}>
       <article className="w-full max-w-xs md:max-w-2xl lg:max-w-6xl mx-auto px-4 my-4 space-y-8">
-        <ul className="flex flex-col gap-y-6 py-4 text-zinc-500">
+        <ul className="flex flex-col gap-y-6 py-4 text-base">
           <Link to="https://www.hindawi.com/journals/tswj/2022/9475722/">
             <li>
-              <h4 className="font-semibold text-zinc-600 md:text-lg hover:text-sky-700">
+              <h4 className="font-semibold text-current md:text-lg hover:text-sky-700">
                 Taxonomic and Ecological Notes on <em>Termes propinquus</em>{" "}
                 <span className="font-edu">Holmgren</span>, 1914 Known from
                 Sumatra (Blattodea: Termitoidae: Termitidae)
@@ -27,7 +24,7 @@ const EntomologistPage = ({
           </Link>
           <Link to="https://iopscience.iop.org/article/10.1088/1755-1315/667/1/012088/meta">
             <li>
-              <h4 className="font-semibold text-zinc-600 md:text-lg hover:text-sky-700">
+              <h4 className="font-semibold text-current md:text-lg hover:text-sky-700">
                 Inventory of fungi from termite nests at Gunung Leuser National
                 Park, Northern Sumatra
               </h4>
@@ -42,7 +39,7 @@ const EntomologistPage = ({
           </Link>
           <Link to="https://zse.pensoft.net/article/31636/">
             <li>
-              <h4 className="font-semibold text-zinc-600 md:text-lg hover:text-sky-700">
+              <h4 className="font-semibold text-current md:text-lg hover:text-sky-700">
                 Taxonomy of the genus <em>Longipeditermes</em>{" "}
                 <span className="font-edu">Holmgren</span> (Termitidae,
                 Nasutitermitinae) from the Greater Sundas, Southeast Asia
@@ -57,7 +54,7 @@ const EntomologistPage = ({
           </Link>
           <Link to="https://www.cabdirect.org/cabdirect/abstract/20203226983">
             <li>
-              <h4 className="font-semibold text-zinc-600 md:text-lg hover:text-sky-700">
+              <h4 className="font-semibold text-current md:text-lg hover:text-sky-700">
                 Redescription of soil-feeding nasutitermitine
                 (Subulitermes-branch): <em>Oriensubulitermes inanis</em>{" "}
                 <span className="font-edu">Haviland </span> (Termitidae:
@@ -77,28 +74,13 @@ const EntomologistPage = ({
   )
 }
 
-export default EntomologistPage;
-
-export const Head = ({
-  data: {
-    site: { meta },
-  },
-}) => (
-  <>
-    <title>Experience | {meta.title}</title>
-    <meta name="description" content={meta.desc} />
-    <meta name="keywords" content="resume, portfolio, profile" />
-  </>
-)
-
-export const expQuery = graphql`
-  query {
-    site {
-      meta: siteMetadata {
-        title
-        author
-        desc
-      }
-    }
-  }
-`
+export function Head() {
+  const { meta } = useSiteMetadata()
+  return (
+    <>
+      <title>Entomologist | {meta.title}</title>
+      <meta name="keywords" content="resume, portfolio, profile" />
+      <meta name="description" content="The list of my publication with all collegue." />
+    </>
+  )
+}
