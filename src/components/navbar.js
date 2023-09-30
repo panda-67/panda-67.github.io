@@ -52,7 +52,7 @@ export default function Navbar({ path }) {
 							))}
 
 							{/* Contact */}
-							<li className="dropdown dropdown-open hidden lg:block capitalize">
+							{/* <li className="dropdown dropdown-open hidden lg:block capitalize">
 								<button className="rounded-lg">Contact</button>
 								<ul className="dropdown-content p-2 space-y-1 shadow bg-base-100 rounded-box w-max">
 									<li>
@@ -74,7 +74,7 @@ export default function Navbar({ path }) {
 										</Link>
 									</li>
 								</ul>
-							</li>
+							</li> */}
 
 						</ul>
 

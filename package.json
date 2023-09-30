@@ -9,14 +9,11 @@
   ],
   "scripts": {
     "dev": "gatsby develop",
-    "refresh": "gatsby clean && gatsby develop",
+    "clean": "gatsby clean",
     "start": "gatsby build && gatsby serve",
     "build": "gatsby clean && gatsby build",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
     "deploy": "gh-pages -d public",
-    "prod": "npm run build && npm run deploy",
-    "solve": "npx gatsby-codemods@latest sort-and-aggr-graphql ."
+    "production": "npm run build && npm run deploy"
   },
   "dependencies": {
     "@gatsby-contrib/gatsby-plugin-elasticlunr-search": "^3.0.2",
