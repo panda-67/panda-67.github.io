@@ -14,7 +14,7 @@ export default function IndexPage({ data: { allMarkdownRemark: { edges } }, path
         <section className="lg:w-2/3">
           <Header>Expertise</Header>
           <div className="mx-6 grid gap-4 sm:grid-cols-2">
-            <CardLink href='/programming' src="https://cdn.pixabay.com/photo/2016/11/23/14/45/coding-1853305__340.jpg" alt='Progamming'>
+            <CardLink href='https://panda-67.github.io/programming' src="https://cdn.pixabay.com/photo/2016/11/23/14/45/coding-1853305__340.jpg" alt='Progamming'>
               Programming
             </CardLink>
             <CardLink href='/entomologist' src='https://cdn.pixabay.com/photo/2019/09/19/17/40/insect-4489864__340.jpg' alt='Entomologist'>
