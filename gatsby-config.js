@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Samsul Muarrif`,
     author: `panda_67`,
-    siteUrl: `https://samsulmuarrif.me`,
+    siteUrl: `https://samsulmuarrif.my.id`,
     desc: `My personal blogs`,
     twitter: `https://twitter.com/sams_panda`,
     github: `https://github.com/panda-67`,
@@ -36,7 +36,6 @@ module.exports = {
   // graphqlTypegen: true,
   trailingSlash: `always`,
   plugins: [
-    `gatsby-plugin-advanced-sitemap`,
     `gatsby-awesome-pagination`,
     `gatsby-plugin-postcss`,
     `gatsby-transformer-sharp`,
