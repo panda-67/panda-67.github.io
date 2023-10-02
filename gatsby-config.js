@@ -117,7 +117,7 @@ module.exports = {
         // How to resolve each field`s value for a supported node type
         resolvers: {
           // For any node of type MarkdownRemark, list how to resolve the fields` values
-          MarkdownRemark: {
+          Mdx: {
             title: (node) => node.frontmatter.title,
             tags: (node) => node.frontmatter.tags,
             path: (node) => node.fields.slug,
@@ -128,9 +128,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        plugins: [
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
           `gatsby-remark-autolink-headers`,
           `gatsby-remark-responsive-iframe`,
           {
@@ -149,13 +150,6 @@ module.exports = {
         path: `${__dirname}/content/posts/`,
       },
     },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `pictures`,
-    //     path: `${__dirname}/content/assets/`,
-    //   },
-    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

@@ -6,9 +6,9 @@ import { useSiteMetadata } from "../hooks/use-site-metadata";
 import TagsLink from "../components/tags-link"
 import Frame from '../layouts/main'
 
-export default function BlogTags({ data: { tagsPosts: { group }, allMarkdownRemark }, pageContext }) {
+export default function BlogTags({ data: { tagsPosts: { group }, allMdx }, pageContext }) {
 
-  const { edges, totalCount } = allMarkdownRemark
+  const { edges, totalCount } = allMdx
   const Tags = group.map((tag) => <TagsLink key={tag.fieldValue} tag={tag} />)
 
   return (
@@ -24,8 +24,8 @@ export default function BlogTags({ data: { tagsPosts: { group }, allMarkdownRema
           <div className="grid md:grid-cols-2 gap-2">
             {edges.map(({ node }) => {
               return (
-                <div key={node.fields.slug} className="p-4 rounded-lg border border-gray-300 shadow-lg"                >
-                  <Link to={`/blog${node.fields.slug}`}>
+                <div key={node.id} className="p-4 rounded-lg border border-gray-300 shadow-lg"                >
+                  <Link to={`/blog${node.id}`}>
                     <h4 className="mb-2 leading-5 text-neutral font-semibold link-primary">
                       {node.frontmatter.title}
                     </h4>
@@ -62,7 +62,7 @@ BlogTags.propTypes = {
     tag: PropTypes.string.isRequired,
   }),
   data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
+    allMdx: PropTypes.shape({
       totalCount: PropTypes.number.isRequired,
       edges: PropTypes.arrayOf(
         PropTypes.shape({
@@ -70,9 +70,9 @@ BlogTags.propTypes = {
             frontmatter: PropTypes.shape({
               title: PropTypes.string.isRequired,
             }),
-            fields: PropTypes.shape({
-              slug: PropTypes.string.isRequired,
-            }),
+            // fields: PropTypes.shape({
+            //   slug: PropTypes.string.isRequired,
+            // }),
           }),
         }).isRequired
       ),
@@ -92,7 +92,7 @@ export function Head({ pageContext }) {
 }
 
 export const tagQuery = graphql`query ($tag: String) {
-  allMarkdownRemark(
+  allMdx(
     limit: 2000
     sort: {frontmatter: {date: DESC}}
     filter: {frontmatter: {tags: {in: [$tag]}}}
@@ -100,9 +100,6 @@ export const tagQuery = graphql`query ($tag: String) {
     totalCount
     edges {
       node {
-        fields {
-          slug
-        }
         excerpt(pruneLength: 250)
         frontmatter {
           title
@@ -112,7 +109,7 @@ export const tagQuery = graphql`query ($tag: String) {
       }
     }
   }
-  tagsPosts: allMarkdownRemark(limit: 2000) {
+  tagsPosts: allMdx(limit: 2000) {
     group(field: {frontmatter: {tags: SELECT}}) {
       fieldValue
       totalCount

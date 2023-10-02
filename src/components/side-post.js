@@ -9,7 +9,7 @@ const SidePost = ({ post }) => (
       </Link>
     </h5>
     <div aria-label="date" className="text-sm">{post.frontmatter.date}</div>
-    {/* <p>{post.excerpt}</p>  */}
+    <p>{post.excerpt}</p> 
   </div>
 )
 
