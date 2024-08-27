@@ -1,24 +1,25 @@
-import React from "react"
-import _ from "lodash"
-import PropTypes from "prop-types"
-import { graphql, Link } from "gatsby"
-import { Breadcrumb } from "gatsby-plugin-breadcrumb"
-import { useSiteMetadata } from "../../hooks/use-site-metadata"
-import SidePost from "../../components/side-post"
-import TagsLink from "../../components/tags-link"
-import Frame from '../../layouts/main'
-import { MDXProvider } from "@mdx-js/react"
+import React from "react";
+import _ from "lodash";
+import PropTypes from "prop-types";
+import { graphql, Link } from "gatsby";
+import { Breadcrumb } from "gatsby-plugin-breadcrumb";
+import { useSiteMetadata } from "../../hooks/use-site-metadata";
+import SidePost from "../../components/side-post";
+import TagsLink from "../../components/tags-link";
+import Frame from "../../layouts/main";
+import { MDXProvider } from "@mdx-js/react";
 
 export default function BlogPost({ data, children, pageContext }) {
+  const { meta } = useSiteMetadata();
+  const {
+    breadcrumb: { crumbs },
+  } = pageContext;
+  const posts = data.recentPosts.edges;
+  const toc = data.mdx.tableOfContents;
+  const { frontmatter } = data.mdx;
+  const tags = data.tagPosts.group;
 
-  const { meta } = useSiteMetadata()
-  const { breadcrumb: { crumbs } } = pageContext
-  const posts = data.recentPosts.edges
-  const toc = data.mdx.tableOfContents
-  const { frontmatter } = data.mdx
-  const tags = data.tagPosts.group
-
-  console.log("context:", pageContext)
+  console.log("context:", pageContext);
 
   return (
     <>
@@ -30,9 +31,11 @@ export default function BlogPost({ data, children, pageContext }) {
               <div className="sticky top-[5rem]">
                 <h3>Recent Post</h3>
                 <article>
-                  {posts.filter((edge) => !!edge.node.frontmatter.date).map((edge) => (
-                    <SidePost key={edge.node.id} post={edge.node} />
-                  ))}
+                  {posts
+                    .filter((edge) => !!edge.node.frontmatter.date)
+                    .map((edge) => (
+                      <SidePost key={edge.node.id} post={edge.node} />
+                    ))}
                 </article>
               </div>
             </section>
@@ -92,21 +95,26 @@ export default function BlogPost({ data, children, pageContext }) {
                   </div>
 
                   {/* TOC */}
-                  <div aria-label="table of content" className="lg:hidden sticky top-1 md:relative z-20 mt-6 bg-base-300 bg-opacity-70 rounded-lg px-4 py-3">
+                  <div
+                    aria-label="table of content"
+                    className="lg:hidden sticky top-1 md:relative z-20 mt-6 bg-base-300 bg-opacity-70 rounded-lg px-4 py-3"
+                  >
                     <div className="font-semibold">Daftar Isi</div>
-                    <ul className="text-inherit text-[15px]">
-                      {toc.items.map((i) => (
-                        <li key={i.url} className=" hover:text-white">
-                          <Link
-                            activeClassName="bg-zinc-400 text-current"
-                            partiallyActive={true}
-                            to={i.url}
-                          >
-                            {i.title}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
+                    {toc.items && toc.items.length > 0 && (
+                      <ul className="text-inherit text-[15px]">
+                        {toc.items.map((i) => (
+                          <li key={i.url} className=" hover:text-white">
+                            <Link
+                              activeClassName="bg-zinc-400 text-current"
+                              partiallyActive={true}
+                              to={i.url}
+                            >
+                              {i.title}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                   <div className="mx-4">
                     <MDXProvider> {children} </MDXProvider>
@@ -144,7 +152,10 @@ export default function BlogPost({ data, children, pageContext }) {
                           fill="#fbbc04"
                           d="M120 48v26l20-15v-8c0-7.42-8.47-11.65-14.4-7.2"
                         />
-                        <path fill="#ea4335" d="M72 74V48l24 18 24-18v26L96 92" />
+                        <path
+                          fill="#ea4335"
+                          d="M72 74V48l24 18 24-18v26L96 92"
+                        />
                         <path
                           fill="#c5221f"
                           d="M52 51v8l20 15V48l-5.6-4.2c-5.94-4.45-14.4-.22-14.4 7.2"
@@ -159,7 +170,12 @@ export default function BlogPost({ data, children, pageContext }) {
                       className="flex gap-2"
                     >
                       <svg className="w-5" viewBox="0 0 512 512">
-                        <rect width="512" height="512" rx="15%" fill="#25d366" />
+                        <rect
+                          width="512"
+                          height="512"
+                          rx="15%"
+                          fill="#25d366"
+                        />
                         <path
                           fill="#25d366"
                           stroke="#fff"
@@ -216,27 +232,32 @@ export default function BlogPost({ data, children, pageContext }) {
             </section>
 
             {/* TOC */}
-            <div aria-label="table of content" className="hidden lg:block sticky top-[5rem] mt-6 bg-base-200 rounded-lg -mx-4 px-4 py-3">
+            <div
+              aria-label="table of content"
+              className="hidden lg:block sticky top-[5rem] mt-6 bg-base-200 rounded-lg -mx-4 px-4 py-3"
+            >
               <h4 className="font-semibold">Daftar Isi</h4>
-              <ul className="text-blue-400 text-[15px]">
-                {toc.items.map((i) => (
-                  <li key={i.url} className=" hover:text-white">
-                    <Link
-                      activeClassName="bg-zinc-400 text-current"
-                      partiallyActive={true}
-                      to={i.url}
-                    >
-                      {i.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              {toc.items && toc.items.length > 0 && (
+                <ul className="text-blue-400 text-[15px]">
+                  {toc.items.map((i) => (
+                    <li key={i.url} className=" hover:text-white">
+                      <Link
+                        activeClassName="bg-zinc-400 text-current"
+                        partiallyActive={true}
+                        to={i.url}
+                      >
+                        {i.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </div>
         </div>
       </Frame>
     </>
-  )
+  );
 }
 
 BlogPost.propTypes = {
@@ -246,26 +267,30 @@ BlogPost.propTypes = {
         PropTypes.shape({
           fieldValue: PropTypes.string.isRequired,
           totalCount: PropTypes.number.isRequired,
-        }).isRequired
+        }).isRequired,
       ),
     }),
   }),
-}
+};
 
-export function Head({ data: { mdx: { frontmatter, excerpt } } }) {
-  const { meta } = useSiteMetadata()
+export function Head({
+  data: {
+    mdx: { frontmatter, excerpt },
+  },
+}) {
+  const { meta } = useSiteMetadata();
   return (
     <>
       <title>{`Blogs | ${frontmatter.title} | ${meta.title}`}</title>
       <meta name="description" content={excerpt} />
       <meta name="keywords" content={frontmatter.tags} />
     </>
-  )
+  );
 }
 
 export const query = graphql`
   query blogQuery($id: String) {
-    mdx(id: {eq: $id}) {
+    mdx(id: { eq: $id }) {
       frontmatter {
         title
         tags
@@ -278,7 +303,7 @@ export const query = graphql`
       excerpt(pruneLength: 170)
       body
     }
-    recentPosts: allMdx(sort: {frontmatter: {date: DESC}}, limit: 5) {
+    recentPosts: allMdx(sort: { frontmatter: { date: DESC } }, limit: 5) {
       edges {
         node {
           id
@@ -294,10 +319,10 @@ export const query = graphql`
       }
     }
     tagPosts: allMdx(limit: 2000) {
-      group(field: {frontmatter: {tags: SELECT}}) {
+      group(field: { frontmatter: { tags: SELECT } }) {
         fieldValue
         totalCount
       }
     }
   }
-`
+`;
