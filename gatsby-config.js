@@ -154,7 +154,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: "Samsul Muarrif",
-        short_name: "PMED",
+        short_name: "sams67",
         start_url: "/",
         background_color: "#5e81ac",
         theme_color: "#4b0082",
