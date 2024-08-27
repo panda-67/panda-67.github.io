@@ -5,7 +5,7 @@ import CardLink from "../components/card-link"
 import PostCard from "../components/post-card"
 import { useSiteMetadata } from "../hooks/use-site-metadata"
 
-export default function IndexPage({ data: { allMdx: { edges } }, path }) {
+export default function IndexPage({ data, path }) {
   return (
     <Frame path={path}>
       <div className="w-full h-full flex flex-wrap -mt-8 md:-mt-16">
@@ -32,11 +32,11 @@ export default function IndexPage({ data: { allMdx: { edges } }, path }) {
         {/* Latest Blog */}
         <section className="lg:w-1/3 w-full">
           <Header>Latest Post</Header>
-          {/* <div className="mx-6 py-2 min-h-max rounded-lg border border-indigo-600 bg-gradient-to-tr from-base-300 to-transparent text-slate-800">
-            {edges
-              .filter((edge) => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
-              .map((edge) => (<PostCard edge={edge} key={edge.node.id} />))}
-          </div> */}
+          <div className="mx-6 py-2 min-h-max rounded-lg border border-indigo-600 bg-gradient-to-tr from-base-300 to-transparent text-slate-800">
+            {data.allMdx.edges.filter((edge) => !!edge.node.frontmatter.date).map((edge) => (
+              <PostCard edge={edge} key={edge.node.id} />
+            ))}
+          </div>
         </section>
 
       </div>
@@ -64,17 +64,19 @@ export function Head() {
 }
 
 export const indexQuery = graphql`{
-  allMdx(sort: {frontmatter: {date: DESC}}, limit: 4) {
+  allMdx(sort: {frontmatter: {date: DESC}}, limit: 5) {
     edges {
       node {
-        id
-        excerpt(pruneLength: 260)
         frontmatter {
           date(formatString: "dddd, Do MMMM YYYY", locale: "id-ID")
           title
           tags
           author
         }
+        fields {
+          slug
+        }
+        excerpt(pruneLength: 260)
       }
     }
   }

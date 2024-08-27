@@ -21,6 +21,7 @@
     "@mdx-js/react": "^2.3.0",
     "@parcel/core": "^2.9.3",
     "@sindresorhus/slugify": "^1.1.2",
+    "elasticlunr": "^0.9.5",
     "gatsby": "^5.12.5",
     "gatsby-awesome-pagination": "^0.3.8",
     "gatsby-plugin-breadcrumb": "^12.3.2",

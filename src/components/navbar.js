@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import { themeChange } from 'theme-change'
 import { Theme, Nav, useScroll, useMenuLink} from "../hooks/use-navbar"
-// import { useSearch } from "../hooks/use-search"
+import { useSearch } from "../hooks/use-search"
 import Search from "./search"
 
 export default function Navbar({ path }) {
@@ -11,9 +11,9 @@ export default function Navbar({ path }) {
 	useEffect(() => { themeChange(false) }, [])
 	const { themeOpen, themeToggle } = Theme()
 	const { navOpen, navToggle } = Nav()
-	const scrolled = useScroll()
 	const { menuLinks } = useMenuLink()
-	// const { index } = useSearch()
+	const { index } = useSearch()
+	const scrolled = useScroll()
 
 	return (
 		<div className="px-4 lg:px-16 bg-base-100 bg-opacity-50 w-full sticky">
@@ -175,7 +175,7 @@ export default function Navbar({ path }) {
 							</div>
 
 							{/* Search Bar */}
-							{/* {path === `/` ? null : <Search searchIndex={index} />} */}
+							{path === `/` ? null : <Search searchIndex={index} />}
 
 						</div>
 					</div>

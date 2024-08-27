@@ -1,4 +1,4 @@
-import React, { Children } from "react"
+import React from "react"
 import _ from "lodash"
 import PropTypes from "prop-types"
 import { graphql, Link } from "gatsby"
@@ -7,19 +7,18 @@ import { useSiteMetadata } from "../../hooks/use-site-metadata"
 import SidePost from "../../components/side-post"
 import TagsLink from "../../components/tags-link"
 import Frame from '../../layouts/main'
-import { MDXRenderer } from "gatsby-plugin-mdx";
 import { MDXProvider } from "@mdx-js/react"
 
-export default function BlogPost({ data, children }) {
+export default function BlogPost({ data, children, pageContext }) {
 
   const { meta } = useSiteMetadata()
-  const { frontmatter, body, fields: { slug } } = data.mdx
-
+  const { breadcrumb: { crumbs } } = pageContext
   const posts = data.recentPosts.edges
+  const toc = data.mdx.tableOfContents
+  const { frontmatter } = data.mdx
+  const tags = data.tagPosts.group
 
-
-
-  // const Tags = group.map((tag) => <TagsLink key={tag.fieldValue} tag={tag} />)
+  console.log("context:", pageContext)
 
   return (
     <>
@@ -40,7 +39,7 @@ export default function BlogPost({ data, children }) {
 
             {/* Post */}
             <div className="col-span-6 ">
-              {/* <div className="flex rounded-lg py-1 leading-4 tranform -translate-x-1">
+              <div className="flex rounded-lg py-1 leading-4 tranform -translate-x-1">
                 <div className="md:hidden">
                   <Breadcrumb
                     className="text-xs font-light pl-[9px] border-l border-zinc-400"
@@ -63,13 +62,13 @@ export default function BlogPost({ data, children }) {
                     })}
                   />
                 </div>
-              </div> */}
+              </div>
 
               <div className="flex flex-col shadow-lg border border-zinc-300 border-t-0 border-l-0 p-4 mt-2 ">
                 <article>
                   {/* Head */}
                   <div className="mb-4 px-2 mx-2 pb-6 pt-2 lg:pt-6 border-b border-slate-300 flex gap-4 flex-col lg:flex-row-reverse lg:justify-end">
-                    <div className="flex flex-col lg:items-end w-full">
+                    <div className="flex flex-col w-full">
                       <h3 className="lg:text-3xl">{frontmatter.title}</h3>
                       <div className="flex gap-1">
                         {frontmatter.tags.map((tag) => (
@@ -95,23 +94,23 @@ export default function BlogPost({ data, children }) {
                   {/* TOC */}
                   <div aria-label="table of content" className="lg:hidden sticky top-1 md:relative z-20 mt-6 bg-base-300 bg-opacity-70 rounded-lg px-4 py-3">
                     <div className="font-semibold">Daftar Isi</div>
-                    {/* <ul className="text-inherit text-[15px]">
-                    {headings.map((toc) => (
-                      <li key={toc.id} className=" hover:text-white">
-                        <Link
-                          activeClassName="bg-zinc-400 text-current"
-                          partiallyActive={true}
-                          to={`#${toc.id}`}
-                        >
-                          {toc.value}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul> */}
+                    <ul className="text-inherit text-[15px]">
+                      {toc.items.map((i) => (
+                        <li key={i.url} className=" hover:text-white">
+                          <Link
+                            activeClassName="bg-zinc-400 text-current"
+                            partiallyActive={true}
+                            to={i.url}
+                          >
+                            {i.title}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <MDXProvider>
-                    {children}
-                  </MDXProvider>
+                  <div className="mx-4">
+                    <MDXProvider> {children} </MDXProvider>
+                  </div>
                 </article>
 
                 {/* Contact */}
@@ -209,25 +208,29 @@ export default function BlogPost({ data, children }) {
           <div className="col-span-2 mx-2 mt-4 lg:mt-0">
             <section className="px-0">
               <h3>Tags</h3>
-              {/* <div className="flex flex-wrap gap-x-2 mx-1">{Tags}</div> */}
+              <div className="flex flex-wrap gap-x-2 mx-1">
+                {tags.map((tag) => (
+                  <TagsLink key={tag.fieldValue} tag={tag} />
+                ))}
+              </div>
             </section>
 
             {/* TOC */}
             <div aria-label="table of content" className="hidden lg:block sticky top-[5rem] mt-6 bg-base-200 rounded-lg -mx-4 px-4 py-3">
               <h4 className="font-semibold">Daftar Isi</h4>
-              {/* <ul className="text-blue-400 text-[15px]">
-              {headings.map((toc) => (
-                <li key={toc.id} className="hover:text-gray-500">
-                  <Link
-                    activeClassName="bg-zinc-400 text-white"
-                    partiallyActive={true}
-                    to={`#${toc.id}`}
-                  >
-                    {toc.value}
-                  </Link>
-                </li>
-              ))}
-            </ul> */}
+              <ul className="text-blue-400 text-[15px]">
+                {toc.items.map((i) => (
+                  <li key={i.url} className=" hover:text-white">
+                    <Link
+                      activeClassName="bg-zinc-400 text-current"
+                      partiallyActive={true}
+                      to={i.url}
+                    >
+                      {i.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
@@ -266,10 +269,12 @@ export const query = graphql`
       frontmatter {
         title
         tags
+        date(formatString: "dddd, Do MMMM YYYY", locale: "id-ID")
       }
       fields {
         slug
       }
+      tableOfContents
       excerpt(pruneLength: 170)
       body
     }
@@ -288,7 +293,7 @@ export const query = graphql`
         }
       }
     }
-    tagsPosts: allMdx(limit: 2000) {
+    tagPosts: allMdx(limit: 2000) {
       group(field: {frontmatter: {tags: SELECT}}) {
         fieldValue
         totalCount
