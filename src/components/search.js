@@ -1,26 +1,20 @@
-import React, { Component } from "react";
+import React from "react";
 import { Index } from "elasticlunr";
 import { Link } from "gatsby";
 
 // Search component
-export default class Search extends Component {
+export default class Search extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      query: ``,
-      results: [],
-    };
+    this.state = { query: ``, results: [] };
   }
 
   render() {
     return (
       <>
         {/* <!-- The button to open modal --> */}
-        <button className="h-5 w-5 mx-4 flex justify-center items-center">
-          <label
-            htmlFor="search-box"
-            className="hover:bg-gray-600 hover:bg-opacity-20 rounded-lg cursor-pointer"
-          >
+        <button className="h-5 w-5 mx-4 flex justify-center items-center" onClick={this.onClick}>
+          <label htmlFor="search-box" className="hover:bg-gray-600 hover:bg-opacity-20 rounded-lg cursor-pointer">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 mx-4 my-2 text-gray-600"
@@ -43,21 +37,16 @@ export default class Search extends Component {
         <input type="checkbox" id="search-box" className="modal-toggle" />
         <label htmlFor="search-box" className="modal cursor-pointer w-full">
           <label className="px-2 w-full pt-3 max-w-2xl relative">
-            <input
-              id="search"
-              type="text"
-              placeholder="Search"
+            <input id="search" type="text" placeholder="Search"
               className="w-full rounded-lg ring-1 ring-gray-500 focus:outline-none focus:border-amber-300 focus:ring-1 focus:ring-amber-300"
-              value={this.state.query}
-              onChange={this.search}
+              value={this.state.query} onChange={this.search}
             />
             <ul className="mt-2">
               {this.state.results.map((page) => (
-                <li
-                  key={page.id}
-                  className="my-1 px-2 rounded-lg ring-1 ring-gray-500 bg-slate-800 text-gray-200 hover:text-amber-300"
-                >
-                  <Link to={`/blog${page.path}`}>{page.title}</Link>
+                <li key={page.id} className="my-1 px-2 rounded-lg ring-1 ring-gray-500 bg-slate-800 text-gray-200 hover:text-amber-300">
+                  <Link to={`/blog${page.path}`}>
+                    {page.title}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -66,11 +55,12 @@ export default class Search extends Component {
       </>
     );
   }
+
   getOrCreateIndex = () =>
     this.index
       ? this.index
       : // Create an elastic lunr index and hydrate with graphql query results
-        Index.load(this.props.searchIndex);
+      Index.load(this.props.searchIndex);
 
   search = (evt) => {
     const query = evt.target.value;
@@ -79,13 +69,15 @@ export default class Search extends Component {
       query,
       // Query the index with search string to get an [] of IDs
       results: this.index
-        .search(query, {})
+        .search(query, { bool: "OR", expand: true })
         // Map over each ID and return the full document
         .map(({ ref }) => this.index.documentStore.getDoc(ref)),
     });
   };
 
-  // onClick() {
-  //   document.getElementById("search").focus();
-  // }
+  onClick() {
+    const input = document.querySelector("#search");
+    input.focus();
+    // input.select();
+  }
 }

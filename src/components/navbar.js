@@ -11,9 +11,9 @@ export default function Navbar({ path }) {
 	useEffect(() => { themeChange(false) }, [])
 	const { themeOpen, themeToggle } = Theme()
 	const { navOpen, navToggle } = Nav()
-	const scrolled = useScroll()
 	const { menuLinks } = useMenuLink()
 	const { index } = useSearch()
+	const scrolled = useScroll()
 
 	return (
 		<div className="px-4 lg:px-16 bg-base-100 bg-opacity-50 w-full sticky">
@@ -52,7 +52,7 @@ export default function Navbar({ path }) {
 							))}
 
 							{/* Contact */}
-							<li className="dropdown dropdown-open hidden lg:block capitalize">
+							{/* <li className="dropdown dropdown-open hidden lg:block capitalize">
 								<button className="rounded-lg">Contact</button>
 								<ul className="dropdown-content p-2 space-y-1 shadow bg-base-100 rounded-box w-max">
 									<li>
@@ -74,7 +74,7 @@ export default function Navbar({ path }) {
 										</Link>
 									</li>
 								</ul>
-							</li>
+							</li> */}
 
 						</ul>
 

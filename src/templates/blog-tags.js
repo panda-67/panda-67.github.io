@@ -2,59 +2,65 @@ import * as React from "react"
 import _ from "lodash";
 import PropTypes from "prop-types"
 import { Link, graphql } from "gatsby"
-import { useSiteMetadata } from "../hooks/use-site-metadata";
+// import { useSiteMetadata } from "../hooks/use-site-metadata";
 import TagsLink from "../components/tags-link"
 import Frame from '../layouts/main'
 
-export default function BlogTags({ data: { tagsPosts: { group }, allMarkdownRemark }, pageContext }) {
+export default class BlogTags extends React.Component {
+  render() {
+    const { edges, totalCount } = this.props.data.allMdx
+    const tags = this.props.data.tagPosts.group
+    console.log("context", edges)
 
-  const { edges, totalCount } = allMarkdownRemark
-  const Tags = group.map((tag) => <TagsLink key={tag.fieldValue} tag={tag} />)
-
-  return (
-    <Frame>
-      <div className="mx-4 lg:mx-16 lg:grid gap-4 grid-flow-col grid-cols-10">
-        <div className="col-span-8">
-          <h4 className="flex justify-center gap-2 text-lg lg:text-2xl mb-6">
-            <div className="italic font-semibold">
-              {`${totalCount} Post${totalCount === 1 ? "" : "s"}`}
-            </div>
-            <div>{`tagged with "${_.capitalize(pageContext.tag)}"`}</div>
-          </h4>
-          <div className="grid md:grid-cols-2 gap-2">
-            {edges.map(({ node }) => {
-              return (
-                <div key={node.fields.slug} className="p-4 rounded-lg border border-gray-300 shadow-lg"                >
-                  <Link to={`/blog${node.fields.slug}`}>
-                    <h4 className="mb-2 leading-5 text-neutral font-semibold link-primary">
-                      {node.frontmatter.title}
-                    </h4>
-                  </Link>
-                  <h5>{node.frontmatter.date}</h5>
-                  <p className="text-gray-500">{node.excerpt}</p>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-        <div className="col-span-2 mt-8 lg:mt-14">
-          <div className="sticky top-2 space-y-4">
-            <Link to="/blog">
-              <div className="w-full font-semibold rounded-lg bg-inherit hover:bg-neutral-content hover:text-neutral-focus shadow-md shadow-current p-4">
-                All Posts
+    return (
+      <Frame>
+        <div className="mx-4 lg:mx-16 lg:grid gap-4 grid-flow-col grid-cols-10">
+          <div className="col-span-8">
+            <h4 className="flex justify-center gap-2 text-lg lg:text-2xl mb-6">
+              <div className="italic font-semibold">
+                {`${totalCount} Post${totalCount === 1 ? "" : "s"}`}
               </div>
-            </Link>
-            <div className="rounded-lg bg-inherit shadow-md shadow-current p-4 mt-2 lg:mt-0 space-y-2">
-              <h4>
-                <strong>All Tags</strong>
-              </h4>
-              <div className="flex flex-wrap gap-2">{Tags}</div>
+              <div>{`tagged with "${_.capitalize(this.props.pageContext.tag)}"`}</div>
+            </h4>
+            <div className="grid md:grid-cols-2 gap-2">
+              {edges.map(({ node }) => {
+                return (
+                  <div key={node.id} className="p-4 rounded-lg border border-gray-300 shadow-lg"                >
+                    <Link to={`/blog${node.fields.slug}`}>
+                      <h4 className="mb-2 leading-5 text-neutral font-semibold link-primary">
+                        {node.frontmatter.title}
+                      </h4>
+                    </Link>
+                    <h5>{node.frontmatter.date}</h5>
+                    <p className="text-gray-500">{node.excerpt}</p>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+          <div className="col-span-2 mt-8 lg:mt-14">
+            <div className="sticky top-2 space-y-4">
+              <Link to="/blog">
+                <div className="w-full font-semibold rounded-lg bg-inherit hover:bg-neutral-content hover:text-neutral-focus shadow-md shadow-current p-4">
+                  All Posts
+                </div>
+              </Link>
+              <div className="rounded-lg bg-inherit shadow-md shadow-current p-4 mt-2 lg:mt-0 space-y-2">
+                <h4>
+                  <strong>All Tags</strong>
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {tags.map((tag) => (
+                    <TagsLink key={tag.fieldValue} tag={tag} />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </Frame>
-  )
+      </Frame>
+    )
+  }
 }
 
 BlogTags.propTypes = {
@@ -62,7 +68,7 @@ BlogTags.propTypes = {
     tag: PropTypes.string.isRequired,
   }),
   data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
+    allMdx: PropTypes.shape({
       totalCount: PropTypes.number.isRequired,
       edges: PropTypes.arrayOf(
         PropTypes.shape({
@@ -80,19 +86,25 @@ BlogTags.propTypes = {
   }),
 }
 
-export function Head({ pageContext }) {
-  const { meta } = useSiteMetadata()
+export function Head({ data }) {
   return (
     <>
-      <title>{`${_.capitalize(pageContext.tag)} | Blog Tags | ${meta.title}`}</title>
-      <meta name="description" content={`${meta.desc} tags by ${meta.author}`} />
+      <title>{`Blog Tags | ${data.site.meta.title}`}</title>
+      <meta name="description" content={`${data.site.meta.desc} tags by ${data.site.meta.author}`} />
       <meta name="keywords" content="blog, travel, hobby, daliy, activity, coding, photography" />
     </>
   )
 }
 
 export const tagQuery = graphql`query ($tag: String) {
-  allMarkdownRemark(
+  site {
+    meta: siteMetadata {
+      title
+      author
+      desc
+    }
+  }
+  allMdx(
     limit: 2000
     sort: {frontmatter: {date: DESC}}
     filter: {frontmatter: {tags: {in: [$tag]}}}
@@ -100,6 +112,7 @@ export const tagQuery = graphql`query ($tag: String) {
     totalCount
     edges {
       node {
+        id
         fields {
           slug
         }
@@ -112,7 +125,7 @@ export const tagQuery = graphql`query ($tag: String) {
       }
     }
   }
-  tagsPosts: allMarkdownRemark(limit: 2000) {
+  tagPosts: allMdx(limit: 2000) {
     group(field: {frontmatter: {tags: SELECT}}) {
       fieldValue
       totalCount
