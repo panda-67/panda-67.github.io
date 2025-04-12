@@ -22,7 +22,7 @@ export default function PostCard({ edge }) {
             <Link to={`/blog${edge.node.fields.slug}`}>
                 <h3 aria-label="blog-title" className="">
                     {_.truncate(edge.node.frontmatter.title, {
-                        length: 64,
+                        length: 84,
                         omission: " ...",
                     })}
                 </h3>
