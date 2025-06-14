@@ -10,7 +10,7 @@ export default function IndexPage({ data, path }) {
     <Frame path={path}>
       <div className="w-full h-full flex flex-wrap flex-row -mt-8 md:-mt-16">
         {/* Expertise */}
-        <section className="w-1/4">
+        <section className="w-full md:w-1/4">
           <Header>Expertise</Header>
           <div className="mx-6 flex flex-wrap flex-col space-y-4">
             <CardLink
@@ -41,7 +41,7 @@ export default function IndexPage({ data, path }) {
         </section>
 
         {/* Latest Blog */}
-        <section className="w-3/4">
+        <section className="w-full md:w-3/4">
           <Header>Latest Post</Header>
           <div className="mx-6 py-2 min-h-max rounded-lg border border-indigo-600 bg-gradient-to-tr from-base-300 to-transparent text-slate-800">
             {data.allMdx.edges
